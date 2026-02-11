@@ -29,7 +29,7 @@ export default function DropDownMenu({ trigger, items }: DropDownMenuProps) {
     }, []);
 
     const containerStyles = {
-        position: 'relative' as const
+        position: 'relative'
     };
 
     const triggerStyles = {
@@ -40,7 +40,7 @@ export default function DropDownMenu({ trigger, items }: DropDownMenuProps) {
     };
 
     const menuStyles = {
-        position: 'absolute' as const,
+        position: 'absolute',
         top: '100%',
         left: '0',
         marginTop: '8px',
@@ -50,7 +50,7 @@ export default function DropDownMenu({ trigger, items }: DropDownMenuProps) {
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
         minWidth: '180px',
         zIndex: 1000,
-        overflow: 'hidden' as const
+        overflow: 'hidden'
     };
 
     const itemStyles = {
