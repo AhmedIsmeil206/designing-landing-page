@@ -17,5 +17,6 @@ export const colors = {
     darkGrey: 'rgb(115 115 115)',
     Main_white: 'rgb(255, 255, 255)',
     Main_whiteHover: 'rgb(250, 250, 250)',
+    lightGray: 'rgb(243, 244, 246)'
 
 }

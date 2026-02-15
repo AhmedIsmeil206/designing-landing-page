@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { colors } from '../assets/colors';
-import Button from './button';
-import DropDownMenu from './header-content/drop-down-menu';
-import frontendMasterLogo from '../assets/logos/frontend-master.png';
+import { colors } from '../shared/colors';
+import Button from '../shared/button';
+import DropDownMenu from '../header-content/drop-down-menu';
+import frontendMasterLogo from '../../assets/logos/frontend-master.png';
 
 export default function NavBar() {
     const exploreItems = [
