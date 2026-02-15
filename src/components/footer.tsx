@@ -58,7 +58,7 @@ const legalLinks = {
 export default function Footer()  {
 
     return (
-        <footer css={{paddingBlockEnd: "32px",paddingInline: "64px", justifyContent: "space-between", alignItems: "center", gap:"3.75rem" }}>
+        <footer css={{paddingBlock: "32px",paddingInline: "64px", justifyContent: "space-between", alignItems: "center", gap:"3.75rem" }}>
             <div css={{display: 'flex', alignItems: 'center', flexDirection:"row"}}>
                 <div css={{display: 'flex', alignItems: 'center',paddingInlineEnd:'40%', justifyContent:'space-between' }}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">
@@ -89,9 +89,9 @@ export default function Footer()  {
                     </div>
                 </div>
 
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' }}>
+                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column' }}>
                     <span css={colTitle}>Frontend Mentor</span>
-                    <ul css={list}>
+                    <ul css={list}> 
                     <li ><a css={link} href="#">Unlock Pro</a></li>
                     <li><a css={link} href="#">Contact us</a></li>
                     <li><a css={link} href="#">FAQs</a></li>
