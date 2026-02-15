@@ -123,8 +123,9 @@ return (
             })}
         </div>
 
-        { active === 1 && (
-            <div css={imageWrap}>
+        {
+            active === 1 && (
+                <div css={imageWrap}>
                     <img
                     src={choice1}
                     alt="How it works preview"
@@ -133,8 +134,9 @@ return (
                 </div>
             )
         }
-        { active === 2 && (
-            <div css={imageWrap}>
+        {
+            active === 2 && (
+                <div css={imageWrap}>
                     <img
                     src={choice2}
                     alt="How it works preview"
@@ -144,7 +146,8 @@ return (
             )
         }
 
-        { active === 3 && (
+        {
+            active === 3 && (
                 <div css={imageWrap}>
                     <img
                     src={choice3}
@@ -155,8 +158,9 @@ return (
             )
         }
 
-        { active === 4 && (
-            <div css={imageWrap}>
+        {
+            active === 4 && (
+                <div css={imageWrap}>
                     <img
                     src={choice4}
                     alt="How it works preview"

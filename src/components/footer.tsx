@@ -58,7 +58,7 @@ const legalLinks = {
 export default function Footer()  {
 
     return (
-        <footer css={{paddingBlock: "32px",paddingInline: "64px", justifyContent: "space-between", alignItems: "center", gap:"3.75rem",marginBlockStart:'40%' }}>
+        <footer css={{paddingBlockEnd: "32px",paddingInline: "64px", justifyContent: "space-between", alignItems: "center", gap:"3.75rem",marginBlockStart:'5%' }}>
             <div css={{display: 'flex', alignItems: 'center', flexDirection:"row"}}>
                 <div css={{display: 'flex', alignItems: 'center',paddingInlineEnd:'40%', justifyContent:'space-between' }}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">
