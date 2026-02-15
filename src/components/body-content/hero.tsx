@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import Button from "../button";
-import { colors } from "../../assets/colors";
+import Button from "../shared/button";
+import { colors } from "../shared/colors";
 import homeHero from "../../assets/logos/home-hero.webp";
 import kevinAvatar from "../../assets/logos/home-avatar-kevin.webp";
 import jessicaAvatar from "../../assets/logos/home-avatar-jessica.webp";

@@ -1,6 +1,6 @@
 
 /** @jsxImportSource @emotion/react */
-import { colors } from "../assets/colors"
+import { colors } from "./shared/colors"
 import frontendMasterLogo from '../assets/logos/frontend-master.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -9,7 +9,7 @@ import {
     faLinkedin,
     faFacebook
 } from '@fortawesome/free-brands-svg-icons';
-import Button from './button';
+import Button from './shared/button';
 
 const socialIconStyles = {
     width: '30px',
@@ -58,7 +58,7 @@ const legalLinks = {
 export default function Footer()  {
 
     return (
-        <footer css={{paddingBlock: "32px",paddingInline: "64px", justifyContent: "space-between", alignItems: "center", gap:"3.75rem" }}>
+        <footer css={{paddingBlock: "32px",paddingInline: "64px", justifyContent: "space-between", alignItems: "center", gap:"3.75rem",marginBlockStart:'40%' }}>
             <div css={{display: 'flex', alignItems: 'center', flexDirection:"row"}}>
                 <div css={{display: 'flex', alignItems: 'center',paddingInlineEnd:'40%', justifyContent:'space-between' }}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">

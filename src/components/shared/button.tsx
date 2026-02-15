@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {colors} from '../assets/colors';
+import {colors} from './colors';
 
 interface ButtonProps {
     onClick: () => void;
