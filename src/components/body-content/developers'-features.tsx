@@ -4,8 +4,6 @@ import choice1 from '../../assets/images/home-why-1.webp'
 import choice2 from '../../assets/images/home-why-2.webp'
 import choice3 from '../../assets/images/home-why-3.webp'
 import choice4 from '../../assets/images/home-why-4.webp'
-import { height } from "@fortawesome/free-brands-svg-icons/fa11ty"
-import { text } from "@fortawesome/fontawesome-svg-core"
 
 const general = {
     maxWidth: "1120px",
