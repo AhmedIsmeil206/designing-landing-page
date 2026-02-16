@@ -1,3 +1,4 @@
+
 export const colors = {
     black: 'rgb(23, 23, 23)',
     blackHover: 'rgb(64, 64, 64)',
@@ -6,7 +7,8 @@ export const colors = {
     redHover: 'rgb(185, 28, 28)',
 
     purple: 'rgb(62, 84, 163)',
-    purpleHover: 'rgb(51, 68, 137)',
+    purpleHover: 'rgb(96, 120, 218)',
+    lightPurple: 'rgb(218, 223, 245)',
 
     darkGreen: 'rgb(21 ,128 ,61 )',
     lightGreen: 'rgb(220 ,252 ,231 )',

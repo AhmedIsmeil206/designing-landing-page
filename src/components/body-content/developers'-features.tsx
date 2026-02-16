@@ -1,5 +1,4 @@
 import { colors } from "../shared/colors"
-import { useState } from "react"
 import choice1 from '../../assets/images/home-why-1.webp'
 import choice2 from '../../assets/images/home-why-2.webp'
 import choice3 from '../../assets/images/home-why-3.webp'
@@ -41,67 +40,69 @@ const imageWrap = {
     maxWidth: "560px",
 };
 
+
+
+
 export default function DevFeatures() {
     return (
         <div css={general}>
-            <h1 css={title}>Why developers choose Frontend Mentor</h1>
-            <div css={row}>
-                <div css={{maxWidth: "420px"}}>
-                    <h3>Move beyond passive learning</h3>
-                    <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
+                <h1 css={title}>Why developers choose Frontend Mentor</h1>
+                <div css={row}>
+                    <div css={{maxWidth: "420px"}}>
+                        <h3>Move beyond passive learning</h3>
+                        <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
+                    </div>
+
+                    <div css={imageWrap}>
+                        <img
+                        src={choice1}
+                        alt="How it works preview"
+                        css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
+                        />
+                    </div>
                 </div>
 
-                <div css={imageWrap}>
-                    <img
-                    src={choice1}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
-                    />
+                <div css={row}>
+                    <div css={imageWrap}>
+                        <img
+                        src={choice2}
+                        alt="How it works preview"
+                        css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
+                        />
+                    </div>
+                    <div css={{maxWidth: "420px"}}>
+                        <h3>Move beyond passive learning</h3>
+                        <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
+                    </div>
                 </div>
+
+                <div css={row}>
+                    <div css={{maxWidth: "420px"}}>
+                        <h3>Move beyond passive learning</h3>
+                        <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
+                    </div>
+                    <div css={imageWrap}>
+                        <img
+                        src={choice3}
+                        alt="How it works preview"
+                        css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
+                        />
+                    </div>
+                </div>
+
+                <div css={row}>
+                    <div css={imageWrap}>
+                        <img
+                        src={choice4}
+                        alt="How it works preview"
+                        css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
+                        />
+                    </div>
+                    <div css={{maxWidth: "420px"}}>
+                        <h3>Move beyond passive learning</h3>
+                        <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
+                    </div>
             </div>
-
-            <div css={row}>
-                <div css={imageWrap}>
-                    <img
-                    src={choice2}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
-                    />
-                </div>
-                <div css={{maxWidth: "420px"}}>
-                    <h3>Move beyond passive learning</h3>
-                    <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
-                </div>
-            </div>
-
-            <div css={row}>
-                <div css={{maxWidth: "420px"}}>
-                    <h3>Move beyond passive learning</h3>
-                    <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
-                </div>
-                <div css={imageWrap}>
-                    <img
-                    src={choice3}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
-                    />
-                </div>
-            </div>
-
-            <div css={row}>
-                <div css={imageWrap}>
-                    <img
-                    src={choice4}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
-                    />
-                </div>
-                <div css={{maxWidth: "420px"}}>
-                    <h3>Move beyond passive learning</h3>
-                    <p>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
-                </div>
-            </div>
-
         </div>
     )
 }
