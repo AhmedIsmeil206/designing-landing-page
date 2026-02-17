@@ -7,16 +7,18 @@ export const colors = {
     redHover: 'rgb(185, 28, 28)',
 
     purple: 'rgb(62, 84, 163)',
+    darkPurple: 'rgb(51, 68, 137)',
     purpleHover: 'rgb(96, 120, 218)',
     lightPurple: 'rgb(218, 223, 245)',
+    babyPurple: 'rgb(240, 243, 253)',
 
-    darkGreen: 'rgb(21 ,128 ,61 )',
-    lightGreen: 'rgb(220 ,252 ,231 )',
+    darkGreen: 'rgb(21, 128, 61)',
+    lightGreen: 'rgb(220, 252, 231)',
 
     babyBlue: 'rgb(6 182 212 )',
     white: 'rgb(229, 231, 235)',
     grey: 'rgb(238, 238, 238)',
-    darkGrey: 'rgb(115 115 115)',
+    darkGrey: 'rgb(115, 115, 115)',
     Main_white: 'rgb(255, 255, 255)',
     Main_whiteHover: 'rgb(250, 250, 250)',
     lightGray: 'rgb(243, 244, 246)'

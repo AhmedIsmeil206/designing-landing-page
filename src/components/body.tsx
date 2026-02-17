@@ -3,6 +3,9 @@ import Introduction from './body-content/hero'
 import Explaination from './body-content/explaination'
 import DevFeatures from './body-content/developers\'-features'
 import ProCards from './body-content/pro-cards'
+// import SubscriptionCards from './body-content/subscription-cards'
+import CompaniesFeatures from './body-content/companies\'-features'
+import CommunityComments from './body-content/community-comments'
 
 export default function Body() {
     return (
@@ -11,6 +14,9 @@ export default function Body() {
             <Explaination />
             <DevFeatures />
             <ProCards />
+            {/* <SubscriptionCards /> */}
+            <CompaniesFeatures />
+            <CommunityComments />
         </div>
     )
 }

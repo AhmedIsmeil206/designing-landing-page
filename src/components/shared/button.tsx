@@ -4,7 +4,7 @@ import {colors} from './colors';
 interface ButtonProps {
     onClick: () => void;
     children: React.ReactNode;
-    variant?: 'redButton' | 'whiteButton' | 'BlackButton' | 'purpleButton' | 'darkgreyButton' | 'Main_whiteButton';
+    variant?: 'redButton' | 'Main_whiteButton' | 'BlackButton' | 'purpleButton' | 'darkgreyButton' | 'Main_Main_whiteButton';
 }
 export default function Button ({onClick, children, variant = 'redButton'}: ButtonProps) {
 const baseStyles = {
@@ -25,28 +25,28 @@ const baseStyles = {
 const variants = {
     redButton:{
         backgroundColor: colors.red,
-        color: colors.white,
+        color: colors.Main_white,
         ':hover': colors.redHover
     },
-    whiteButton:{
-        backgroundColor: colors.white,
+    Main_whiteButton:{
+        backgroundColor: colors.Main_white,
         color: colors.black,
     },
     BlackButton:{
         backgroundColor: colors.black,
-        color: colors.white,
+        color: colors.Main_white,
         ':hover': colors.blackHover
     },
     purpleButton:{
         backgroundColor: colors.purple,
-        color: colors.white,
+        color: colors.Main_white,
         ':hover': colors.purpleHover
     },
     darkgreyButton:{
         backgroundColor: colors.darkGrey,
-        color: colors.white,
+        color: colors.Main_white,
     },
-    Main_whiteButton: {
+    Main_Main_whiteButton: {
         backgroundColor: colors.Main_white,
         color: colors.black,
         ':hover': colors.Main_whiteHover
