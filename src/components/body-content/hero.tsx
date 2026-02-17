@@ -11,7 +11,7 @@ import productHuntLogo from "../../assets/logos/product-hunt.png";
 const githubIconStyles = {
     width: "18px",
     height: "18px",
-    fill: colors.white,
+    fill: colors.Main_white,
     marginLeft: "10px",
 };
 
@@ -128,7 +128,7 @@ return (
                         alignItems: "center"
                     }}
                 >
-                    <Button variant="redButton" onClick={() => {}}>
+                    <Button variant="redButton">
                         START BUILDING FREE
                         <svg
                         css={githubIconStyles}
@@ -139,7 +139,7 @@ return (
                         </svg>
                     </Button>
 
-                    <Button variant="Main_whiteButton" onClick={() => {}}>BROWSE CHALLENGES</Button>
+                    <Button variant="Main_whiteButton">BROWSE CHALLENGES</Button>
                 </div>
             </div>
 
@@ -157,7 +157,7 @@ return (
                     Join thousands of developers getting personalized insights to elevate your front-end and full-stack skills.
                 </p>
             </div>
-            <Button variant="Main_whiteButton" onClick={() => {}}>
+            <Button variant="Main_whiteButton">
                 <span css={{color: colors.purple, fontWeight: "700"}}>LEARN ABOUT PRO</span>
             </Button>
         </div>

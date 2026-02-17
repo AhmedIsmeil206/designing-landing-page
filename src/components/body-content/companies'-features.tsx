@@ -51,7 +51,7 @@ export default function DevFeatures() {
                         <h3>Engineering teams</h3>
                         <h1>Train junior developers with real projects</h1>
                         <p>Skip theoretical tutorials. Give your junior developers 100+ real-world challenges that build practical skills faster than traditional training programs.</p>
-                        <Button css={{marginTop: "32px"}}>EXPLORE TEAMS</Button>
+                        <Button css={{marginTop: "32px", color: colors.Main_white}}>EXPLORE TEAMS</Button>
                     </div>
 
                     <div css={imageWrap}>
@@ -75,7 +75,7 @@ export default function DevFeatures() {
                         <h3>Hiring teams</h3>
                         <h1>Discover junior talent through skills, not resumes</h1>
                         <p>See real code and live projects upfront, then connect directly with developers who've demonstrated the skills and passion you need.</p>
-                        <Button css={{marginTop: "32px"}}>EXPLORE HIRING</Button>
+                        <Button css={{marginTop: "32px", color: colors.Main_white}}>EXPLORE HIRING</Button>
                     </div>
                 </div>
         </div>
