@@ -1,4 +1,3 @@
-import { width } from "@fortawesome/free-brands-svg-icons/fa11ty"
 import {colors} from "../shared/colors"
 
 const general = {
