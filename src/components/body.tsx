@@ -6,6 +6,7 @@ import ProCards from './body-content/pro-cards'
 // import SubscriptionCards from './body-content/subscription-cards'
 import CompaniesFeatures from './body-content/companies\'-features'
 import CommunityComments from './body-content/community-comments'
+import ConclusionPart from './body-content/conclusion'
 
 export default function Body() {
     return (
@@ -17,6 +18,7 @@ export default function Body() {
             {/* <SubscriptionCards /> */}
             <CompaniesFeatures />
             <CommunityComments />
+            <ConclusionPart />
         </div>
     )
 }

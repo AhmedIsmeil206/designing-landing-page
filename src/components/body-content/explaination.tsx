@@ -12,7 +12,7 @@ const wrapper = {
     padding: "72px",
     alignItems: "center",
     rowGap: "48px",
-    background: colors.grey,
+    background: colors.lightGray,
     width:'100%'
 }
 

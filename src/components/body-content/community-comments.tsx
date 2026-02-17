@@ -10,7 +10,7 @@ interface CommunityMembersProps {
 }
 
 const communityCommentsStyle = {
-    backgroundColor: colors.grey,
+    backgroundColor: colors.lightGray,
     padding: '80px 20px',
     position: 'relative',
     overflow: 'hidden'
