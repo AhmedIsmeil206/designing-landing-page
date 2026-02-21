@@ -2,11 +2,12 @@
 import {colors} from './colors';
 
 interface ButtonProps {
-    onClick: () => void;
+    onClick?: () => void;
     children: React.ReactNode;
     variant?: 'redButton' | 'Main_whiteButton' | 'BlackButton' | 'purpleButton' | 'darkgreyButton' | 'Main_Main_whiteButton';
+    style?: React.CSSProperties;
 }
-export default function Button ({onClick, children, variant = 'redButton'}: ButtonProps) {
+export default function Button ({onClick, children, variant = 'redButton', style}: ButtonProps) {
 const baseStyles = {
     display: 'inline-flex',
     alignItems: 'center',
@@ -62,7 +63,8 @@ const variantsStyles = variants[variant]
                 color: variantsStyles.color,
                 '&:hover': {
                     backgroundColor: variantsStyles[':hover'] || variantsStyles.backgroundColor
-                }
+                },
+                ...style
             }}
             onClick={onClick}
         >

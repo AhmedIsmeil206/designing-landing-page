@@ -10,7 +10,7 @@ import ConclusionPart from './body-content/conclusion'
 
 export default function Body() {
     return (
-        <div css={{ height: '100%', width:'100%', margin: 'auto',overflow:'hidden' }}>
+        <div css={{ height: '100%', width:'100%',overflow:'hidden' }}>
             <Introduction />
             <Explaination />
             <DevFeatures />

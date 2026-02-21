@@ -50,15 +50,41 @@ const divider = {
     alignItems: "center",
     fontSize: "13px",
     color: colors.darkGrey,
+    '@media (max-width: 768px)': {
+        flexDirection: 'column',
+        gap: '16px',
+        alignItems: 'flex-start'
+    }
 };
+
 const legalLinks = {
     display: "flex",
     gap: "18px",
+    '@media (max-width: 768px)': {
+        flexWrap: 'wrap',
+        gap: '12px'
+    }
 };
+
+const footerStyles = {
+    paddingBlockEnd: "32px",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "3.75rem",
+    backgroundColor: colors.Main_white,
+    paddingBlockStart: '40px',
+    paddingInline: '2rem',
+    '@media (max-width: 1024px)': {
+        paddingInline: '1.5rem'
+    },
+    '@media (max-width: 768px)': {
+        paddingInline: '1rem'
+    }
+}
 export default function Footer()  {
 
     return (
-        <footer css={{paddingBlockEnd: "32px", justifyContent: "space-between", alignItems: "center", gap:"3.75rem",backgroundColor: colors.Main_white, paddingBlockStart: '40px', paddingInline: '2rem',}}>
+        <footer css={footerStyles}>
             <div css={{display: 'flex', alignItems: 'center', flexDirection:"row"}}>
                 <div css={{display: 'flex', alignItems: 'center',paddingInlineEnd:'40%', justifyContent:'space-between' }}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">
@@ -78,9 +104,20 @@ export default function Footer()  {
             </div>
 
             <div
-                css={{display: 'flex', flexDirection:'row', marginBlockStart:"40px", gap:'3.75rem' }}
+                css={{display: 'flex', flexDirection:'row', marginBlockStart:"40px", gap:'3.75rem',
+                    '@media (max-width: 768px)': {
+                        flexDirection: 'column',
+                        gap: '24px',
+                        alignItems: 'flex-start'
+                    }
+                }}
             >
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' }}>
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column',
+                        '@media (max-width: 768px)': {
+                            paddingInlineEnd: '0',
+                            width: '100%'
+                        }
+                    }}>
                     <span>Stay up to date</span>
                     <span>with new challenges, featured solutions, selected articles, and our latest news</span>
                     <div css={{display: 'flex', alignItems: 'center', gap:'8px', flexDirection:'row' }}>
@@ -89,9 +126,21 @@ export default function Footer()  {
                     </div>
                 </div>
 
-                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column' }}>
+                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column',
+                        '@media (max-width: 768px)': {
+                            flexDirection: 'column',
+                            width: '100%',
+                            gap: '12px',
+                            '& input': {
+                                width: '100%'
+                            },
+                            '& button': {
+                                width: '100%'
+                            }
+                        }
+                    }}>
                     <span css={colTitle}>Frontend Mentor</span>
-                    <ul css={list}> 
+                    <ul css={list}>
                     <li ><a css={link} href="#">Unlock Pro</a></li>
                     <li><a css={link} href="#">Contact us</a></li>
                     <li><a css={link} href="#">FAQs</a></li>
@@ -99,7 +148,6 @@ export default function Footer()  {
                     <li><a css={link} href="#">Use cases</a></li>
                     </ul>
                 </div>
-
                 <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' }}>
                     <span css={colTitle}>Explore</span>
                     <ul css={list}>

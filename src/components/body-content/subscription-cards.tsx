@@ -8,51 +8,55 @@ import amexLogo from '../../assets/logos/purchase/amex.webp';
 import maestroLogo from '../../assets/logos/purchase/maestro.webp';
 import paypalLogo from '../../assets/logos/purchase/paypal.webp';
 import gpayLogo from '../../assets/logos/purchase/gpay.webp';
+import { width } from '@fortawesome/free-brands-svg-icons/fa11ty';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 const container = {
     width: '100%',
-    padding: '80px 24px',
-    backgroundColor: colors.Main_white,
+    padding: '50px 24px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    marginBlockStart: '64px',
 }
 const ContainerContext = {
     display: 'flex',
     gap: '16px',
-    marginBottom: '64px',
-    backgroundColor: colors.lightGray,
+    marginBlockEnd: '72px',
+    backgroundColor: colors.Main_white,
     borderRadius: '50px',
     padding: '8px',
+    border:`1px solid ${colors.grey}`,
 }
 const context = {
-    padding: '16px 48px',
+    padding: '16px 24px',
     borderRadius: '50px',
     border: 'none',
     fontSize: '16px',
-    fontWeight: '600',
+    fontWeight: '700',
     fontStyle: 'italic',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     textTransform: 'uppercase',
-    letterSpacing: '0.5px',
 }
-const cards = {
+const individualCards = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
     gap: '32px',
     maxWidth: '1200px',
     width: '100%',
-    marginBottom: '64px',
+    marginBlockEnd: '64px',
 }
 const card = {
     backgroundColor: colors.Main_white,
     border: `2px solid ${colors.grey}`,
     borderRadius: '24px',
-    padding: '48px 32px',
+    paddingInline: '32px',
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
+    width: '60%',
+    paddingBlockEnd: '20px',
 }
 const bestValueBadge = {
     position: 'absolute',
@@ -61,19 +65,18 @@ const bestValueBadge = {
     right: '0',
     backgroundColor: colors.purple,
     color: colors.Main_white,
-    padding: '12px',
+    padding: '8px',
     borderRadius: '20px 20px 0 0',
     textAlign: 'center',
     fontWeight: '700',
     fontSize: '14px',
     fontStyle: 'italic',
     textTransform: 'uppercase',
-    letterSpacing: '0.5px',
 }
 const cardTitle = {
-    fontSize: '28px',
+    fontSize: '22px',
     fontWeight: '700',
-    marginBottom: '24px',
+    marginBlockEnd: '24px',
     textAlign: 'center',
     color: colors.black,
 }
@@ -104,10 +107,11 @@ const discountBadge = {
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-    backgroundColor: colors.lightGray,
-    padding: '16px 20px',
+    backgroundColor: colors.babyPurple,
+    padding: '8px 12px 18px 12px',
     borderRadius: '12px',
-    marginBottom: '32px',
+    marginBlockEnd: '16px',
+    border:`1px solid ${colors.lightPurple}`,
 }
 const discountText = {
     fontSize: '16px',
@@ -115,10 +119,10 @@ const discountText = {
     color: colors.black,
 }
 const discountPercent = {
-    fontSize: '16px',
+    fontSize: '18px',
     fontWeight: '700',
-    color: colors.purple,
-    marginLeft: 'auto',
+    color: colors.darkPurple,
+    fontStyle:'bold'
 }
 const appliedBadge = {
     fontSize: '12px',
@@ -147,16 +151,18 @@ const teamsCard = {
     backgroundColor: colors.Main_white,
     border: `2px solid ${colors.grey}`,
     borderRadius: '24px',
-    padding: '48px',
+    padding: '36px',
     display: 'grid',
     gridTemplateColumns: '1fr auto',
     gap: '48px',
     alignItems: 'start',
 }
 const teamsTitle = {
-    fontSize: '36px',
+    display:'flex',
+    alignItems:'flex-start',
+    textAlign:'start',
+    fontSize: '24px',
     fontWeight: '700',
-    marginBottom: '24px',
     color: colors.black,
 }
 const PaymentLogos = {
@@ -166,7 +172,7 @@ const PaymentLogos = {
     justifyContent: 'center',
     flexWrap: 'wrap',
     backgroundColor: colors.lightGray,
-    padding: '24px',
+    padding: '32px',
 }
 
 const SubscriptionCards = () => {
@@ -229,10 +235,10 @@ const SubscriptionCards = () => {
 
     const renderDiscountBadge = () => (
         <div css={discountBadge}>
-        <span css={{ fontSize: '24px' }}>🇪🇬</span>
-        <span css={discountText}>Country Discount</span>
-        <span css={discountPercent}>60% off</span>
-        <span css={appliedBadge}>Applied</span>
+            <span css={{ fontSize: '18px' }}>🇪🇬</span>
+            <span css={discountText}>Country Discount</span>
+            <span css={discountPercent}>60% off</span>
+            <span css={appliedBadge}>Applied</span>
         </div>
     );
 
@@ -245,7 +251,7 @@ const SubscriptionCards = () => {
                     onClick={() => setActiveTab(tab)}
                     css={{
                     ...context,
-                    backgroundColor: activeTab === tab ? colors.purple : 'transparent',
+                    backgroundColor: activeTab === tab ? colors.purple : colors.Main_white,
                     color: activeTab === tab ? colors.Main_white : colors.black,
                     }}
                 >
@@ -256,8 +262,8 @@ const SubscriptionCards = () => {
 
 
             {activeTab === 'individuals' ? (
-                <div css={cards}>
-                    <div css={card}>
+                <div css={individualCards}>
+                    <div css={{ ...card, marginInlineStart:'180px' }}>
                         <h3 css={cardTitle}>Monthly</h3>
                         <div css={{ textAlign: 'center' }}>
                             <span css={priceOld}>۱۲ US$/month</span>
@@ -265,47 +271,51 @@ const SubscriptionCards = () => {
                             <span css={priceSub}>Billed monthly</span>
                         </div>
                         {renderDiscountBadge()}
-                        <Button variant="redButton">
-                            Learn More
-                        </Button>
+                        <div css={{paddingBlockEnd:'10px', width:'100%', marginBlockEnd:'16px'}}>
+                            <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px'}}>
+                                Learn More
+                            </Button>
+                        </div>
                         <div css={featuresList}>{monthlyFeatures.map(renderFeature)}</div>
                     </div>
 
-                    <div css={{ ...card, border: `3px solid ${colors.purple}` }}>
+                    <div css={{ ...card, border: `3px solid ${colors.purple}`, marginBlockStart: '-40px', marginInlineStart:'0px' }}>
                         <div css={bestValueBadge}>Best Value</div>
                         <div css={{ marginTop: '24px' }}>
-                            <h3 css={cardTitle}>Yearly</h3>
+                            <h3 css={{...cardTitle,marginBlockStart: '36px',}}>Yearly</h3>
                             <div css={{ textAlign: 'center' }}>
                                 <span css={priceOld}>۸ US$ /month</span>
                                 <div css={priceNew}>۳,۲ US$/mo</div>
                                 <span css={priceSub}>۳۸,۴ US$ billed yearly (save 33% vs monthly)</span>
                             </div>
                             {renderDiscountBadge()}
-                            <Button variant="redButton">
-                                Learn More
-                            </Button>
+                            <div css={{paddingBlockEnd:'10px', width:'100%', marginBlockEnd:'16px'}}>
+                                <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px'}}>
+                                    Learn More
+                                </Button>
+                            </div>
                             <div css={featuresList}>{yearlyFeatures.map(renderFeature)}</div>
                         </div>
                     </div>
                 </div>
             ) : (
-                <div css={{maxWidth: '950px', width: '100%', marginBottom: '64px'}}>
+                <div css={{maxWidth: '800px', marginBlockEnd: '40px',}}>
                     <div css={teamsCard}>
-                        <div css={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', height: '100%',}}>
+                        <div css={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', height: '500px', marginBlockStart:'-30px'}}>
                             <div>
                                 <h2 css={teamsTitle}>Frontend Mentor for Teams</h2>
-                                <p css={{fontSize: '18px', color: colors.darkGrey, lineHeight: '1.6', marginBottom: '48px'}}>
+                                <p css={{fontSize: '18px', color: colors.darkGrey, lineHeight: '1.6', marginBottom: '48px',textAlign: 'start'}}>
                                 Onboard new hires faster and train team members more effectively through hands-on practice.
                                 All team members gain unlimited Pro access, and admins can easily oversee and manage the team.
                                 </p>
                             </div>
-                            <Button variant="redButton">
+                            <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px',}}>
                                 Learn More
                             </Button>
                         </div>
 
-                        <div css={{minWidth: '340px',}}>
-                            <h3 css={{fontSize: '24px', fontWeight: '700', marginBottom: '16px', color: colors.black}}>Teams</h3>
+                        <div css={{minWidth: '340px',display:'flex', flexDirection:'column', textAlign: 'start', marginBlockStart:'-30px'}}>
+                            <h3 css={{fontSize: '18px', fontWeight: '700', marginBottom: '16px', color: colors.black}}>Teams</h3>
                             <span css={priceOld}>١٢٫٥٠ US$/seat/mo</span>
                             <div css={priceNew}>٥ US$/seat/mo</div>
                             <span css={priceSub}>٦٠ US$ per seat, billed yearly</span>
@@ -317,7 +327,7 @@ const SubscriptionCards = () => {
             )}
             <div css={PaymentLogos}>
                 {paymentLogos.map((logo, index) => (
-                <img key={index} src={logo.src} alt={logo.alt} css={{height: '32px', objectFit: 'contain', opacity: 0.7}} />
+                <img key={index} src={logo.src} alt={logo.alt} css={{height: '32px', objectFit: 'contain'}} />
                 ))}
             </div>
         </div>

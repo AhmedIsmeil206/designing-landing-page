@@ -7,27 +7,25 @@ import choice4 from '../../assets/images/home-how-it-works-4.webp'
 
 const wrapper = {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "32px",
+    gridTemplateColumns: "0.85fr 1fr",
     padding: "72px",
-    alignItems: "center",
-    rowGap: "48px",
+    alignItems: "start",
     background: colors.lightGray,
-    width:'100%'
+    width: "100%",
+    borderRadius: "20px",
+    paddingBlock: "120px",
 }
 
 const imageWrap = {
-    background: colors.grey,
-    borderRadius: "16px",
-    padding: "28px",
-    marginBlockStart: "100px",
+    background: colors.lightGray,
+    borderRadius: "20px",
+    marginBlockStart: "124px",
     position: "relative",
-    width:'100%'
 }
 
 const numberPill = (active) => ({
-    width: "32px",
-    height: "32px",
+    width: "30px",
+    height: "30px",
     borderRadius: "999px",
     display: "inline-flex",
     alignItems: "center",
@@ -35,18 +33,18 @@ const numberPill = (active) => ({
     background: active ? colors.Main_white : colors.babyBlue,
     color: active ? colors.purple : colors.Main_white,
     fontWeight: "700",
-    marginRight: "14px",
+    marginRight: "16px",
 })
 
 const stepCard = (active) => ({
     background: active ? colors.purple : colors.Main_white,
     color: active ? colors.Main_white : colors.black,
     borderRadius: "12px",
-    padding: "20px 24px",
-    border: `1px solid ${colors.grey}`,
+    padding: active ? "30px 24px" : "16px 24px",
+    border: active ? "1px solid transparent" : `1px solid ${colors.lightGray}`,
+    boxShadow: active ? "0 14px 30px rgba(51, 69, 167, 0.18)" : "0 2px 8px rgba(15, 23, 42, 0.06)",
     cursor: "pointer",
     transition: "all 0.2s ease",
-
 })
 
 const steps = [
@@ -77,13 +75,13 @@ export default function Explaination () {
 
 return (
     <div css={wrapper}>
-        <div css={{display: "flex", flexDirection: "column", gap: "20px", width:'100%', maxWidth:'540px'}}>
+        <div css={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "540px", marginInline:'240px' }}>
             <h2 css={{
                 fontSize: "40px",
+                textAlign: "left",
                 fontWeight: "700",
-                marginBottom: "24px",
-                color: colors.black,
-                lineHeight: "1.2"
+                marginBottom: "16px",
+                color: colors.black
             }}>
                 How it works
             </h2>
@@ -99,9 +97,10 @@ return (
                         <div css={{ display: "flex", alignItems: "center" }}>
                             <span css={numberPill(isActive)}>{step.id}</span>
                             <span css={{
-                                fontSize: "18px", 
+                                fontSize: "20px",
                                 fontWeight: "700",
-                                letterSpacing: "-0.2px"
+                                padding: "8px",
+                                textTransform: "capitalize"
                             }}>
                                 {step.title}
                             </span>
@@ -109,9 +108,9 @@ return (
 
                         {isActive && (
                             <p css={{
-                                marginTop: "16px", 
-                                marginLeft: "56px",
-                                fontSize: "15px", 
+                                marginTop: "12px",
+                                marginLeft: "46px", 
+                                fontSize: "14px",
                                 lineHeight: "1.7",
                                 opacity: 0.95
                             }}>
@@ -127,9 +126,9 @@ return (
             active === 1 && (
                 <div css={imageWrap}>
                     <img
-                    src={choice1}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
+                        src={choice1}
+                        alt="How it works preview"
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
                     />
                 </div>
             )
@@ -138,10 +137,10 @@ return (
             active === 2 && (
                 <div css={imageWrap}>
                     <img
-                    src={choice2}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
-                />
+                        src={choice2}
+                        alt="How it works preview"
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
+                    />
                 </div>
             )
         }
@@ -150,10 +149,10 @@ return (
             active === 3 && (
                 <div css={imageWrap}>
                     <img
-                    src={choice3}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'400px'}}
-                />
+                        src={choice3}
+                        alt="How it works preview"
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
+                    />
                 </div>
             )
         }
@@ -162,9 +161,9 @@ return (
             active === 4 && (
                 <div css={imageWrap}>
                     <img
-                    src={choice4}
-                    alt="How it works preview"
-                    css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'550px', maxHeight:'500px'}}
+                        src={choice4}
+                        alt="How it works preview"
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
                     />
                 </div>
             )

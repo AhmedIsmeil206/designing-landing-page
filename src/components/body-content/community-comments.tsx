@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { colors } from '../shared/colors';
+import { height } from '@fortawesome/free-brands-svg-icons/fa11ty';
 
 interface CommunityMembersProps {
     id: number;
@@ -13,7 +14,8 @@ const communityCommentsStyle = {
     backgroundColor: colors.lightGray,
     padding: '80px 20px',
     position: 'relative',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    borderRadius: '20px !important',
 };
 
 const headerStyle = {
@@ -68,14 +70,17 @@ const cardCommentStyle = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    height: '340px',
+    marginBlockEnd: '48px'
 };
 
 const commentTextStyle = {
-    fontSize: '16px',
-    lineHeight: '1.7',
+    display:'flex',
+    fontSize: '18px',
     color: colors.darkGrey,
     margin: '0 0 32px 0',
-    fontWeight: '400'
+    fontWeight: '500',
+    textAlign:'left'
 };
 
 const imgStyle = {
@@ -172,14 +177,13 @@ export default function CommunityComments() {
             <div css={{maxWidth: '1440px', margin: '0 auto', position: 'relative'}}>
                 <div css={headerStyle}>
                     <h2 css={titleStyle}>A little <span css={{fontSize: '40px'}}>❤️</span> from our community</h2>
-                    <div css={{display: 'flex', gap: '12px'}}>
+                    <div css={{display: 'flex', gap: '12px', marginInlineEnd: '50px'}}>
                         <button
                             onClick={handlePrev}
                             disabled={isAtStart}
                             css={getNavButtonStyle(isAtStart)}
-                            aria-label="Previous members comments"
                         >
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="40" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15 10H5M5 10L10 15M5 10L10 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </button>
@@ -188,16 +192,15 @@ export default function CommunityComments() {
                             onClick={handleNext}
                             disabled={isAtEnd}
                             css={getNavButtonStyle(isAtEnd)}
-                            aria-label="Next members comments"
                         >
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="40" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 10H15M15 10L10 5M15 10L10 15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </button>
                     </div>
                 </div>
 
-                <div css={{position: 'relative', paddingInline: '80px'}}>
+                <div css={{position: 'relative', paddingInline: '130px'}}>
                     <div css={{overflow: 'hidden'}}>
                         <div css={getCarouselTrackStyle(currentIndex)}>
                             {members.map((member) => (

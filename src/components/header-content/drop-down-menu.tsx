@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useRef, useEffect } from 'react';
 import { colors } from '../shared/colors';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface DropdownItem {
     label: string;
     href?: string;
     onClick?: () => void;
+    icon?: any
 }
 
 interface DropDownMenuProps {
@@ -59,7 +60,7 @@ export default function DropDownMenu({ trigger, items }: DropDownMenuProps) {
         color: colors.black,
         textDecoration: 'none',
         fontSize: '14px',
-        transition: 'background-color 0.2s ease'
+        border: `0.5px solid ${colors.grey}`,
     };
 
     return (
@@ -86,19 +87,22 @@ export default function DropDownMenu({ trigger, items }: DropDownMenuProps) {
                             key={index}
                             href={item.href || '#'}
                             onClick={(e) => {
+                                e.preventDefault();
                                 if (item.onClick) {
-                                    e.preventDefault();
                                     item.onClick();
                                 }
                                 setIsOpen(false);
                             }}
                             css={{
                                 ...itemStyles,
-                                '&:hover': {
-                                    backgroundColor: colors.grey
-                                }
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px',
+                                backgroundColor: colors.Main_white,
+                                borderRadius: `1px solid ${colors.grey}`,
                             }}
                         >
+                            {item.icon && <FontAwesomeIcon icon={item.icon} />}
                             {item.label}
                         </a>
                     ))}
