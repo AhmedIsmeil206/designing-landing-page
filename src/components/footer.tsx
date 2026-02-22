@@ -82,7 +82,7 @@ const footerStyles = {
         paddingInline: '32px'
     },
     '@media (max-width: 768px)': {
-        paddingInline: '50px',
+        paddingInline: '150px',
         paddingBlock: '32px'
     }
 }
