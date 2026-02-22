@@ -18,6 +18,10 @@ const container = {
     flexDirection: 'column',
     alignItems: 'center',
     marginBlockStart: '64px',
+    '@media (max-width: 768px)': {
+        padding: '24px 20px',
+        marginBlockStart: '24px'
+    }
 }
 const ContainerContext = {
     display: 'flex',
@@ -27,6 +31,11 @@ const ContainerContext = {
     borderRadius: '50px',
     padding: '8px',
     border:`1px solid ${colors.grey}`,
+    '@media (max-width: 768px)': {
+        marginBlockEnd: '24px',
+        width: '100%',
+        justifyContent: 'center'
+    }
 }
 const context = {
     padding: '16px 24px',
@@ -38,6 +47,10 @@ const context = {
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     textTransform: 'uppercase',
+    '@media (max-width: 768px)': {
+        padding: '12px 16px',
+        fontSize: '14px'
+    }
 }
 const individualCards = {
     display: 'grid',
@@ -46,6 +59,11 @@ const individualCards = {
     maxWidth: '1200px',
     width: '100%',
     marginBlockEnd: '64px',
+    '@media (max-width: 768px)': {
+        gridTemplateColumns: '1fr',
+        marginBlockEnd: '24px',
+        gap: '20px'
+    }
 }
 const card = {
     backgroundColor: colors.Main_white,
@@ -57,6 +75,10 @@ const card = {
     position: 'relative',
     width: '60%',
     paddingBlockEnd: '20px',
+    '@media (max-width: 768px)': {
+        width: '100%',
+        paddingInline: '24px'
+    }
 }
 const bestValueBadge = {
     position: 'absolute',
@@ -156,6 +178,11 @@ const teamsCard = {
     gridTemplateColumns: '1fr auto',
     gap: '48px',
     alignItems: 'start',
+    '@media (max-width: 768px)': {
+        gridTemplateColumns: '1fr',
+        gap: '24px',
+        padding: '24px'
+    }
 }
 const teamsTitle = {
     display:'flex',
@@ -173,6 +200,10 @@ const PaymentLogos = {
     flexWrap: 'wrap',
     backgroundColor: colors.lightGray,
     padding: '32px',
+    '@media (max-width: 768px)': {
+        gap: '12px',
+        padding: '20px 16px'
+    }
 }
 
 const SubscriptionCards = () => {
@@ -263,7 +294,7 @@ const SubscriptionCards = () => {
 
             {activeTab === 'individuals' ? (
                 <div css={individualCards}>
-                    <div css={{ ...card, marginInlineStart:'180px' }}>
+                    <div css={{ ...card, marginInlineStart:'180px', '@media (max-width: 768px)': { marginInlineStart: '0' } }}>
                         <h3 css={cardTitle}>Monthly</h3>
                         <div css={{ textAlign: 'center' }}>
                             <span css={priceOld}>۱۲ US$/month</span>
@@ -279,7 +310,7 @@ const SubscriptionCards = () => {
                         <div css={featuresList}>{monthlyFeatures.map(renderFeature)}</div>
                     </div>
 
-                    <div css={{ ...card, border: `3px solid ${colors.purple}`, marginBlockStart: '-40px', marginInlineStart:'0px' }}>
+                    <div css={{ ...card, border: `3px solid ${colors.purple}`, marginBlockStart: '-40px', marginInlineStart:'0px', '@media (max-width: 768px)': { marginBlockStart: '0' } }}>
                         <div css={bestValueBadge}>Best Value</div>
                         <div css={{ marginTop: '24px' }}>
                             <h3 css={{...cardTitle,marginBlockStart: '36px',}}>Yearly</h3>
@@ -299,12 +330,12 @@ const SubscriptionCards = () => {
                     </div>
                 </div>
             ) : (
-                <div css={{maxWidth: '800px', marginBlockEnd: '40px',}}>
+                <div css={{maxWidth: '800px', marginBlockEnd: '40px', '@media (max-width: 768px)': { maxWidth: '100%', width: '100%' }}}>
                     <div css={teamsCard}>
-                        <div css={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', height: '500px', marginBlockStart:'-30px'}}>
+                        <div css={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', height: '500px', marginBlockStart:'-30px', '@media (max-width: 768px)': { height: 'auto', marginBlockStart: '0' }}}>
                             <div>
                                 <h2 css={teamsTitle}>Frontend Mentor for Teams</h2>
-                                <p css={{fontSize: '18px', color: colors.darkGrey, lineHeight: '1.6', marginBottom: '48px',textAlign: 'start'}}>
+                                <p css={{fontSize: '18px', color: colors.darkGrey, lineHeight: '1.6', marginBottom: '48px',textAlign: 'start', '@media (max-width: 768px)': { fontSize: '16px', marginBottom: '24px' }}}>
                                 Onboard new hires faster and train team members more effectively through hands-on practice.
                                 All team members gain unlimited Pro access, and admins can easily oversee and manage the team.
                                 </p>
@@ -314,7 +345,7 @@ const SubscriptionCards = () => {
                             </Button>
                         </div>
 
-                        <div css={{minWidth: '340px',display:'flex', flexDirection:'column', textAlign: 'start', marginBlockStart:'-30px'}}>
+                        <div css={{minWidth: '340px',display:'flex', flexDirection:'column', textAlign: 'start', marginBlockStart:'-30px', '@media (max-width: 768px)': { minWidth: 'auto', width: '100%', marginBlockStart: '0' }}}>
                             <h3 css={{fontSize: '18px', fontWeight: '700', marginBottom: '16px', color: colors.black}}>Teams</h3>
                             <span css={priceOld}>١٢٫٥٠ US$/seat/mo</span>
                             <div css={priceNew}>٥ US$/seat/mo</div>

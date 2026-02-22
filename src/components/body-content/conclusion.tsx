@@ -1,6 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import { colors } from "../shared/colors"
 import Button from "../shared/button"
-import { width } from "@fortawesome/free-brands-svg-icons/fa11ty";
 
 const githubIconStyles = {
     width: '18px',
@@ -19,12 +19,24 @@ const containerStyle = {
     marginInline: '56px',
     width: '65%',
     borderRadius: '16px',
+    '@media (max-width: 768px)': {
+        width: '90%',
+        marginInline: '20px',
+        paddingBlock: '32px',
+        paddingInline: '20px'
+    }
 }
 const contentStyle = {
     width: '50%',
     fontSize: '36px',
     fontWeight: '600',
     marginBottom: '24px',
+    textAlign: 'center',
+    '@media (max-width: 768px)': {
+        width: '100%',
+        fontSize: '22px',
+        marginBottom: '12px'
+    }
 }
 const paragraphStyle = {
     width: '60%',
@@ -32,11 +44,17 @@ const paragraphStyle = {
     fontWeight: '400',
     marginBottom: '40px',
     color: colors.darkGrey,
+    textAlign: 'center',
+    '@media (max-width: 768px)': {
+        width: '100%',
+        fontSize: '15px',
+        marginBottom: '20px'
+    }
 }
 
 export default function ConclusionPart() {
     return (
-        <div css={{padding: '80px  30px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <div css={{padding: '80px  30px', display: 'flex', justifyContent: 'center', alignItems: 'center', '@media (max-width: 768px)': { padding: '32px 20px' }}}>
             <div css={containerStyle}>
                 <h1 css={contentStyle}>Join 1,137,529 people building portfolio-worthy projects</h1>
                 <p css={paragraphStyle}>Our highly supportive, positive community is here to help you improve your skills. We all try to help each other out wherever possible. We’d love to welcome you to our community!</p>

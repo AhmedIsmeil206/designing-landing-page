@@ -1,4 +1,4 @@
-import { height, width } from "@fortawesome/free-brands-svg-icons/fa11ty"
+/** @jsxImportSource @emotion/react */
 import {colors} from "../shared/colors"
 
 const general = {
@@ -6,6 +6,10 @@ const general = {
     margin: "0 auto",
     textAlign: "center",
     paddingBlockStart: "80px",
+    '@media (max-width: 768px)': {
+        paddingBlockStart: "32px",
+        paddingInline: "20px"
+    }
 }
 
 const heading = {
@@ -17,6 +21,13 @@ const heading = {
     width: "40%",
     paddingInlineStart: "116px",
     letterSpacing: "0.5px",
+    '@media (max-width: 768px)': {
+        fontSize: '22px',
+        marginInlineStart: '0',
+        width: '100%',
+        paddingInlineStart: '0',
+        lineHeight: '1.3'
+    }
 }
 
 const article = {
@@ -28,13 +39,22 @@ const article = {
     width: "100%",
     textStyle: "bold",
     fontWeight: '500',
+    '@media (max-width: 768px)': {
+        fontSize: '15px',
+        margin: '0 auto 24px',
+        lineHeight: '1.5'
+    }
 }
 
 const cardsRow = {
     display: "grid",
     gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
     gap: "70px",
-    alignItems: "stretch"
+    alignItems: "stretch",
+    '@media (max-width: 768px)': {
+        gridTemplateColumns: '1fr',
+        gap: '20px'
+    }
 }
 
 const card = {
@@ -45,6 +65,11 @@ const card = {
     textAlign: "left",
     width: "95%",
     height: "80%",
+    '@media (max-width: 768px)': {
+        width: '100%',
+        height: 'auto',
+        padding: '20px'
+    }
 }
 
 const iconWrap = {

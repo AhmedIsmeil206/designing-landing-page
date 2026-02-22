@@ -74,12 +74,15 @@ const legalLinks = {
 const footerStyles = {
     paddingBlock: "48px",
     paddingInlineEnd: "330px",
-    paddingInlineStart: "450px",
+    paddingInlineStart: "350px",
     maxWidth: "1200px",
     margin: "0 auto",
     backgroundColor: colors.Main_white,
+    '@media (max-width: 1024px)': {
+        paddingInline: '32px'
+    },
     '@media (max-width: 768px)': {
-        paddingInline: '24px',
+        paddingInline: '50px',
         paddingBlock: '32px'
     }
 }
@@ -87,14 +90,15 @@ export default function Footer()  {
 
     return (
         <footer css={footerStyles}>
-            <div css={{display: 'flex', alignItems: 'center', flexDirection:"row" ,  justifyContent:'space-around', width: '100%', marginBlock:'32px',
+            <div css={{display: 'flex', alignItems: 'center', flexDirection:"row" ,  justifyContent:'space-between', width: '100%', marginBlock:'32px',
                 '@media (max-width: 768px)': {
                     flexDirection: 'column' ,
-                    gap: '16px',
-                    alignItems: 'flex-start'
+                    gap: '24px',
+                    alignItems: 'flex-start',
+                    marginBlock: '24px'
                 }
             }}>
-                <div css={{display: 'flex', alignItems: 'center', marginInlineStart:'-650px'}}>
+                <div css={{display: 'flex', alignItems: 'center', '@media (max-width: 768px)': { marginInlineStart: '0' }}}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">
                         <img
                             src={frontendMasterLogo}
@@ -104,7 +108,7 @@ export default function Footer()  {
                     </a>
                 </div>
 
-                <div css={{display: 'flex', gap:'24px', marginInlineEnd:'-420px'}}>
+                <div css={{display: 'flex', gap:'24px', '@media (max-width: 768px)': { marginInlineEnd: '0' }}}>
                     <FontAwesomeIcon icon={faDiscord} css={socialIconStyles} />
                     <FontAwesomeIcon icon={faXTwitter} css={socialIconStyles} />
                     <FontAwesomeIcon icon={faLinkedin} css={socialIconStyles} />
@@ -121,9 +125,15 @@ export default function Footer()  {
                     }
                 }}
             >
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' , flex: 1, marginInlineEnd:'100px', marginInlineStart:'-200px',
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' , flex: 1, marginInlineEnd:'100px',
+                        '@media (max-width: 1024px)': {
+                            marginInlineEnd: '0',
+                            marginInlineStart: '0'
+                        },
                         '@media (max-width: 768px)': {
-                            width: '100%'
+                            width: '100%',
+                            marginInlineEnd: '0',
+                            marginInlineStart: '0'
                         }
                     }}>
                     <span css={{color:colors.darkPurple, fontSize:'24px',fontWeight:'500',marginBlock:'12px', '@media (max-width: 768px)': { fontSize: '20px' }}}>Stay up to date</span>
@@ -183,7 +193,7 @@ export default function Footer()  {
             </div>
 
             <div css={divider}>
-                <div css={{marginInlineStart:'-250px'}}> © Frontend Mentor 2019 - 2026</div>
+                <div css={{'@media (max-width: 768px)': { marginInlineStart: '0' }}}> © Frontend Mentor 2019 - 2026</div>
                 <div css={legalLinks}>
                     <a css={link} href="#">Terms</a>
                     <a css={link} href="#">Cookie Policy</a>

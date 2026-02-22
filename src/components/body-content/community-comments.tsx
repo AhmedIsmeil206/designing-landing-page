@@ -1,6 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { colors } from '../shared/colors';
-import { height } from '@fortawesome/free-brands-svg-icons/fa11ty';
 
 interface CommunityMembersProps {
     id: number;
@@ -16,6 +16,9 @@ const communityCommentsStyle = {
     position: 'relative',
     overflow: 'hidden',
     borderRadius: '20px !important',
+    '@media (max-width: 768px)': {
+        padding: '32px 20px'
+    }
 };
 
 const headerStyle = {
@@ -24,17 +27,29 @@ const headerStyle = {
     alignItems: 'center',
     marginBottom: '60px',
     paddingLeft: '80px',
-    paddingRight: '80px'
+    paddingRight: '80px',
+    '@media (max-width: 768px)': {
+        flexDirection: 'column',
+        gap: '16px',
+        paddingLeft: '0',
+        paddingRight: '0',
+        marginBottom: '24px'
+    }
 };
 
 const titleStyle = {
-    fontSize: '40px',
+    fontSize: '36px',
     fontWeight: '800',
     color: colors.black,
     margin: 0,
     display: 'flex',
     alignItems: 'center',
-    gap: '8px'
+    gap: '8px',
+    '@media (max-width: 768px)': {
+        fontSize: '20px',
+        textAlign: 'center',
+        paddingInlineStart: '0'
+    }
 };
 
 const getNavButtonStyle = (isDisabled: boolean) => ({
@@ -71,7 +86,13 @@ const cardCommentStyle = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: '340px',
-    marginBlockEnd: '48px'
+    marginBlockEnd: '48px',
+    '@media (max-width: 768px)': {
+        flex: '0 0 100%',
+        height: 'auto',
+        marginBlockEnd: '16px',
+        padding: '20px'
+    }
 };
 
 const commentTextStyle = {
@@ -176,8 +197,8 @@ export default function CommunityComments() {
         <section css={communityCommentsStyle}>
             <div css={{maxWidth: '1440px', margin: '0 auto', position: 'relative'}}>
                 <div css={headerStyle}>
-                    <h2 css={titleStyle}>A little <span css={{fontSize: '40px'}}>❤️</span> from our community</h2>
-                    <div css={{display: 'flex', gap: '12px', marginInlineEnd: '50px'}}>
+                    <h2 css={titleStyle}>A little <span css={{fontSize: '40px', '@media (max-width: 768px)': { fontSize: '20px' }}}>❤️</span> from our community</h2>
+                    <div css={{display: 'flex', gap: '12px', marginInlineEnd: '50px', '@media (max-width: 768px)': { marginInlineEnd: '0' }}}>
                         <button
                             onClick={handlePrev}
                             disabled={isAtStart}
@@ -200,7 +221,7 @@ export default function CommunityComments() {
                     </div>
                 </div>
 
-                <div css={{position: 'relative', paddingInline: '130px'}}>
+                <div css={{position: 'relative', paddingInline: '130px', '@media (max-width: 768px)': { paddingInline: '0' }}}>
                     <div css={{overflow: 'hidden'}}>
                         <div css={getCarouselTrackStyle(currentIndex)}>
                             {members.map((member) => (

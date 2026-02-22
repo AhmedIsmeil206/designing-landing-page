@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { colors } from "../shared/colors"
 import { useState } from "react"
 import choice1 from '../../assets/images/home-how-it-works-1.webp'
@@ -14,6 +15,12 @@ const wrapper = {
     width: "100%",
     borderRadius: "20px",
     paddingBlock: "120px",
+    '@media (max-width: 768px)': {
+        gridTemplateColumns: "1fr",
+        padding: "24px 20px",
+        paddingBlock: "32px",
+        gap: "24px"
+    }
 }
 
 const imageWrap = {
@@ -21,6 +28,10 @@ const imageWrap = {
     borderRadius: "20px",
     marginBlockStart: "124px",
     position: "relative",
+    '@media (max-width: 768px)': {
+        marginBlockStart: "0",
+        width: "100%"
+    }
 }
 
 const numberPill = (active) => ({
@@ -75,13 +86,17 @@ export default function Explaination () {
 
 return (
     <div css={wrapper}>
-        <div css={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "540px", marginInline:'240px' }}>
+        <div css={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "540px", marginInline:'240px', '@media (max-width: 768px)': { marginInline: '0', maxWidth: '100%', gap: '12px' } }}>
             <h2 css={{
                 fontSize: "40px",
                 textAlign: "left",
                 fontWeight: "700",
                 marginBottom: "16px",
-                color: colors.black
+                color: colors.black,
+                '@media (max-width: 768px)': {
+                    fontSize: "24px",
+                    marginBottom: "12px"
+                }
             }}>
                 How it works
             </h2>
@@ -128,7 +143,7 @@ return (
                     <img
                         src={choice1}
                         alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
                     />
                 </div>
             )
@@ -139,7 +154,7 @@ return (
                     <img
                         src={choice2}
                         alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
                     />
                 </div>
             )
@@ -151,7 +166,7 @@ return (
                     <img
                         src={choice3}
                         alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
                     />
                 </div>
             )
@@ -163,7 +178,7 @@ return (
                     <img
                         src={choice4}
                         alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px" }}
+                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
                     />
                 </div>
             )

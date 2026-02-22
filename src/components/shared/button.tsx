@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import {colors} from './colors';
 
 interface ButtonProps {
@@ -20,7 +19,7 @@ const baseStyles = {
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     fontFamily: 'inherit',
-    textTransform: 'uppercase' as const,
+    textTransform: 'uppercase' ,
     letterSpacing: '0.5px'
 }
 const variants = {

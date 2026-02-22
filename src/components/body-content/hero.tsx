@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import Button from "../shared/button";
 import { colors } from "../shared/colors";
 import homeHero from "../../assets/logos/home-hero.webp";
@@ -7,8 +6,6 @@ import jessicaAvatar from "../../assets/logos/home-avatar-jessica.webp";
 import cssTricksLogo from "../../assets/logos/css-tricks.png";
 import stackOverflowLogo from "../../assets/logos/stack-over-flow.png";
 import productHuntLogo from "../../assets/logos/product-hunt.png";
-import { height, width } from "@fortawesome/free-brands-svg-icons/fa11ty";
-import { text } from "@fortawesome/fontawesome-svg-core";
 
 const githubIconStyles = {
     width: "18px",
@@ -26,11 +23,14 @@ const div = {
     '@media (max-width: 1024px)': {
         padding: "48px 32px",
         flexDirection: "column",
-        gap: "32px"
+        gap: "32px",
+        width: "100%"
     },
     '@media (max-width: 768px)': {
-        padding: "32px 16px",
-        gap: "24px"
+        padding: "24px 20px",
+        gap: "20px",
+        width: "100%",
+        flexDirection: "column"
     }
 };
 const header = {
@@ -53,7 +53,9 @@ const title = {
     marginBottom: "18px",
     textAlign: "start",
     '@media (max-width: 768px)': {
-        fontSize: "32px"
+        fontSize: "28px",
+        lineHeight: "1.2",
+        marginBottom: "12px"
     }
 };
 const description = {
@@ -63,12 +65,22 @@ const description = {
     color: colors.darkGrey,
     marginBottom: "28px",
     textAlign: "start",
+    '@media (max-width: 768px)': {
+        fontSize: "16px",
+        lineHeight: "1.5",
+        marginBottom: "20px"
+    }
 };
 const heroImage = {
     display: "block",
     borderRadius: "22px",
     width: "480px",
     height: "550px",
+    '@media (max-width: 768px)': {
+        width: "100%",
+        height: "auto",
+        maxWidth: "100%"
+    }
 };
 
 const proBannerdiv = {
@@ -80,6 +92,20 @@ const proBannerdiv = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    '@media (max-width: 1024px)': {
+        marginInlineStart: '5%',
+        maxWidth: '85%'
+    },
+    '@media (max-width: 768px)': {
+        flexDirection: "column",
+        gap: "12px",
+        marginInlineStart: "0",
+        marginInline: "20px",
+        maxWidth: "calc(100% - 40px)",
+        paddingBlock: "20px",
+        paddingInline: "20px",
+        textAlign: "center"
+    }
 };
 
 const testimonialsGrid = {
@@ -88,9 +114,13 @@ const testimonialsGrid = {
     gap: "32px",
     maxWidth: "1000px",
     marginInline: "160px",
+    '@media (max-width: 1024px)': {
+        marginInline: '32px'
+    },
     '@media (max-width: 768px)': {
         gridTemplateColumns: "1fr",
-        gap: "16px"
+        gap: "16px",
+        marginInline: '16px'
     }
 };
 
@@ -101,6 +131,9 @@ const testimonialCard = {
     width: "600px",
     border: `1px solid ${colors.grey}`,
     boxShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.05)",
+    '@media (max-width: 768px)': {
+        width: "100%"
+    }
 };
 
 const testimonialAvatar = {
@@ -132,6 +165,10 @@ const featuredCard = {
     minHeight: "120px",
     fontSize: "14px",
     width: "400px",
+    '@media (max-width: 768px)': {
+        width: "100%",
+        maxWidth: "100%"
+    }
 }
 
 export default function Introduction() {
@@ -139,7 +176,7 @@ export default function Introduction() {
 return (
     <>
         <div css={div}>
-            <div css={{maxWidth: "600px" , padding:'80px 30px'}}>
+            <div css={{maxWidth: "600px" , padding:'80px 30px', '@media (max-width: 768px)': { padding: '24px 0', maxWidth: '100%' }}}>
                 <div css={header}>For learners</div>
                 <h1 css={title}>
                     Front-end and full-stack coding challenges that build real skills and
@@ -156,7 +193,10 @@ return (
                     '@media (max-width: 768px)': {
                         flexDirection: "column",
                         gap: "12px",
-                        width: "100%"
+                        width: "100%",
+                        '& button': {
+                            width: '100%'
+                        }
                     }
                 }}>
                     <Button variant="redButton" style={{fontSize: '16px', padding: '16px 28px', fontStyle: 'italic', fontWeight: '700'}} >
@@ -172,7 +212,7 @@ return (
                 </div>
             </div>
 
-            <div css={{ flex: "0 0 520px"}}>
+            <div css={{ flex: "0 0 520px", '@media (max-width: 768px)': { flex: '1', width: '100%', maxWidth: '100%' }}}>
                 <img src={homeHero} alt="Frontend Mentor hero" css={heroImage} />
             </div>
         </div>
@@ -191,7 +231,7 @@ return (
             </Button>
         </div>
 
-        <div css={{padding: "64px 72px", background: colors.Main_whiteHover}}>
+        <div css={{padding: "64px 72px", background: colors.Main_whiteHover, '@media (max-width: 768px)': { padding: '24px 20px' }}}>
             <div css={testimonialsGrid}>
                 <div css={testimonialCard}>
                     <p css={{fontSize: "20px", lineHeight: "1.6",fontWeight:'500',textAlign:'left' ,color: colors.black, marginBottom: "24px"}}>
@@ -221,7 +261,7 @@ return (
             </div>
         </div>
 
-        <div css={{ background: colors.Main_whiteHover, marginBlockEnd: "112px"}}>
+        <div css={{ background: colors.Main_whiteHover, marginBlockEnd: "112px", paddingBlock: '48px', '@media (max-width: 768px)': { marginBlockEnd: '32px', paddingInline: '20px', paddingBlock: '32px' }}}>
             <h2 css={{fontSize: "18px", fontWeight: "900",  textTransform: "uppercase", color: colors.black, marginBottom: "48px", textStyle:'bold'}}>
                 As featured on ...
             </h2>

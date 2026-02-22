@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { colors } from '../shared/colors';
 import Button from '../shared/button';
@@ -39,7 +38,7 @@ const navStyles = {
         margin: '0',
     },
     '@media (max-width: 768px)': {
-        padding: '12px 16px',
+        padding: '8px 20px',
     },
 }
 const leftSectionStyles = {
