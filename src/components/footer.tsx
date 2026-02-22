@@ -1,5 +1,3 @@
-
-/** @jsxImportSource @emotion/react */
 import { colors } from "./shared/colors"
 import frontendMasterLogo from '../assets/logos/frontend-master.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,47 +11,52 @@ import Button from './shared/button';
 
 const socialIconStyles = {
     width: '30px',
-    height: '30px',
+    height: '25px',
     color: colors.babyBlue
 }
 const colTitle = {
-    fontSize: "13px",
-    fontWeight: "700",
-    letterSpacing: "0.6px",
+    fontSize: "18px",
+    fontWeight: "900",
     textTransform: "uppercase",
-    marginBottom: "12px",
+    marginBlockEnd: "12px",
     color: colors.black,
+    fontStyle: "bold",
 };
 const list = {
+    textAlign:'left' ,
     listStyle: "none",
     padding: 0,
     margin: 0,
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" ,
     gap: "10px",
 };
 const link = {
     color: colors.darkGrey,
     textDecoration: "none",
-    fontSize: "14px",
+    fontSize: "16px",
     '&:hover': {
         textDecoration: "underline",
     }
 };
 
 const divider = {
-    marginTop: "40px",
+    marginBlockStart: "40px",
+    paddingInline: "24px",
     borderTop: `1px solid ${colors.grey}`,
-    paddingTop: "16px",
+    paddingBlockStart: "24px",
+    paddingBlockEnd: "-32px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    fontSize: "13px",
+    fontSize: "14px",
+    fontWeight: "400",
     color: colors.darkGrey,
     '@media (max-width: 768px)': {
-        flexDirection: 'column',
+        flexDirection: 'column' ,
         gap: '16px',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        paddingInline: "16px"
     }
 };
 
@@ -61,41 +64,42 @@ const legalLinks = {
     display: "flex",
     gap: "18px",
     '@media (max-width: 768px)': {
-        flexWrap: 'wrap',
+        flexWrap: 'wrap' ,
         gap: '12px'
     }
 };
 
 const footerStyles = {
-    paddingBlockEnd: "32px",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "3.75rem",
+    paddingBlock: "32px",
+    paddingInline: "350px",
+    margin: "0 auto",
     backgroundColor: colors.Main_white,
-    paddingBlockStart: '40px',
-    paddingInline: '2rem',
-    '@media (max-width: 1024px)': {
-        paddingInline: '1.5rem'
-    },
     '@media (max-width: 768px)': {
-        paddingInline: '1rem'
+        paddingInline: '16px'
     }
 }
 export default function Footer()  {
 
     return (
         <footer css={footerStyles}>
-            <div css={{display: 'flex', alignItems: 'center', flexDirection:"row"}}>
-                <div css={{display: 'flex', alignItems: 'center',paddingInlineEnd:'40%', justifyContent:'space-between' }}>
+            <div css={{display: 'flex', alignItems: 'center', flexDirection:"row" ,  justifyContent:'space-between', width: '100%', marginBlock:'32px',
+                '@media (max-width: 768px)': {
+                    flexDirection: 'column' ,
+                    gap: '16px',
+                    alignItems: 'flex-start'
+                }
+            }}>
+                <div css={{display: 'flex', alignItems: 'center'}}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">
                         <img
                             src={frontendMasterLogo}
                             alt="Frontend Mentor"
+                            css={{ width: '200px', height: '32px', '@media (max-width: 768px)': { width: '150px', height: '24px' } }}
                         />
                     </a>
                 </div>
 
-                <div css={{display: 'flex', alignItems: 'center', gap:'16px'}}>
+                <div css={{display: 'flex', alignItems: 'center', gap:'24px'}}>
                     <FontAwesomeIcon icon={faDiscord} css={socialIconStyles} />
                     <FontAwesomeIcon icon={faXTwitter} css={socialIconStyles} />
                     <FontAwesomeIcon icon={faLinkedin} css={socialIconStyles} />
@@ -104,41 +108,39 @@ export default function Footer()  {
             </div>
 
             <div
-                css={{display: 'flex', flexDirection:'row', marginBlockStart:"40px", gap:'3.75rem',
+                css={{display: 'flex', flexDirection:'row' , marginBlockStart:"40px", gap:'3.75rem', paddingBlockStart:'30px',
                     '@media (max-width: 768px)': {
-                        flexDirection: 'column',
+                        flexDirection: 'column' ,
                         gap: '24px',
                         alignItems: 'flex-start'
                     }
                 }}
             >
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column',
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' , flex: 1, paddingInlineEnd:'50px',
                         '@media (max-width: 768px)': {
-                            paddingInlineEnd: '0',
                             width: '100%'
                         }
                     }}>
-                    <span>Stay up to date</span>
-                    <span>with new challenges, featured solutions, selected articles, and our latest news</span>
-                    <div css={{display: 'flex', alignItems: 'center', gap:'8px', flexDirection:'row' }}>
-                        <input type="text" placeholder="email@example.com"/>
-                        <Button variant="redButton">Subscribe</Button>
+                    <span css={{color:colors.darkPurple, fontSize:'24px',fontWeight:'500',marginBlock:'12px', '@media (max-width: 768px)': { fontSize: '20px' }}}>Stay up to date</span>
+                    <span css={{color:colors.black, fontSize:'16px',fontWeight:'600',maxWidth:'400px',textAlign:'left' ,marginBlock:'12px', '@media (max-width: 768px)': { fontSize: '14px' }}}>with new challenges, featured solutions, selected articles, and our latest news</span>
+                    <div css={{display: 'flex', alignItems: 'center', gap:'16px', flexDirection:'row' , width:'100%',
+                        '@media (max-width: 768px)': {
+                            flexDirection: 'column' ,
+                            alignItems: 'stretch'
+                        }
+                    }}>
+                        <input type="text" placeholder="email@example.com" css={{border: `1px solid ${colors.grey}`, borderRadius: '4px', padding: '8px', width: '250px', height: '25px',fontSize:'18px',
+                            '@media (max-width: 768px)': {
+                                width: '100%'
+                            }
+                        }}/>
+                        <div>
+                            <Button variant="redButton" style={{fontSize: '16px', padding: '16px 36px', fontStyle: 'italic', fontWeight: '900'}}>Subscribe</Button>
+                        </div>
                     </div>
                 </div>
 
-                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column',
-                        '@media (max-width: 768px)': {
-                            flexDirection: 'column',
-                            width: '100%',
-                            gap: '12px',
-                            '& input': {
-                                width: '100%'
-                            },
-                            '& button': {
-                                width: '100%'
-                            }
-                        }
-                    }}>
+                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column', width:'190px' }}>
                     <span css={colTitle}>Frontend Mentor</span>
                     <ul css={list}>
                     <li ><a css={link} href="#">Unlock Pro</a></li>
@@ -148,7 +150,7 @@ export default function Footer()  {
                     <li><a css={link} href="#">Use cases</a></li>
                     </ul>
                 </div>
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' }}>
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px' }}>
                     <span css={colTitle}>Explore</span>
                     <ul css={list}>
                     <li><a css={link} href="#">Learning Paths</a></li>
@@ -158,7 +160,7 @@ export default function Footer()  {
                     </ul>
                 </div>
 
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' }}>
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px' }}>
                     <span css={colTitle}>Community</span>
                     <ul css={list}>
                     <li><a css={link} href="#">Discord</a></li>
@@ -166,7 +168,7 @@ export default function Footer()  {
                     </ul>
                 </div>
 
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' }}>
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'150px' }}>
                     <span css={colTitle}>For companies</span>
                     <ul css={list}>
                     <li><a css={link} href="#">Hire Developers</a></li>
