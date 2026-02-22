@@ -1,7 +1,6 @@
 #root {
     text-align: center;
     display: flex;
-    padding-inline: 30px;
     flex-direction: column;
 }
 

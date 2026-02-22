@@ -1,3 +1,5 @@
+
+/** @jsxImportSource @emotion/react */
 import { colors } from "./shared/colors"
 import frontendMasterLogo from '../assets/logos/frontend-master.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -45,7 +47,7 @@ const divider = {
     paddingInline: "24px",
     borderTop: `1px solid ${colors.grey}`,
     paddingBlockStart: "24px",
-    paddingBlockEnd: "-32px",
+    paddingBlockEnd: "-280px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -70,26 +72,29 @@ const legalLinks = {
 };
 
 const footerStyles = {
-    paddingBlock: "32px",
-    paddingInline: "350px",
+    paddingBlock: "48px",
+    paddingInlineEnd: "330px",
+    paddingInlineStart: "450px",
+    maxWidth: "1200px",
     margin: "0 auto",
     backgroundColor: colors.Main_white,
     '@media (max-width: 768px)': {
-        paddingInline: '16px'
+        paddingInline: '24px',
+        paddingBlock: '32px'
     }
 }
 export default function Footer()  {
 
     return (
         <footer css={footerStyles}>
-            <div css={{display: 'flex', alignItems: 'center', flexDirection:"row" ,  justifyContent:'space-between', width: '100%', marginBlock:'32px',
+            <div css={{display: 'flex', alignItems: 'center', flexDirection:"row" ,  justifyContent:'space-around', width: '100%', marginBlock:'32px',
                 '@media (max-width: 768px)': {
                     flexDirection: 'column' ,
                     gap: '16px',
                     alignItems: 'flex-start'
                 }
             }}>
-                <div css={{display: 'flex', alignItems: 'center'}}>
+                <div css={{display: 'flex', alignItems: 'center', marginInlineStart:'-650px'}}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">
                         <img
                             src={frontendMasterLogo}
@@ -99,7 +104,7 @@ export default function Footer()  {
                     </a>
                 </div>
 
-                <div css={{display: 'flex', alignItems: 'center', gap:'24px'}}>
+                <div css={{display: 'flex', gap:'24px', marginInlineEnd:'-420px'}}>
                     <FontAwesomeIcon icon={faDiscord} css={socialIconStyles} />
                     <FontAwesomeIcon icon={faXTwitter} css={socialIconStyles} />
                     <FontAwesomeIcon icon={faLinkedin} css={socialIconStyles} />
@@ -108,7 +113,7 @@ export default function Footer()  {
             </div>
 
             <div
-                css={{display: 'flex', flexDirection:'row' , marginBlockStart:"40px", gap:'3.75rem', paddingBlockStart:'30px',
+                css={{display: 'flex', flexDirection:'row' , marginBlockStart:"40px", gap:'2rem',
                     '@media (max-width: 768px)': {
                         flexDirection: 'column' ,
                         gap: '24px',
@@ -116,7 +121,7 @@ export default function Footer()  {
                     }
                 }}
             >
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' , flex: 1, paddingInlineEnd:'50px',
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' , flex: 1, marginInlineEnd:'100px', marginInlineStart:'-200px',
                         '@media (max-width: 768px)': {
                             width: '100%'
                         }
@@ -140,7 +145,7 @@ export default function Footer()  {
                     </div>
                 </div>
 
-                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column', width:'190px' }}>
+                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column', width:'220px', }}>
                     <span css={colTitle}>Frontend Mentor</span>
                     <ul css={list}>
                     <li ><a css={link} href="#">Unlock Pro</a></li>
@@ -150,7 +155,7 @@ export default function Footer()  {
                     <li><a css={link} href="#">Use cases</a></li>
                     </ul>
                 </div>
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px' }}>
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px'}}>
                     <span css={colTitle}>Explore</span>
                     <ul css={list}>
                     <li><a css={link} href="#">Learning Paths</a></li>
@@ -160,7 +165,7 @@ export default function Footer()  {
                     </ul>
                 </div>
 
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px' }}>
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px'}}>
                     <span css={colTitle}>Community</span>
                     <ul css={list}>
                     <li><a css={link} href="#">Discord</a></li>
@@ -168,7 +173,7 @@ export default function Footer()  {
                     </ul>
                 </div>
 
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'150px' }}>
+                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'180px' }}>
                     <span css={colTitle}>For companies</span>
                     <ul css={list}>
                     <li><a css={link} href="#">Hire Developers</a></li>
@@ -178,7 +183,7 @@ export default function Footer()  {
             </div>
 
             <div css={divider}>
-                <div>© Frontend Mentor 2019 - 2026</div>
+                <div css={{marginInlineStart:'-250px'}}> © Frontend Mentor 2019 - 2026</div>
                 <div css={legalLinks}>
                     <a css={link} href="#">Terms</a>
                     <a css={link} href="#">Cookie Policy</a>
