@@ -83,7 +83,7 @@ export default function DevFeatures() {
                     </div>
                 </div>
 
-                <div css={{...row, marginInlineStart: "-100px", '@media (max-width: 768px)': { marginInlineStart: '0' }}}>
+                <div css={{...row}}>
                     <div css={{...imageWrap, '@media (max-width: 768px)': { order: 2 }}}>
                         <img
                         src={choice2}
@@ -91,7 +91,7 @@ export default function DevFeatures() {
                         css={{ width: "100%", display: "block", borderRadius: "12px", maxWidth:'600px', maxHeight:'450px', '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }}}
                         />
                     </div>
-                    <div css={{maxWidth: "620px", textAlign:'left', marginInlineStart: "-80px", '@media (max-width: 768px)': { maxWidth: '100%', marginInlineStart: '0', order: 1 }}}>
+                    <div css={{maxWidth: "620px", textAlign:'left', '@media (max-width: 768px)': { maxWidth: '100%', order: 1 }}}>
                         <h2 css={{color: colors.purple, fontStyle:'italic', '@media (max-width: 768px)': { fontSize: '16px' }}}>HIRING TEAMS</h2>
                         <h1 css={{'@media (max-width: 768px)': { fontSize: '22px' }}}>Discover junior talent through skills, not resumes</h1>
                         <p css={{color: colors.darkGrey,fontWeight: '500', paddingBlockEnd: '24px', '@media (max-width: 768px)': { fontSize: '15px', paddingBlockEnd: '16px' }}}>See real code and live projects upfront, then connect directly with developers who've demonstrated the skills and passion you need.</p>

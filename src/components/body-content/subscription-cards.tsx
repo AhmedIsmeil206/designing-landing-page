@@ -22,6 +22,7 @@ const container = {
     }
 }
 const ContainerContext = {
+    width:'45%',
     display: 'flex',
     gap: '16px',
     marginBlockEnd: '72px',
@@ -71,10 +72,9 @@ const card = {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    width: '60%',
+    width: '100%',
     paddingBlockEnd: '20px',
     '@media (max-width: 768px)': {
-        width: '100%',
         paddingInline: '24px'
     }
 }
@@ -191,7 +191,10 @@ const teamsTitle = {
     color: colors.black,
 }
 const PaymentLogos = {
+    width:'70%',
+    borderRadius: '12px',
     display: 'flex',
+    paddingInline: '32px',
     gap: '24px',
     alignItems: 'center',
     justifyContent: 'center',
@@ -273,49 +276,32 @@ const SubscriptionCards = () => {
 
     return (
         <div css={container}>
-            <div css={ContainerContext}>
-                {(['individuals', 'teams']).map((tab) => (
-                <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    css={{
-                    ...context,
-                    backgroundColor: activeTab === tab ? colors.purple : colors.Main_white,
-                    color: activeTab === tab ? colors.Main_white : colors.black,
-                    }}
-                >
-                    For {tab === 'individuals' ? 'Individuals' : 'Teams'}
-                </button>
-                ))}
-            </div>
+            <div css={{display:'flex', flexDirection: 'column', alignItems: 'center',}}>
+                <div css={ContainerContext}>
+                    {(['individuals', 'teams']).map((tab) => (
+                    <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        css={{
+                        ...context,
+                        backgroundColor: activeTab === tab ? colors.purple : colors.Main_white,
+                        color: activeTab === tab ? colors.Main_white : colors.black,
+                        }}
+                    >
+                        For {tab === 'individuals' ? 'Individuals' : 'Teams'}
+                    </button>
+                    ))}
+                </div>
 
 
-            {activeTab === 'individuals' ? (
-                <div css={individualCards}>
-                    <div css={{ ...card, marginInlineStart:'180px', '@media (max-width: 768px)': { marginInlineStart: '0' } }}>
-                        <h3 css={cardTitle}>Monthly</h3>
-                        <div css={{ textAlign: 'center' }}>
-                            <span css={priceOld}>۱۲ US$/month</span>
-                            <div css={priceNew}>۴,۸ US$/mo</div>
-                            <span css={priceSub}>Billed monthly</span>
-                        </div>
-                        {renderDiscountBadge()}
-                        <div css={{paddingBlockEnd:'10px', width:'100%', marginBlockEnd:'16px'}}>
-                            <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px'}}>
-                                Learn More
-                            </Button>
-                        </div>
-                        <div css={featuresList}>{monthlyFeatures.map(renderFeature)}</div>
-                    </div>
-
-                    <div css={{ ...card, border: `3px solid ${colors.purple}`, marginBlockStart: '-40px', marginInlineStart:'0px', '@media (max-width: 768px)': { marginBlockStart: '0' } }}>
-                        <div css={bestValueBadge}>Best Value</div>
-                        <div css={{ marginTop: '24px' }}>
-                            <h3 css={{...cardTitle,marginBlockStart: '36px',}}>Yearly</h3>
+                {activeTab === 'individuals' ? (
+                    <div css={individualCards}>
+                        <div css={{ ...card }}>
+                            <h3 css={cardTitle}>Monthly</h3>
                             <div css={{ textAlign: 'center' }}>
-                                <span css={priceOld}>۸ US$ /month</span>
-                                <div css={priceNew}>۳,۲ US$/mo</div>
-                                <span css={priceSub}>۳۸,۴ US$ billed yearly (save 33% vs monthly)</span>
+                                <span css={priceOld}>۱۲ US$/month</span>
+                                <div css={priceNew}>۴,۸ US$/mo</div>
+                                <span css={priceSub}>Billed monthly</span>
                             </div>
                             {renderDiscountBadge()}
                             <div css={{paddingBlockEnd:'10px', width:'100%', marginBlockEnd:'16px'}}>
@@ -323,41 +309,60 @@ const SubscriptionCards = () => {
                                     Learn More
                                 </Button>
                             </div>
-                            <div css={featuresList}>{yearlyFeatures.map(renderFeature)}</div>
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                <div css={{maxWidth: '800px', marginBlockEnd: '40px', '@media (max-width: 768px)': { maxWidth: '100%', width: '100%' }}}>
-                    <div css={teamsCard}>
-                        <div css={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', height: '500px', marginBlockStart:'-30px', '@media (max-width: 768px)': { height: 'auto', marginBlockStart: '0' }}}>
-                            <div>
-                                <h2 css={teamsTitle}>Frontend Mentor for Teams</h2>
-                                <p css={{fontSize: '18px', color: colors.darkGrey, lineHeight: '1.6', marginBottom: '48px',textAlign: 'start', '@media (max-width: 768px)': { fontSize: '16px', marginBottom: '24px' }}}>
-                                Onboard new hires faster and train team members more effectively through hands-on practice.
-                                All team members gain unlimited Pro access, and admins can easily oversee and manage the team.
-                                </p>
-                            </div>
-                            <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px',}}>
-                                Learn More
-                            </Button>
+                            <div css={featuresList}>{monthlyFeatures.map(renderFeature)}</div>
                         </div>
 
-                        <div css={{minWidth: '340px',display:'flex', flexDirection:'column', textAlign: 'start', marginBlockStart:'-30px', '@media (max-width: 768px)': { minWidth: 'auto', width: '100%', marginBlockStart: '0' }}}>
-                            <h3 css={{fontSize: '18px', fontWeight: '700', marginBottom: '16px', color: colors.black}}>Teams</h3>
-                            <span css={priceOld}>١٢٫٥٠ US$/seat/mo</span>
-                            <div css={priceNew}>٥ US$/seat/mo</div>
-                            <span css={priceSub}>٦٠ US$ per seat, billed yearly</span>
-                            {renderDiscountBadge()}
-                            <div css={featuresList}>{teamFeatures.map(renderFeature)}</div>
+                        <div css={{ ...card, border: `3px solid ${colors.purple}`, marginBlockStart: '-40px', marginInlineStart:'0px', '@media (max-width: 768px)': { marginBlockStart: '0' } }}>
+                            <div css={bestValueBadge}>Best Value</div>
+                            <div css={{ marginTop: '24px' }}>
+                                <h3 css={{...cardTitle,marginBlockStart: '36px',}}>Yearly</h3>
+                                <div css={{ textAlign: 'center' }}>
+                                    <span css={priceOld}>۸ US$ /month</span>
+                                    <div css={priceNew}>۳,۲ US$/mo</div>
+                                    <span css={priceSub}>۳۸,۴ US$ billed yearly (save 33% vs monthly)</span>
+                                </div>
+                                {renderDiscountBadge()}
+                                <div css={{paddingBlockEnd:'10px', width:'100%', marginBlockEnd:'16px'}}>
+                                    <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px'}}>
+                                        Learn More
+                                    </Button>
+                                </div>
+                                <div css={featuresList}>{yearlyFeatures.map(renderFeature)}</div>
+                            </div>
                         </div>
                     </div>
+                ) : (
+                    <div css={{maxWidth: '800px', marginBlockEnd: '40px', '@media (max-width: 768px)': { maxWidth: '100%', width: '100%' }}}>
+                        <div css={teamsCard}>
+                            <div css={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', height: '500px', marginBlockStart:'-30px', '@media (max-width: 768px)': { height: 'auto', marginBlockStart: '0' }}}>
+                                <div>
+                                    <h2 css={teamsTitle}>Frontend Mentor for Teams</h2>
+                                    <p css={{fontSize: '18px', color: colors.darkGrey, lineHeight: '1.6', marginBottom: '48px',textAlign: 'start', '@media (max-width: 768px)': { fontSize: '16px', marginBottom: '24px' }}}>
+                                    Onboard new hires faster and train team members more effectively through hands-on practice.
+                                    All team members gain unlimited Pro access, and admins can easily oversee and manage the team.
+                                    </p>
+                                </div>
+                                <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px',}}>
+                                    Learn More
+                                </Button>
+                            </div>
+
+                            <div css={{minWidth: '340px',display:'flex', flexDirection:'column', textAlign: 'start', marginBlockStart:'-30px', '@media (max-width: 768px)': { minWidth: 'auto', width: '100%', marginBlockStart: '0' }}}>
+                                <h3 css={{fontSize: '18px', fontWeight: '700', marginBottom: '16px', color: colors.black}}>Teams</h3>
+                                <span css={priceOld}>١٢٫٥٠ US$/seat/mo</span>
+                                <div css={priceNew}>٥ US$/seat/mo</div>
+                                <span css={priceSub}>٦٠ US$ per seat, billed yearly</span>
+                                {renderDiscountBadge()}
+                                <div css={featuresList}>{teamFeatures.map(renderFeature)}</div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                <div css={PaymentLogos}>
+                    {paymentLogos.map((logo, index) => (
+                    <img key={index} src={logo.src} alt={logo.alt} css={{height: '32px', objectFit: 'contain'}} />
+                    ))}
                 </div>
-            )}
-            <div css={PaymentLogos}>
-                {paymentLogos.map((logo, index) => (
-                <img key={index} src={logo.src} alt={logo.alt} css={{height: '32px', objectFit: 'contain'}} />
-                ))}
             </div>
         </div>
     );

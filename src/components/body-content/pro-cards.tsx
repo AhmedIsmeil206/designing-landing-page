@@ -18,7 +18,7 @@ const heading = {
     fontWeight: 700,
     color: colors.black,
     marginInlineStart: "20%",
-    width: "40%",
+    width: "55%",
     paddingInlineStart: "116px",
     letterSpacing: "0.5px",
     '@media (max-width: 768px)': {
@@ -49,7 +49,7 @@ const article = {
 const cardsRow = {
     display: "grid",
     gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-    gap: "70px",
+    gap: "20px",
     alignItems: "stretch",
     '@media (max-width: 768px)': {
         gridTemplateColumns: '1fr',
@@ -63,8 +63,8 @@ const card = {
     borderRadius: "20px",
     padding: "28px",
     textAlign: "left",
-    width: "95%",
-    height: "80%",
+    width: "100%",
+    height: "90%",
     '@media (max-width: 768px)': {
         width: '100%',
         height: 'auto',

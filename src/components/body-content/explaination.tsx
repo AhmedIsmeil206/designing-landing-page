@@ -24,10 +24,10 @@ const wrapper = {
 }
 
 const imageWrap = {
-    marginInlineStart:'50px',
     background: colors.lightGray,
     borderRadius: "20px",
     marginBlockStart: "124px",
+    marginInlineStart: "60px",
     position: "relative",
     '@media (max-width: 768px)': {
         marginBlockStart: "0",
@@ -87,7 +87,7 @@ export default function Explaination () {
 
 return (
     <div css={wrapper}>
-        <div css={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "540px",marginInlineStart:'340px', '@media (max-width: 768px)': { marginInline: '0', maxWidth: '100%', gap: '12px' } }}>
+        <div css={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "540px",marginInlineStart:'290px', '@media (max-width: 768px)': { marginInline: '0', maxWidth: '100%', gap: '12px' } }}>
             <h2 css={{
                 fontSize: "40px",
                 textAlign: "left",

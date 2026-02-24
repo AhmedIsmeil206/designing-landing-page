@@ -16,21 +16,21 @@ const githubIconStyles = {
 };
 
 const div = {
-    padding: "20px 200px",
+    padding: "48px clamp(20px, 6%, 120px)",
     display: "flex",
     alignItems: "center",
-    width: "70%",
+    width: "100%",
+    maxWidth: "1480px",
+    margin: "0 auto",
     justifyContent: "space-around",
     '@media (max-width: 1024px)': {
         padding: "48px 32px",
         flexDirection: "column",
         gap: "32px",
-        width: "100%"
     },
     '@media (max-width: 768px)': {
         padding: "24px 20px",
         gap: "20px",
-        width: "100%",
         flexDirection: "column"
     }
 };
@@ -86,25 +86,19 @@ const heroImage = {
 
 const proBannerdiv = {
     background: colors.darkPurple,
-    paddingInline: "30px ",
+    paddingInline: "30px",
     borderRadius: "16px",
-    marginInlineStart: "3%",
-    maxWidth:"100%",
-    width:'1200px',
-    height: "100px",
+    margin: "0 auto",
+    maxWidth: "1200px",
+    width: "calc(100% - 48px)",
+    minHeight: "100px",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    '@media (max-width: 1024px)': {
-        marginInlineStart: '5%',
-        maxWidth: '85%'
-    },
     '@media (max-width: 768px)': {
         flexDirection: "column",
         gap: "12px",
-        marginInlineStart: "0",
-        marginInline: "20px",
-        maxWidth: "calc(100% - 40px)",
+        width: "calc(100% - 40px)",
         paddingBlock: "20px",
         paddingInline: "20px",
         textAlign: "center"
@@ -115,15 +109,12 @@ const testimonialsGrid = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     gap: "32px",
-    maxWidth: "1000px",
-    marginInlineStart:'-200px',
-    '@media (max-width: 1024px)': {
-        marginInline: '32px'
-    },
+    maxWidth: "1150px",
+    width: "100%",
+    margin: "0 auto",
     '@media (max-width: 768px)': {
         gridTemplateColumns: "1fr",
         gap: "16px",
-        marginInline: '16px'
     }
 };
 
@@ -131,12 +122,9 @@ const testimonialCard = {
     background: colors.Main_white,
     padding: "0px 16px",
     borderRadius: "12px",
-    width: "575px",
+    width: "100%",
     border: `1px solid ${colors.grey}`,
     boxShadow: "1px 1px 1px 1px rgba(0, 0, 0, 0.05)",
-    '@media (max-width: 768px)': {
-        width: "100%"
-    }
 };
 
 const testimonialAvatar = {
@@ -264,7 +252,7 @@ return (
             </div>
         </div>
 
-        <div css={{ background: colors.Main_whiteHover, marginBlockEnd: "112px",marginInlineStart:'40px', paddingBlock: '48px', '@media (max-width: 768px)': { marginBlockEnd: '32px', paddingInline: '20px', paddingBlock: '32px' }}}>
+        <div css={{ background: colors.Main_whiteHover, marginBlockEnd: "112px", width: '100%', paddingBlock: '48px', paddingInline: '48px', '@media (max-width: 768px)': { marginBlockEnd: '32px', paddingInline: '20px', paddingBlock: '32px' }}}>
             <h2 css={{fontSize: "18px", fontWeight: "900",  textTransform: "uppercase", color: colors.black, marginBottom: "48px", textStyle:'bold'}}>
                 As featured on ...
             </h2>

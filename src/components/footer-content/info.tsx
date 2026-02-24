@@ -42,14 +42,15 @@ const link = {
     }
 };
 const footerStyles = {
-    width: "1400px",
+    width: "100%",
+    maxWidth: "1400px",
     margin: "0 auto",
     backgroundColor: colors.Main_white,
     '@media (max-width: 1024px)': {
         paddingInline: '32px'
     },
     '@media (max-width: 768px)': {
-        paddingInline: '150px',
+        paddingInline: '20px',
         paddingBlock: '32px'
     }
 }

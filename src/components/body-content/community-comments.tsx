@@ -12,10 +12,8 @@ interface CommunityMembersProps {
 
 const communityCommentsStyle = {
     backgroundColor: colors.lightGray,
-    padding: '80px 20px',
-    position: 'relative',
-    overflow: 'hidden',
-    borderRadius: '20px !important',
+    padding: '64px 20px',
+    width: '100%',
     '@media (max-width: 768px)': {
         padding: '32px 20px'
     }
@@ -25,14 +23,11 @@ const headerStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '60px',
-    paddingLeft: '80px',
-    paddingRight: '80px',
+    marginBottom: '48px',
+    paddingInline: '0',
     '@media (max-width: 768px)': {
         flexDirection: 'column',
         gap: '16px',
-        paddingLeft: '0',
-        paddingRight: '0',
         marginBottom: '24px'
     }
 };
@@ -73,35 +68,36 @@ const getNavButtonStyle = (isDisabled: boolean) => ({
 const getCarouselTrackStyle = (currentIndex: number) => ({
     display: 'flex',
     gap: '24px',
-    transition: 'transform 0.6s',
-    transform: `translateX(calc(-${currentIndex} * (33.333% + 16px)))`
+    transition: 'transform 0.5s ease-in-out',
+    transform: `translateX(calc(-${currentIndex} * (calc(33.333% + 16px))))`
 })
 
 const cardCommentStyle = {
-    flex: '0 0 calc(33.333% - 80px)',
+    flex: '0 0 calc(33.333% - 16px)',
     backgroundColor: colors.Main_white,
     borderRadius: '12px',
     padding: '32px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: '340px',
-    marginBlockEnd: '48px',
+    minHeight: '340px',
     '@media (max-width: 768px)': {
         flex: '0 0 100%',
-        height: 'auto',
-        marginBlockEnd: '16px',
+        minHeight: 'auto',
         padding: '20px'
     }
 };
 
 const commentTextStyle = {
-    display:'flex',
     fontSize: '18px',
     color: colors.darkGrey,
-    margin: '0 0 32px 0',
+    margin: '0 0 24px 0',
     fontWeight: '500',
-    textAlign:'left'
+    textAlign:'left',
+    lineHeight: '1.6',
+    '@media (max-width: 768px)': {
+        fontSize: '16px'
+    }
 };
 
 const imgStyle = {
@@ -195,10 +191,10 @@ export default function CommunityComments() {
 
     return (
         <section css={communityCommentsStyle}>
-            <div css={{maxWidth: '1440px', margin: '0 auto', position: 'relative'}}>
+            <div css={{maxWidth: '1400px', margin: '0 auto', paddingInline: 'clamp(20px, 5%, 80px)'}}>
                 <div css={headerStyle}>
                     <h2 css={titleStyle}>A little <span css={{fontSize: '40px', '@media (max-width: 768px)': { fontSize: '20px' }}}>❤️</span> from our community</h2>
-                    <div css={{display: 'flex', gap: '12px', marginInlineEnd: '50px', '@media (max-width: 768px)': { marginInlineEnd: '0' }}}>
+                    <div css={{display: 'flex', gap: '12px', '@media (max-width: 768px)': { marginInlineEnd: '0' }}}>
                         <button
                             onClick={handlePrev}
                             disabled={isAtStart}
@@ -221,32 +217,30 @@ export default function CommunityComments() {
                     </div>
                 </div>
 
-                <div css={{position: 'relative', paddingInline: '130px', '@media (max-width: 768px)': { paddingInline: '0' }}}>
-                    <div css={{overflow: 'hidden'}}>
-                        <div css={getCarouselTrackStyle(currentIndex)}>
-                            {members.map((member) => (
-                                <div key={member.id} css={cardCommentStyle}>
-                                    <p css={commentTextStyle}>
-                                        {member.comment}
-                                    </p>
-                                    <div css={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-                                        <img
-                                            src={member.avatar}
-                                            alt={`${member.name}'s avatar`}
-                                            css={imgStyle}
-                                        />
-                                        <div>
-                                            <h3 css={userNameStyle}>
-                                                {member.name}
-                                            </h3>
-                                            <p css={{margin: 0, fontSize: '14px', color: colors.darkGrey,  fontWeight: '400'}}>
-                                                {member.handle}
-                                            </p>
-                                        </div>
+                <div css={{overflow: 'hidden', '@media (max-width: 768px)': { paddingInline: '0' }}}>
+                    <div css={getCarouselTrackStyle(currentIndex)}>
+                        {members.map((member) => (
+                            <div key={member.id} css={cardCommentStyle}>
+                                <p css={commentTextStyle}>
+                                    {member.comment}
+                                </p>
+                                <div css={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                                    <img
+                                        src={member.avatar}
+                                        alt={`${member.name}'s avatar`}
+                                        css={imgStyle}
+                                    />
+                                    <div>
+                                        <h3 css={userNameStyle}>
+                                            {member.name}
+                                        </h3>
+                                        <p css={{margin: 0, fontSize: '14px', color: colors.darkGrey,  fontWeight: '400'}}>
+                                            {member.handle}
+                                        </p>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
