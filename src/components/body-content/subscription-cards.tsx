@@ -8,8 +8,6 @@ import amexLogo from '../../assets/logos/purchase/amex.webp';
 import maestroLogo from '../../assets/logos/purchase/maestro.webp';
 import paypalLogo from '../../assets/logos/purchase/paypal.webp';
 import gpayLogo from '../../assets/logos/purchase/gpay.webp';
-import { width } from '@fortawesome/free-brands-svg-icons/fa11ty';
-import { text } from '@fortawesome/fontawesome-svg-core';
 
 const container = {
     width: '100%',

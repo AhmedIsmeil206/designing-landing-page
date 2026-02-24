@@ -24,6 +24,7 @@ const wrapper = {
 }
 
 const imageWrap = {
+    marginInlineStart:'50px',
     background: colors.lightGray,
     borderRadius: "20px",
     marginBlockStart: "124px",
@@ -86,7 +87,7 @@ export default function Explaination () {
 
 return (
     <div css={wrapper}>
-        <div css={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "540px", marginInline:'240px', '@media (max-width: 768px)': { marginInline: '0', maxWidth: '100%', gap: '12px' } }}>
+        <div css={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "540px",marginInlineStart:'340px', '@media (max-width: 768px)': { marginInline: '0', maxWidth: '100%', gap: '12px' } }}>
             <h2 css={{
                 fontSize: "40px",
                 textAlign: "left",
@@ -124,7 +125,7 @@ return (
                         {isActive && (
                             <p css={{
                                 marginTop: "12px",
-                                marginLeft: "46px", 
+                                marginLeft: "46px",
                                 fontSize: "14px",
                                 lineHeight: "1.7",
                                 opacity: 0.95
@@ -143,7 +144,7 @@ return (
                     <img
                         src={choice1}
                         alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
+                        css={{  display: "flex", alignItems: "center", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
                     />
                 </div>
             )

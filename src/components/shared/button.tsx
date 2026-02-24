@@ -4,7 +4,7 @@ interface ButtonProps {
     onClick?: () => void;
     children: React.ReactNode;
     variant?: 'redButton' | 'Main_whiteButton' | 'BlackButton' | 'purpleButton' | 'darkgreyButton' | 'Main_Main_whiteButton';
-    style?: React.CSSProperties;
+    style?: object;
 }
 export default function Button ({onClick, children, variant = 'redButton', style}: ButtonProps) {
 const baseStyles = {
@@ -20,7 +20,15 @@ const baseStyles = {
     transition: 'all 0.3s ease',
     fontFamily: 'inherit',
     textTransform: 'uppercase' ,
-    letterSpacing: '0.5px'
+    letterSpacing: '0.5px',
+    '@media (max-width: 768px)': {
+        fontSize: '12px',
+        padding: '9px 16px',
+    },
+    '@media (max-width: 480px)': {
+        fontSize: '11px',
+        padding: '8px 14px',
+    },
 }
 const variants = {
     redButton:{
