@@ -1,9 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import { colors } from "../shared/colors"
-import choice1 from '../../assets/images/home-why-1.webp'
-import choice2 from '../../assets/images/home-why-2.webp'
-import choice3 from '../../assets/images/home-why-3.webp'
-import choice4 from '../../assets/images/home-why-4.webp'
+import { colors } from "@shared/colors"
+import { type ReactNode } from 'react'
+import choice1 from '@assets/images/home-why-1.webp'
+import choice2 from '@assets/images/home-why-2.webp'
+import choice3 from '@assets/images/home-why-3.webp'
+import choice4 from '@assets/images/home-why-4.webp'
+interface FeatureRowProps {
+    reversed?: boolean;
+    contentMaxWidth?: string;
+    contentMarginEnd?: string;
+    imageSrc: string;
+    imageAlt: string;
+    heading: string;
+    body: string;
+    children?: ReactNode;
+}
 
 const general = {
     maxWidth: "1120px",
@@ -42,6 +53,7 @@ const row = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+    gap:'30px',
     '@media (max-width: 768px)': {
         flexDirection: "column",
         gap: "20px"
@@ -59,66 +71,105 @@ const imageWrap = {
     }
 };
 
-export default function DevFeatures() {
+const contentHeading = {
+    fontSize: "28px",
+    fontWeight: "700",
+    '@media (max-width: 768px)': { fontSize: '20px' }
+};
+
+const contentBody = {
+    color: colors.darkGrey,
+    fontSize: '20px',
+    '@media (max-width: 768px)': { fontSize: '15px' }
+};
+
+const imgStyle = {
+    width: "100%",
+    height: '100%',
+    display: "block",
+    borderRadius: "12px",
+    maxWidth: '600px',
+    maxHeight: '700px',
+    '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }
+};
+
+
+function FeatureRow({
+    reversed = false,
+    contentMaxWidth = "480px",
+    contentMarginEnd,
+    imageSrc,
+    imageAlt,
+    heading,
+    body,
+}: FeatureRowProps) {
     return (
-        <div css={general}>
-                <h1 css={title}>Why developers choose Frontend Mentor</h1>
-                <div css={row}>
-                    <div css={{maxWidth: "480px", textAlign: "left", marginInlineEnd: "50px", '@media (max-width: 768px)': { maxWidth: '100%', marginInlineEnd: '0' }}}>
-                        <h3 css={{fontSize: "28px", fontWeight: "700", '@media (max-width: 768px)': { fontSize: '20px' }}}>Move beyond passive learning</h3>
-                        <p css={{color:colors.darkGrey, fontSize:'20px', '@media (max-width: 768px)': { fontSize: '15px' }}}>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
-                    </div>
-
-                    <div css={imageWrap}>
-                        <img
-                        src={choice1}
-                        alt="How it works preview"
-                        css={{ width: "100%", height:'100%', display: "block", borderRadius: "12px", maxWidth:'600px', maxHeight:'700px', '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }}}
-                        />
-                    </div>
-                </div>
-
-                <div css={row}>
-                    <div css={{...imageWrap, marginInlineEnd: "110px", '@media (max-width: 768px)': { marginInlineEnd: '0', order: 2 }}}>
-                        <img
-                        src={choice2}
-                        alt="How it works preview"
-                        css={{ width: "100%", height:'100%', display: "block", borderRadius: "12px", maxWidth:'600px', maxHeight:'700px', '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }}}
-                        />
-                    </div>
-                    <div css={{maxWidth: "420px", textAlign: "left", '@media (max-width: 768px)': { maxWidth: '100%', order: 1 }}}>
-                        <h3 css={{fontSize: "28px", fontWeight: "700", '@media (max-width: 768px)': { fontSize: '20px' }}}>Move beyond passive learning</h3>
-                        <p css={{color:colors.darkGrey, fontSize:'20px', '@media (max-width: 768px)': { fontSize: '15px' }}}>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
-                    </div>
-                </div>
-
-                <div css={row}>
-                    <div css={{maxWidth: "420px", marginInlineEnd: "110px", textAlign: "left", '@media (max-width: 768px)': { maxWidth: '100%', marginInlineEnd: '0' }}}>
-                        <h3 css={{fontSize: "28px", fontWeight: "700", '@media (max-width: 768px)': { fontSize: '20px' }}}>Move beyond passive learning</h3>
-                        <p css={{color:colors.darkGrey, fontSize:'20px', '@media (max-width: 768px)': { fontSize: '15px' }}}>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
-                    </div>
-                    <div css={imageWrap}>
-                        <img
-                        src={choice3}
-                        alt="How it works preview"
-                        css={{ width: "100%", height:'100%', display: "block", borderRadius: "12px", maxWidth:'600px', maxHeight:'700px', '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }}}
-                        />
-                    </div>
-                </div>
-
-                <div css={row}>
-                    <div css={{...imageWrap, marginInlineEnd: "110px", '@media (max-width: 768px)': { marginInlineEnd: '0', order: 2 }}}>
-                        <img
-                        src={choice4}
-                        alt="How it works preview"
-                        css={{ width: "100%", height:'100%', display: "block", borderRadius: "12px", maxWidth:'600px', maxHeight:'700px', '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }}}
-                        />
-                    </div>
-                    <div css={{maxWidth: "420px", textAlign: "start", '@media (max-width: 768px)': { maxWidth: '100%', order: 1 }}}>
-                        <h3 css={{fontSize: "28px", fontWeight: "700", '@media (max-width: 768px)': { fontSize: '20px' }}}>Move beyond passive learning</h3>
-                        <p css={{color:colors.darkGrey, fontSize:'20px', '@media (max-width: 768px)': { fontSize: '15px' }}}>Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.</p>
-                    </div>
+        <div css={{
+            ...row,
+            flexDirection: reversed ? 'row-reverse' : 'row',
+            '@media (max-width: 768px)': {
+                flexDirection: 'column',
+                gap: '20px'
+            }
+        }}>
+            <div css={{
+                flex: '1 1 45%',
+                maxWidth: contentMaxWidth,
+                textAlign: 'left',
+                marginInlineStart: '50px',
+                ...(contentMarginEnd ? { marginInlineEnd: contentMarginEnd } : {}),
+                '@media (max-width: 768px)': { maxWidth: '100%', marginInlineEnd: '0', flex: '1 1 auto' }
+            }}>
+                <h3 css={contentHeading}>{heading}</h3>
+                <p css={contentBody}>{body}</p>
+            </div>
+            <div css={{ ...imageWrap, flex: '1 1 50%', '@media (max-width: 768px)': { flex: '1 1 auto', padding: '12px', width: '100%', maxWidth: '100%' } }}>
+                <img src={imageSrc} alt={imageAlt} css={imgStyle} />
             </div>
         </div>
+    );
+}
+
+export default function DevFeatures() {
+    return (
+        <section css={general}>
+                <h2 css={title}>Why developers choose Frontend Mentor</h2>
+
+                <FeatureRow
+                    imageSrc={choice1}
+                    imageAlt=""
+                    heading="Move beyond passive learning"
+                    body="Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice."
+                    contentMaxWidth="480px"
+                    contentMarginEnd="50px"
+                />
+
+                <FeatureRow
+                    reversed
+                    imageSrc={choice2}
+                    imageAlt=''
+                    heading="Create a portfolio that gets you hired"
+                    body='Build impressive projects with professional designs. Recruiters tell us these portfolio pieces consistently "wow" them in interviews by demonstrating real-world capabilities.'
+                    contentMaxWidth="420px"
+                />
+
+                <FeatureRow
+                    imageSrc={choice3}
+                    imageAlt=""
+                    heading="Master AI-powered development workflows"
+                    body="Practice with AI tools that 76% of developers use daily. Learn to work effectively with Cursor, GitHub Copilot, ChatGPT, and other assistants while maintaining code quality and problem-solving skills."
+                    contentMaxWidth="420px"
+                    contentMarginEnd="110px"
+                />
+
+                <FeatureRow
+                    reversed
+                    imageSrc={choice4}
+                    imageAlt=""
+                    heading="Join a supportive developer community"
+                    body="Connect with peers for code reviews, career advice, and friendship. Beat imposter syndrome alongside developers who understand your journey, guided by mentors who've walked this path."
+                    contentMaxWidth="420px"
+                />
+        </section>
     )
 }

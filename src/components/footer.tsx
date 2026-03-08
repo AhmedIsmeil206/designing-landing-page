@@ -1,6 +1,6 @@
+import { colors } from '@shared/colors';
 import Info from '@footer/info';
 import Rights from '@footer/rights';
-import { colors } from '@shared/colors';
 
 const Footer = () => {
 return (

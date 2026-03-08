@@ -1,7 +1,6 @@
 import { forwardRef, type DetailedHTMLProps, type HTMLAttributes } from 'react';
 
-export interface IconProps
-    extends DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
+export interface IconProps {
     name: string;
     size?: number;
     viewBox?: number;

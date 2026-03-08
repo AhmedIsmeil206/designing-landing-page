@@ -10,7 +10,7 @@ import ConclusionPart from '@body/conclusion';
 
 export default function Body() {
     return (
-        <div css={{ width: '100%', overflowX: 'hidden', display: 'flex', flexDirection: 'column' }}>
+        <main css={{ width: '100%', overflowX: 'hidden', display: 'flex', flexDirection: 'column' }}>
             <Introduction />
             <Explaination />
             <DevFeatures />
@@ -19,6 +19,6 @@ export default function Body() {
             <CompaniesFeatures />
             <CommunityComments />
             <ConclusionPart />
-        </div>
+        </main>
     )
 }

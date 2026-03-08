@@ -56,7 +56,7 @@ export default function ConclusionPart() {
     return (
         <div css={{padding: '80px  30px', display: 'flex', justifyContent: 'center', alignItems: 'center', '@media (max-width: 768px)': { padding: '32px 20px' }}}>
             <div css={containerStyle}>
-                <h1 css={contentStyle}>Join 1,137,529 people building portfolio-worthy projects</h1>
+                <h2 css={contentStyle}>Join 1,137,529 people building portfolio-worthy projects</h2>
                 <p css={paragraphStyle}>Our highly supportive, positive community is here to help you improve your skills. We all try to help each other out wherever possible. We’d love to welcome you to our community!</p>
                     <Button variant="redButton" style={{fontSize: '16px', padding: '16px 28px', fontStyle: 'italic', fontWeight: '700', '@media (max-width: 768px)': { fontSize: '14px', padding: '13px 22px' }, '@media (max-width: 480px)': { fontSize: '12px', padding: '11px 18px' }}}>
                         LOG IN WITH GITHUB
