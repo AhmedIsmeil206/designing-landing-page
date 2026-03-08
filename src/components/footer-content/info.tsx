@@ -1,7 +1,7 @@
 
 /** @jsxImportSource @emotion/react */
-import { colors } from "../shared/colors"
-import frontendMasterLogo from '../../assets/logos/frontend-master.png'
+import { colors } from '@shared/colors';
+import frontendMasterLogo from '@assets/logos/frontend-master.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faDiscord,
@@ -9,7 +9,7 @@ import {
     faLinkedin,
     faFacebook
 } from '@fortawesome/free-brands-svg-icons';
-import Button from '../shared/button';
+import Button from '@shared/button';
 
 const socialIconStyles = {
     width: '30px',

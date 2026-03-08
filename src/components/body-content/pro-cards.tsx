@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import {colors} from "../shared/colors"
+import { colors } from '@shared/colors';
 
 const general = {
     maxWidth: "1120px",

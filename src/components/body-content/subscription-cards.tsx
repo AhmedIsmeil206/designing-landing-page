@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { colors} from '../shared/colors';
-import Button from '../shared/button';
+import { colors } from '@shared/colors';
+import Button from '@shared/button';
 
-import visaLogo from '../../assets/logos/purchase/visa.webp';
-import mastercardLogo from '../../assets/logos/purchase/mastercard.webp';
-import amexLogo from '../../assets/logos/purchase/amex.webp';
-import maestroLogo from '../../assets/logos/purchase/maestro.webp';
-import paypalLogo from '../../assets/logos/purchase/paypal.webp';
-import gpayLogo from '../../assets/logos/purchase/gpay.webp';
+import visaLogo from '@assets/logos/purchase/visa.webp';
+import mastercardLogo from '@assets/logos/purchase/mastercard.webp';
+import amexLogo from '@assets/logos/purchase/amex.webp';
+import maestroLogo from '@assets/logos/purchase/maestro.webp';
+import paypalLogo from '@assets/logos/purchase/paypal.webp';
+import gpayLogo from '@assets/logos/purchase/gpay.webp';
 
 const container = {
     width: '100%',

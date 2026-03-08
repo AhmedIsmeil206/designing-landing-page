@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from 'react';
-import { colors } from '../shared/colors';
+import { colors } from '@shared/colors';
 
 interface CommunityMembersProps {
     id: number;

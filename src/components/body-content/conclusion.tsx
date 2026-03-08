@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { colors } from "../shared/colors"
-import Button from "../shared/button"
+import { colors } from '@shared/colors';
+import Button from '@shared/button';
 
 const githubIconStyles = {
     width: '18px',

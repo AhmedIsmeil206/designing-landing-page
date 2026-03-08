@@ -1,5 +1,5 @@
 
-import { colors } from "../shared/colors"
+import { colors } from '@shared/colors';
 
 
 const divider = {

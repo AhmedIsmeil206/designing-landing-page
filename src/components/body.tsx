@@ -1,12 +1,12 @@
 
-import Introduction from './body-content/hero'
-import Explaination from './body-content/explaination'
-import DevFeatures from './body-content/developers-features'
-import ProCards from './body-content/pro-cards'
-import SubscriptionCards from './body-content/subscription-cards'
-import CompaniesFeatures from './body-content/companies-features'
-import CommunityComments from './body-content/community-comments'
-import ConclusionPart from './body-content/conclusion'
+import Introduction from '@body/hero';
+import Explaination from '@body/explaination';
+import DevFeatures from '@body/developers-features';
+import ProCards from '@body/pro-cards';
+import SubscriptionCards from '@body/subscription-cards';
+import CompaniesFeatures from '@body/companies-features';
+import CommunityComments from '@body/community-comments';
+import ConclusionPart from '@body/conclusion';
 
 export default function Body() {
     return (

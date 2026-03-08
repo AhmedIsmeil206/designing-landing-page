@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useRef, useEffect } from 'react';
-import { colors } from '../shared/colors';
+import { colors } from '@shared/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface DropdownItem {
     label: string;

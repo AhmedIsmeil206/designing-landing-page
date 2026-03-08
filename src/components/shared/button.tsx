@@ -1,4 +1,4 @@
-import {colors} from './colors';
+import { colors } from '@shared/colors';
 
 interface ButtonProps {
     onClick?: () => void;

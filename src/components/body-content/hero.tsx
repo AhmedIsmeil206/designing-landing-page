@@ -1,12 +1,11 @@
-import Button from "../shared/button";
-import { colors } from "../shared/colors";
-import homeHero from "../../assets/logos/home-hero.webp";
-import kevinAvatar from "../../assets/logos/home-avatar-kevin.webp";
-import jessicaAvatar from "../../assets/logos/home-avatar-jessica.webp";
-import cssTricksLogo from "../../assets/logos/css-tricks.png";
-import stackOverflowLogo from "../../assets/logos/stack-over-flow.png";
-import productHuntLogo from "../../assets/logos/product-hunt.png";
-import { height } from "@fortawesome/free-brands-svg-icons/fa11ty";
+import Button from '@shared/button';
+import { colors } from '@shared/colors';
+import homeHero from '@assets/logos/home-hero.webp';
+import kevinAvatar from '@assets/logos/home-avatar-kevin.webp';
+import jessicaAvatar from '@assets/logos/home-avatar-jessica.webp';
+import cssTricksLogo from '@assets/logos/css-tricks.png';
+import stackOverflowLogo from '@assets/logos/stack-over-flow.png';
+import productHuntLogo from '@assets/logos/product-hunt.png';
 
 const githubIconStyles = {
     width: "18px",

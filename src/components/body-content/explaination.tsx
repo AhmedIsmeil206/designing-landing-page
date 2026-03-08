@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { colors } from "../shared/colors"
-import { useState } from "react"
-import choice1 from '../../assets/images/home-how-it-works-1.webp'
-import choice2 from '../../assets/images/home-how-it-works-2.webp'
-import choice3 from '../../assets/images/home-how-it-works-3.webp'
-import choice4 from '../../assets/images/home-how-it-works-4.webp'
+import { colors } from '@shared/colors';
+import { useState } from 'react';
+import choice1 from '@assets/images/home-how-it-works-1.webp';
+import choice2 from '@assets/images/home-how-it-works-2.webp';
+import choice3 from '@assets/images/home-how-it-works-3.webp';
+import choice4 from '@assets/images/home-how-it-works-4.webp';
 
 const wrapper = {
     display: "grid",
