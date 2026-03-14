@@ -1,6 +1,11 @@
 
 import { colors } from '@shared/colors';
 
+interface LegalLink {
+    label: string;
+    href: string;
+}
+
 
 const divider = {
     width: "100%",
@@ -41,6 +46,13 @@ const link = {
     }
 };
 
+const legalLinksData: LegalLink[] = [
+    { label: 'Terms', href: '#' },
+    { label: 'Cookie Policy', href: '#' },
+    { label: 'Privacy Policy', href: '#' },
+    { label: 'License', href: '#' },
+];
+
 export default function Rights()  {
 
     return (
@@ -50,10 +62,9 @@ export default function Rights()  {
             <div css={divider}>
                 <div css={{paddingInlineStart: "230px", '@media (max-width: 768px)': { marginInlineStart: '0' }}}> © Frontend Mentor 2019 - 2026</div>
                 <div css={legalLinks}>
-                    <a css={link} href="#">Terms</a>
-                    <a css={link} href="#">Cookie Policy</a>
-                    <a css={link} href="#">Privacy Policy</a>
-                    <a css={link} href="#">License</a>
+                    {legalLinksData.map((item) => (
+                        <a key={item.label} css={link} href={item.href}>{item.label}</a>
+                    ))}
                 </div>
             </div>
 

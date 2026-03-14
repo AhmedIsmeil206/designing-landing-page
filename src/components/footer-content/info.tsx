@@ -1,5 +1,4 @@
 
-/** @jsxImportSource @emotion/react */
 import { colors } from '@shared/colors';
 import frontendMasterLogo from '@assets/logos/frontend-master.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,6 +9,18 @@ import {
     faFacebook
 } from '@fortawesome/free-brands-svg-icons';
 import Button from '@shared/button';
+
+interface FooterLinkItem {
+    label: string;
+    href: string;
+}
+
+interface FooterColumn {
+    id: string;
+    title: string;
+    width: string;
+    links: FooterLinkItem[];
+}
 
 const socialIconStyles = {
     width: '30px',
@@ -54,18 +65,166 @@ const footerStyles = {
         paddingBlock: '32px'
     }
 }
+
+const topRowStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginBlock: '32px',
+    '@media (max-width: 768px)': {
+        flexDirection: 'column',
+        gap: '24px',
+        alignItems: 'flex-start',
+        marginBlock: '24px'
+    }
+};
+
+const socialIconsWrap = {
+    display: 'flex',
+    gap:'24px',
+    marginInlineEnd:'30px',
+    '@media (max-width: 768px)': { marginInlineEnd: '0' }
+};
+
+const columnsWrap = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    flexDirection:'row',
+    marginBlockStart:'40px',
+    gap:'2rem',
+    '@media (max-width: 768px)': {
+        flexDirection: 'column',
+        gap: '24px',
+        alignItems: 'flex-start'
+    }
+};
+
+const newsletterWrap = {
+    display: 'flex',
+    alignItems: 'start',
+    flexDirection:'column',
+    flex: 1,
+    marginInlineEnd:'100px',
+    '@media (max-width: 1024px)': {
+        marginInlineEnd: '0',
+        marginInlineStart: '0'
+    },
+    '@media (max-width: 768px)': {
+        width: '100%',
+        marginInlineEnd: '0',
+        marginInlineStart: '0'
+    }
+};
+
+const newsletterActionWrap = {
+    display: 'flex',
+    alignItems: 'center',
+    gap:'16px',
+    flexDirection:'row',
+    width:'100%',
+    '@media (max-width: 768px)': {
+        flexDirection: 'column',
+        alignItems: 'stretch'
+    }
+};
+
+const subscribeInputStyle = {
+    border: `1px solid ${colors.grey}`,
+    borderRadius: '4px',
+    padding: '8px',
+    width: '250px',
+    height: '25px',
+    fontSize:'18px',
+    '@media (max-width: 768px)': {
+        width: '100%'
+    }
+};
+
+const subscribeBtnStyle = {
+    fontSize: '16px',
+    padding: '16px 36px',
+    fontStyle: 'italic',
+    fontWeight: '900',
+    '@media (max-width: 768px)': { fontSize: '14px', padding: '13px 26px' },
+    '@media (max-width: 480px)': { fontSize: '12px', padding: '11px 20px' }
+};
+
+const socialIcons = [faDiscord, faXTwitter, faLinkedin, faFacebook];
+
+const footerColumns: FooterColumn[] = [
+    {
+        id: 'frontend-mentor',
+        title: 'Frontend Mentor',
+        width: '220px',
+        links: [
+            { label: 'Unlock Pro', href: '#' },
+            { label: 'Contact us', href: '#' },
+            { label: 'FAQs', href: '#' },
+            { label: 'Become a partner', href: '#' },
+            { label: 'Use cases', href: '#' },
+        ]
+    },
+    {
+        id: 'explore',
+        title: 'Explore',
+        width: '120px',
+        links: [
+            { label: 'Learning Paths', href: '#' },
+            { label: 'Challenges', href: '#' },
+            { label: 'Solutions', href: '#' },
+            { label: 'Articles', href: '#' },
+        ]
+    },
+    {
+        id: 'community',
+        title: 'Community',
+        width: '120px',
+        links: [
+            { label: 'Discord', href: '#' },
+            { label: 'Guidelines', href: '#' },
+        ]
+    },
+    {
+        id: 'companies',
+        title: 'For companies',
+        width: '180px',
+        links: [
+            { label: 'Hire Developers', href: '#' },
+            { label: 'Train Developers', href: '#' },
+        ]
+    }
+];
+
+function SocialLinksRow() {
+    return (
+        <div css={socialIconsWrap}>
+            {socialIcons.map((icon, index) => (
+                <FontAwesomeIcon key={index} icon={icon} css={socialIconStyles} />
+            ))}
+        </div>
+    );
+}
+
+function FooterLinkColumn({ column }: { column: FooterColumn }) {
+    return (
+        <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column', width: column.width }}>
+            <span css={colTitle}>{column.title}</span>
+            <ul css={list}>
+                {column.links.map((item) => (
+                    <li key={item.label}><a css={link} href={item.href}>{item.label}</a></li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
 export default function Info()  {
 
     return (
         <div css={footerStyles}>
-            <div css={{display: 'flex', alignItems: 'center', flexDirection:"row" ,  justifyContent:'space-between', width: '100%', marginBlock:'32px',
-                '@media (max-width: 768px)': {
-                    flexDirection: 'column' ,
-                    gap: '24px',
-                    alignItems: 'flex-start',
-                    marginBlock: '24px'
-                }
-            }}>
+            <div css={topRowStyles}>
                 <div css={{display: 'flex', alignItems: 'center', '@media (max-width: 768px)': { marginInlineStart: '0' }}}>
                     <a href="https://www.frontendmentor.io" aria-label="Frontend Mentor">
                         <img
@@ -76,88 +235,24 @@ export default function Info()  {
                     </a>
                 </div>
 
-                <div css={{display: 'flex', gap:'24px',marginInlineEnd:'30px', '@media (max-width: 768px)': { marginInlineEnd: '0' }}}>
-                    <FontAwesomeIcon icon={faDiscord} css={socialIconStyles} />
-                    <FontAwesomeIcon icon={faXTwitter} css={socialIconStyles} />
-                    <FontAwesomeIcon icon={faLinkedin} css={socialIconStyles} />
-                    <FontAwesomeIcon icon={faFacebook} css={socialIconStyles} />
-                </div>
+                <SocialLinksRow />
             </div>
 
-            <div
-                css={{display: 'flex', flexDirection:'row' , marginBlockStart:"40px", gap:'2rem',
-                    '@media (max-width: 768px)': {
-                        flexDirection: 'column' ,
-                        gap: '24px',
-                        alignItems: 'flex-start'
-                    }
-                }}
-            >
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column' , flex: 1, marginInlineEnd:'100px',
-                        '@media (max-width: 1024px)': {
-                            marginInlineEnd: '0',
-                            marginInlineStart: '0'
-                        },
-                        '@media (max-width: 768px)': {
-                            width: '100%',
-                            marginInlineEnd: '0',
-                            marginInlineStart: '0'
-                        }
-                    }}>
+            <div css={columnsWrap}>
+                <div css={newsletterWrap}>
                     <span css={{color:colors.darkPurple, fontSize:'24px',fontWeight:'500',marginBlock:'12px', '@media (max-width: 768px)': { fontSize: '20px' }}}>Stay up to date</span>
                     <span css={{color:colors.black, fontSize:'16px',fontWeight:'600',maxWidth:'400px',textAlign:'left' ,marginBlock:'12px', '@media (max-width: 768px)': { fontSize: '14px' }}}>with new challenges, featured solutions, selected articles, and our latest news</span>
-                    <div css={{display: 'flex', alignItems: 'center', gap:'16px', flexDirection:'row' , width:'100%',
-                        '@media (max-width: 768px)': {
-                            flexDirection: 'column' ,
-                            alignItems: 'stretch'
-                        }
-                    }}>
-                        <input type="text" placeholder="email@example.com" css={{border: `1px solid ${colors.grey}`, borderRadius: '4px', padding: '8px', width: '250px', height: '25px',fontSize:'18px',
-                            '@media (max-width: 768px)': {
-                                width: '100%'
-                            }
-                        }}/>
+                    <div css={newsletterActionWrap}>
+                        <input type="text" placeholder="email@example.com" css={subscribeInputStyle}/>
                         <div>
-                            <Button variant="redButton" style={{fontSize: '16px', padding: '16px 36px', fontStyle: 'italic', fontWeight: '900', '@media (max-width: 768px)': { fontSize: '14px', padding: '13px 26px' }, '@media (max-width: 480px)': { fontSize: '12px', padding: '11px 20px' }}}>Subscribe</Button>
+                            <Button variant="redButton" style={subscribeBtnStyle}>Subscribe</Button>
                         </div>
                     </div>
                 </div>
 
-                <div css={{ display: 'flex', alignItems: 'start', flexDirection:'column', width:'220px', }}>
-                    <span css={colTitle}>Frontend Mentor</span>
-                    <ul css={list}>
-                    <li ><a css={link} href="#">Unlock Pro</a></li>
-                    <li><a css={link} href="#">Contact us</a></li>
-                    <li><a css={link} href="#">FAQs</a></li>
-                    <li><a css={link} href="#">Become a partner</a></li>
-                    <li><a css={link} href="#">Use cases</a></li>
-                    </ul>
-                </div>
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px'}}>
-                    <span css={colTitle}>Explore</span>
-                    <ul css={list}>
-                    <li><a css={link} href="#">Learning Paths</a></li>
-                    <li><a css={link} href="#">Challenges</a></li>
-                    <li><a css={link} href="#">Solutions</a></li>
-                    <li><a css={link} href="#">Articles</a></li>
-                    </ul>
-                </div>
-
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'120px'}}>
-                    <span css={colTitle}>Community</span>
-                    <ul css={list}>
-                    <li><a css={link} href="#">Discord</a></li>
-                    <li><a css={link} href="#">Guidelines</a></li>
-                    </ul>
-                </div>
-
-                <div css={{display: 'flex', alignItems: 'start', flexDirection:'column', width:'180px' }}>
-                    <span css={colTitle}>For companies</span>
-                    <ul css={list}>
-                    <li><a css={link} href="#">Hire Developers</a></li>
-                    <li><a css={link} href="#">Train Developers</a></li>
-                    </ul>
-                </div>
+                {footerColumns.map((column) => (
+                    <FooterLinkColumn key={column.id} column={column} />
+                ))}
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
-/** @jsxImportSource @emotion/react */
 import { useState, useRef, useEffect } from 'react';
 import { colors } from '@shared/colors';
+import { dropdownChevron } from '@shared/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface DropdownItem {
     label: string;
@@ -76,7 +76,7 @@ export default function DropDownMenu({ trigger, items }: DropDownMenuProps) {
                         transition: 'transform 0.3s ease'
                     }}
                 >
-                    <path d="M2 4L6 8L10 4" stroke={colors.black} strokeWidth="2" fill="none" />
+                    <path d={dropdownChevron} stroke={colors.black} strokeWidth="2" fill="none" />
                 </svg>
             </div>
 
