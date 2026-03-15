@@ -1,19 +1,36 @@
-/** @jsxImportSource @emotion/react */
-import { colors } from "@shared/colors"
-import Button from "@shared/button"
-import { type ReactNode } from 'react'
-import choice1 from '@assets/images/home-why-1.webp'
-import choice2 from '@assets/images/home-why-2.webp'
+import { colors } from '@shared/colors';
+import Button from '@shared/button';
+import { type ReactNode } from 'react';
+import choice1 from '@assets/images/home-why-1.webp';
+import choice2 from '@assets/images/home-why-2.webp';
 
-interface CompanyFeatureRowProps {
-    reversed?: boolean;
+interface CompanyFeatureItem {
+    id: string;
     topic: string;
     heading: string;
     body: string;
     ctaLabel: string;
     imageSrc: string;
     imageAlt: string;
-    children?: ReactNode;
+    reversed?: boolean;
+}
+
+interface CompanyFeatureRowProps {
+    reversed?: boolean;
+    children: ReactNode | ((props: { reversed: boolean }) => ReactNode);
+}
+
+interface CompanyFeatureContentProps {
+    topic: string;
+    heading: string;
+    body: string;
+    ctaLabel: string;
+    renderAction?: (props: { ctaLabel: string }) => ReactNode;
+}
+
+interface CompanyFeatureImageProps {
+    imageSrc: string;
+    imageAlt: string;
 }
 
 const general = {
@@ -30,7 +47,7 @@ const general = {
         paddingInline: '20px',
         width: '100%'
     }
-};
+} as const;
 
 const title = {
     display: "flex",
@@ -46,7 +63,7 @@ const title = {
         height: 'auto',
         marginBlock: '16px'
     }
-}
+} as const;
 
 const row = {
     display: "flex",
@@ -59,7 +76,16 @@ const row = {
         flexDirection: 'column',
         gap: '20px'
     }
-}
+} as const;
+
+const rowDirectionStyles = (reversed: boolean) => ({
+    ...row,
+    flexDirection: reversed ? ('row-reverse' as const) : ('row' as const),
+    '@media (max-width: 768px)': {
+        flexDirection: 'column',
+        gap: '20px'
+    }
+} as const);
 
 const imageWrap = {
     borderRadius: "20px",
@@ -69,7 +95,7 @@ const imageWrap = {
     '@media (max-width: 768px)': {
         padding: '12px'
     }
-}
+} as const;
 
 const kickerStyle = {
     color: colors.purple,
@@ -77,12 +103,12 @@ const kickerStyle = {
     fontWeight:'700',
     fontSize:'28px',
     '@media (max-width: 768px)': { fontSize: '16px' }
-}
+} as const;
 
 const subHeadingStyle = {
     fontSize:'32px',
     '@media (max-width: 768px)': { fontSize: '22px' }
-}
+} as const;
 
 const bodyStyle = {
     color: colors.darkGrey,
@@ -90,7 +116,7 @@ const bodyStyle = {
     fontWeight: '500',
     paddingBlockEnd: '24px',
     '@media (max-width: 768px)': { fontSize: '15px', paddingBlockEnd: '16px' }
-}
+} as const;
 
 const btnStyle = {
     width: '45%',
@@ -98,7 +124,13 @@ const btnStyle = {
     fontSize: '16px',
     padding: '16px 28px',
     '@media (max-width: 768px)': { width: '100%' }
-}
+} as const;
+
+const contentWrap = {
+    maxWidth: '620px',
+    marginInlineStart: '20px',
+    '@media (max-width: 768px)': { maxWidth: '100%' }
+} as const;
 
 const imgStyle = {
     width: "100%",
@@ -107,62 +139,88 @@ const imgStyle = {
     maxWidth: '600px',
     maxHeight: '450px',
     '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }
+} as const;
+
+const companyFeatures: CompanyFeatureItem[] = [
+    {
+        id: 'engineering-teams',
+        imageSrc: choice1,
+        imageAlt: '',
+        topic: 'Engineering teams',
+        heading: 'Train junior developers with real projects',
+        body: 'Skip theoretical tutorials. Give your junior developers 100+ real-world challenges that build practical skills faster than traditional training programs.',
+        ctaLabel: 'EXPLORE TEAMS',
+    },
+    {
+        id: 'hiring-teams',
+        reversed: true,
+        imageSrc: choice2,
+        imageAlt: '',
+        topic: 'HIRING TEAMS',
+        heading: 'Discover junior talent through skills, not resumes',
+        body: "See real code and live projects upfront, then connect directly with developers who've demonstrated the skills and passion you need.",
+        ctaLabel: 'EXPLORE HIRING',
+    },
+];
+
+function CompanyFeatureRow({ reversed = false, children }: CompanyFeatureRowProps) {
+    return <div css={rowDirectionStyles(reversed)}>{typeof children === 'function' ? children({ reversed }) : children}</div>;
 }
 
-function CompanyFeatureRow({
-    reversed = false,
+function CompanyFeatureContent({
     topic,
     heading,
     body,
     ctaLabel,
-    imageSrc,
-    imageAlt,
-}: CompanyFeatureRowProps) {
+    renderAction,
+}: CompanyFeatureContentProps) {
+    const defaultAction = <Button style={btnStyle}>{ctaLabel}</Button>;
+
     return (
-        <div css={{
-            ...row,
-            flexDirection: reversed ? 'row-reverse' : 'row',
-            '@media (max-width: 768px)': {
-                flexDirection: 'column',
-                gap: '20px'
-            }
-        }}>
-            <div css={{maxWidth: "620px",marginInlineStart:'20px', '@media (max-width: 768px)': { maxWidth: '100%' }}}>
-                <p css={kickerStyle}>{topic}</p>
-                <h1 css={subHeadingStyle}>{heading}</h1>
-                <p css={bodyStyle}>{body}</p>
-                <Button style={btnStyle}>{ctaLabel}</Button>
-            </div>
-            <div css={imageWrap}>
-                <img src={imageSrc} alt={imageAlt} css={imgStyle} />
-            </div>
+        <div css={contentWrap}>
+            <p css={kickerStyle}>{topic}</p>
+            <h1 css={subHeadingStyle}>{heading}</h1>
+            <p css={bodyStyle}>{body}</p>
+            {renderAction ? renderAction({ ctaLabel }) : defaultAction}
         </div>
-    )
+    );
 }
+
+function CompanyFeatureImage({ imageSrc, imageAlt }: CompanyFeatureImageProps) {
+    return (
+        <div css={imageWrap}>
+            <img src={imageSrc} alt={imageAlt} css={imgStyle} />
+        </div>
+    );
+}
+
+const CompanyFeature = {
+    Row: CompanyFeatureRow,
+    Content: CompanyFeatureContent,
+    Image: CompanyFeatureImage,
+};
 
 export default function CompaniesFeatures() {
     return (
         <section css={general}>
-                <h2 css={title}>For companies</h2>
+            <h2 css={title}>For companies</h2>
 
-                <CompanyFeatureRow
-                    imageSrc={choice1}
-                    imageAlt=""
-                    topic="Engineering teams"
-                    heading="Train junior developers with real projects"
-                    body="Skip theoretical tutorials. Give your junior developers 100+ real-world challenges that build practical skills faster than traditional training programs."
-                    ctaLabel="EXPLORE TEAMS"
-                />
-
-                <CompanyFeatureRow
-                    reversed
-                    imageSrc={choice2}
-                    imageAlt=""
-                    topic="HIRING TEAMS"
-                    heading="Discover junior talent through skills, not resumes"
-                    body="See real code and live projects upfront, then connect directly with developers who've demonstrated the skills and passion you need."
-                    ctaLabel="EXPLORE HIRING"
-                />
+            {companyFeatures.map((feature) => (
+                <CompanyFeature.Row key={feature.id} reversed={feature.reversed}>
+                    {() => (
+                        <>
+                            <CompanyFeature.Content
+                                topic={feature.topic}
+                                heading={feature.heading}
+                                body={feature.body}
+                                ctaLabel={feature.ctaLabel}
+                                renderAction={({ ctaLabel }) => <Button style={btnStyle}>{ctaLabel}</Button>}
+                            />
+                            <CompanyFeature.Image imageSrc={feature.imageSrc} imageAlt={feature.imageAlt} />
+                        </>
+                    )}
+                </CompanyFeature.Row>
+            ))}
         </section>
-    )
+    );
 }

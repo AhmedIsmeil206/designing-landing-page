@@ -1,5 +1,12 @@
-/** @jsxImportSource @emotion/react */
 import { colors } from '@shared/colors';
+import { proFeedbackIcon, proPortfolioIcon, proWorkflowIcon } from '@shared/icons';
+
+interface ProBenefit {
+    id: string;
+    iconPath: string;
+    title: string;
+    description: string;
+}
 
 const general = {
     maxWidth: "1120px",
@@ -104,6 +111,44 @@ const proBadgeStyles = {
     position: 'relative',
 }
 
+const proBenefits: ProBenefit[] = [
+    {
+        id: 'ai-feedback',
+        iconPath: proFeedbackIcon,
+        title: 'Level up faster with AI-powered feedback',
+        description:
+            'Our AI-enhanced reports spot up to 3x more improvement opportunities on every submission, giving you personalized insights that help you level up faster.',
+    },
+    {
+        id: 'portfolio-projects',
+        iconPath: proPortfolioIcon,
+        title: 'Build portfolio projects that get you hired',
+        description:
+            'Create multi-page websites, interactive dashboards, and full-stack applications with premium challenges that make your portfolio stand out to employers.',
+    },
+    {
+        id: 'workflow',
+        iconPath: proWorkflowIcon,
+        title: 'Master the design-to-code workflow pros use',
+        description:
+            'Learn to translate Figma designs into pixel-perfect code using the same detailed specs and professional workflow that developers use in real teams.',
+    },
+];
+
+function ProBenefitCard({ benefit }: { benefit: ProBenefit }) {
+    return (
+        <div css={card}>
+            <div css={iconWrap}>
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d={benefit.iconPath} stroke="currentColor" strokeWidth="2"/>
+                </svg>
+            </div>
+            <h3 css={cardHeader}>{benefit.title}</h3>
+            <p css={cardContext}>{benefit.description}</p>
+        </div>
+    );
+}
+
 export default function ProCards() {
     return (
     <section css={general}>
@@ -114,43 +159,9 @@ export default function ProCards() {
         </p>
 
         <div css={cardsRow}>
-            <div css={card}>
-                <div css={iconWrap}>
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 8h10a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H9l-5 3V11a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="2"/>
-                    </svg>
-                </div>
-                <h3 css={cardHeader}>Level up faster with AI-powered feedback</h3>
-                <p css={cardContext}>
-                    Our AI-enhanced reports spot up to 3x more improvement opportunities on every submission, giving
-                    you personalized insights that help you level up faster.
-                </p>
-            </div>
-
-            <div css={card}>
-                <div css={iconWrap}>
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M7 8h10v10H7zM9 6h6v2H9z" stroke="currentColor" strokeWidth="2"/>
-                    </svg>
-                </div>
-                <h3 css={cardHeader}>Build portfolio projects that get you hired</h3>
-                <p css={cardContext}>
-                    Create multi-page websites, interactive dashboards, and full-stack applications with premium challenges that make your portfolio stand out to employers.
-                </p>
-            </div>
-
-            <div css={card}>
-                <div css={iconWrap}>
-                    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M6 7l-3 5 3 5M18 7l3 5-3 5M10 5l4 14" stroke="currentColor" strokeWidth="2"/>
-                    </svg>
-                </div>
-                <h3 css={cardHeader}>Master the design-to-code workflow pros use</h3>
-                <p css={cardContext}>
-                    Learn to translate Figma designs into pixel-perfect code using the same detailed specs and
-                    professional workflow that developers use in real teams.
-                </p>
-            </div>
+            {proBenefits.map((benefit) => (
+                <ProBenefitCard key={benefit.id} benefit={benefit} />
+            ))}
         </div>
     </section>
     )

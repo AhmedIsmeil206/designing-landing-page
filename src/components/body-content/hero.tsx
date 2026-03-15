@@ -1,11 +1,28 @@
 import Button from '@shared/button';
 import { colors } from '@shared/colors';
+import { githubMark } from '@shared/icons';
 import homeHero from '@assets/logos/home-hero.webp';
 import kevinAvatar from '@assets/logos/home-avatar-kevin.webp';
 import jessicaAvatar from '@assets/logos/home-avatar-jessica.webp';
 import cssTricksLogo from '@assets/logos/css-tricks.png';
 import stackOverflowLogo from '@assets/logos/stack-over-flow.png';
 import productHuntLogo from '@assets/logos/product-hunt.png';
+
+interface TestimonialItem {
+    id: string;
+    quote: string;
+    name: string;
+    role: string;
+    avatar: string;
+    quoteMarginBottom: string;
+    nameGap: string;
+}
+
+interface FeaturedBrand {
+    id: string;
+    logo: string;
+    alt: string;
+}
 
 const githubIconStyles = {
     width: "18px",
@@ -161,6 +178,113 @@ const featuredCard = {
     }
 }
 
+const heroActions = {
+    display: 'flex',
+    gap: '16px',
+    alignItems: 'center',
+    marginTop: '28px',
+    '@media (max-width: 768px)': {
+        flexDirection: 'column',
+        gap: '12px',
+        width: '100%',
+        '& button': {
+            width: '100%'
+        }
+    }
+};
+
+const primaryButtonStyle = {
+    fontSize: '16px',
+    padding: '16px 28px',
+    fontStyle: 'italic',
+    fontWeight: '700',
+    '@media (max-width: 768px)': { fontSize: '14px', padding: '13px 22px' },
+    '@media (max-width: 480px)': { fontSize: '12px', padding: '11px 18px' }
+};
+
+const secondaryButtonStyle = {
+    fontSize: '16px',
+    padding: '16px 28px',
+    fontStyle: 'italic',
+    fontWeight: '700',
+    border:`2px solid ${colors.grey}`,
+    '@media (max-width: 768px)': { fontSize: '14px', padding: '13px 22px' },
+    '@media (max-width: 480px)': { fontSize: '12px', padding: '11px 18px' }
+};
+
+const featuredLogoImgStyle = { maxWidth: '100%', height: 'auto' };
+
+const testimonials: TestimonialItem[] = [
+    {
+        id: 'kevin',
+        quote:
+            '"I highly recommend Frontend Mentor. Skip the search for project ideas and dive into ready-made challenges that help you level up as a developer."',
+        name: 'Kevin Powell',
+        role: 'Web Developer & YouTuber',
+        avatar: kevinAvatar,
+        quoteMarginBottom: '24px',
+        nameGap: '4px',
+    },
+    {
+        id: 'jessica',
+        quote:
+            '"Frontend Mentor is a win-win. You can sharpen your skills building websites and add finished projects to your portfolio to help land a job!"',
+        name: 'Jessica Chan',
+        role: 'Web Developer & YouTuber',
+        avatar: jessicaAvatar,
+        quoteMarginBottom: '10px',
+        nameGap: '6px',
+    },
+];
+
+const featuredBrands: FeaturedBrand[] = [
+    { id: 'css-tricks', logo: cssTricksLogo, alt: 'CSS-Tricks' },
+    { id: 'stack-overflow', logo: stackOverflowLogo, alt: 'Stack Overflow' },
+    { id: 'product-hunt', logo: productHuntLogo, alt: 'Product Hunt' },
+];
+
+function HeroActions() {
+    return (
+        <div css={heroActions}>
+            <Button variant="redButton" style={primaryButtonStyle} >
+                START BUILDING FREE
+                <svg css={githubIconStyles} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d={githubMark} />
+                </svg>
+            </Button>
+
+            <Button variant="Main_whiteButton" style={secondaryButtonStyle}>
+                BROWSE CHALLENGES
+            </Button>
+        </div>
+    );
+}
+
+function TestimonialCard({ item }: { item: TestimonialItem }) {
+    return (
+        <div css={testimonialCard}>
+            <p css={{fontSize: '20px', lineHeight: '1.6', fontWeight:'500', textAlign:'left', color: colors.black, marginBottom: item.quoteMarginBottom}}>
+                {item.quote}
+            </p>
+            <div css={{display: 'flex', alignItems: 'center', gap: '12px', paddingBlockEnd: '16px'}}>
+                <img src={item.avatar} alt={item.name} css={testimonialAvatar} />
+                <div css={{display: 'flex', flexDirection: 'column', gap: item.nameGap, justifyContent:'center', alignItems:'flex-start', paddingBlock: '18px'}}>
+                    <div css={{fontSize: '18px', fontWeight: '900', color: colors.darkPurple, fontStyle:'bold'}}>{item.name}</div>
+                    <div css={{fontSize: '12px', color: colors.darkGrey}}>{item.role}</div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function FeaturedBrandCard({ item }: { item: FeaturedBrand }) {
+    return (
+        <div css={featuredCard}>
+            <img src={item.logo} alt={item.alt} css={featuredLogoImgStyle} />
+        </div>
+    );
+}
+
 export default function Introduction() {
 
 return (
@@ -175,31 +299,7 @@ return (
                 <p css={description}>
                     Frontend Mentor provides professional design-to-code challenges that mirror real-world development work. Join <span css={{color: colors.purple, fontWeight: "700", fontStyle:'bold'}}>1,137,036</span> developers building portfolio projects that impress employers.
                 </p>
-                <div css={{
-                    display: "flex",
-                    gap: "16px",
-                    alignItems: "center",
-                    marginTop: "28px",
-                    '@media (max-width: 768px)': {
-                        flexDirection: "column",
-                        gap: "12px",
-                        width: "100%",
-                        '& button': {
-                            width: '100%'
-                        }
-                    }
-                }}>
-                    <Button variant="redButton" style={{fontSize: '16px', padding: '16px 28px', fontStyle: 'italic', fontWeight: '700', '@media (max-width: 768px)': { fontSize: '14px', padding: '13px 22px' }, '@media (max-width: 480px)': { fontSize: '12px', padding: '11px 18px' }}} >
-                        START BUILDING FREE
-                        <svg css={githubIconStyles} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                    </Button>
-
-                    <Button variant="Main_whiteButton" style={{fontSize: '16px', padding: '16px 28px', fontStyle: 'italic', fontWeight: '700', border:`2px solid ${colors.grey}`, '@media (max-width: 768px)': { fontSize: '14px', padding: '13px 22px' }, '@media (max-width: 480px)': { fontSize: '12px', padding: '11px 18px' }}}>
-                        BROWSE CHALLENGES
-                    </Button>
-                </div>
+                <HeroActions />
             </div>
 
             <div css={{ flex: "0 0 520px", '@media (max-width: 768px)': { flex: '1', width: '100%', maxWidth: '100%' }}}>
@@ -223,31 +323,9 @@ return (
 
         <div css={{padding: "34px 32px", background: colors.Main_whiteHover, '@media (max-width: 768px)': { padding: '24px 20px' }}}>
             <div css={testimonialsGrid}>
-                <div css={testimonialCard}>
-                    <p css={{fontSize: "20px", lineHeight: "1.6",fontWeight:'500',textAlign:'left' ,color: colors.black, marginBottom: "24px"}}>
-                        "I highly recommend Frontend Mentor. Skip the search for project ideas and dive into ready-made challenges that help you level up as a developer."
-                    </p>
-                    <div css={{display: "flex", alignItems: "center", gap: "12px", paddingBlockEnd: "16px"}}>
-                        <img src={kevinAvatar} alt="Kevin Powell" css={testimonialAvatar} />
-                        <div css={{display: "flex", flexDirection: "column", gap: "4px", justifyContent:"center", alignItems:"flex-start", paddingBlock: "18px"}}>
-                            <div css={{fontSize: "18px", fontWeight: "900", color: colors.darkPurple, fontStyle:'bold'}}>Kevin Powell</div>
-                            <div css={{fontSize: "12px", color: colors.darkGrey}}>Web Developer & YouTuber</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div css={testimonialCard}>
-                    <p css={{fontSize: "20px", lineHeight: "1.6",fontWeight:'500',textAlign:'left' ,color: colors.black, marginBottom: "10px"}}>
-                        "Frontend Mentor is a win-win. You can sharpen your skills building websites and add finished projects to your portfolio to help land a job!"
-                    </p>
-                    <div css={{display: "flex", alignItems: "center", gap: "12px", paddingBlockEnd: "16px"}}>
-                        <img src={jessicaAvatar} alt="Jessica Chan" css={testimonialAvatar} />
-                        <div css={{display: "flex", flexDirection: "column", gap: "6px", justifyContent:"center", alignItems:"flex-start", paddingBlock: "18px"}}>
-                            <div css={{fontSize: "18px", fontWeight: "900", color: colors.darkPurple, fontStyle:'bold'}}>Jessica Chan</div>
-                            <div css={{fontSize: "12px", color: colors.darkGrey}}>Web Developer & YouTuber</div>
-                        </div>
-                    </div>
-                </div>
+                {testimonials.map((testimonial) => (
+                    <TestimonialCard key={testimonial.id} item={testimonial} />
+                ))}
             </div>
         </div>
 
@@ -256,15 +334,9 @@ return (
                 As featured on ...
             </h2>
             <div css={featuredGrid}>
-                <div css={featuredCard}>
-                    <img src={cssTricksLogo} alt="CSS-Tricks" css={{maxWidth: "100%", height: "auto"}} />
-                </div>
-                <div css={featuredCard}>
-                    <img src={stackOverflowLogo} alt="Stack Overflow" css={{maxWidth: "100%", height: "auto"}} />
-                </div>
-                <div css={featuredCard}>
-                    <img src={productHuntLogo} alt="Product Hunt" css={{maxWidth: "100%", height: "auto"}} />
-                </div>
+                {featuredBrands.map((brand) => (
+                    <FeaturedBrandCard key={brand.id} item={brand} />
+                ))}
             </div>
         </div>
     </>

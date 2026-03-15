@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { type CSSObject } from '@emotion/react';
 import { colors } from '@shared/colors';
 import Button from '@shared/button';
+import { checkMark } from '@shared/icons';
 
 import visaLogo from '@assets/logos/purchase/visa.webp';
 import mastercardLogo from '@assets/logos/purchase/mastercard.webp';
@@ -8,6 +10,27 @@ import amexLogo from '@assets/logos/purchase/amex.webp';
 import maestroLogo from '@assets/logos/purchase/maestro.webp';
 import paypalLogo from '@assets/logos/purchase/paypal.webp';
 import gpayLogo from '@assets/logos/purchase/gpay.webp';
+
+type BillingTab = 'individuals' | 'teams';
+type Feature = string | { text: string; bold: boolean };
+
+interface PaymentLogo {
+    src: string;
+    alt: string;
+}
+
+interface IndividualPlan {
+    id: string;
+    title: string;
+    oldPrice: string;
+    newPrice: string;
+    priceSub: string;
+    features: Feature[];
+    isBestValue?: boolean;
+    cardStyle?: CSSObject;
+    contentStyle?: CSSObject;
+    titleStyle?: CSSObject;
+}
 
 const container = {
     width: '100%',
@@ -20,7 +43,7 @@ const container = {
         padding: '24px 20px',
         marginBlockStart: '24px'
     }
-}
+} as const;
 const ContainerContext = {
     width:'45%',
     display: 'flex',
@@ -35,7 +58,7 @@ const ContainerContext = {
         width: '100%',
         justifyContent: 'center'
     }
-}
+} as const;
 const context = {
     padding: '16px 24px',
     borderRadius: '50px',
@@ -50,7 +73,7 @@ const context = {
         padding: '12px 16px',
         fontSize: '14px'
     }
-}
+} as const;
 const individualCards = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
@@ -63,7 +86,7 @@ const individualCards = {
         marginBlockEnd: '24px',
         gap: '20px'
     }
-}
+} as const;
 const card = {
     backgroundColor: colors.Main_white,
     border: `2px solid ${colors.grey}`,
@@ -77,7 +100,7 @@ const card = {
     '@media (max-width: 768px)': {
         paddingInline: '24px'
     }
-}
+} as const;
 const bestValueBadge = {
     position: 'absolute',
     top: '0',
@@ -92,14 +115,14 @@ const bestValueBadge = {
     fontSize: '14px',
     fontStyle: 'italic',
     textTransform: 'uppercase',
-}
+} as const;
 const cardTitle = {
     fontSize: '22px',
     fontWeight: '700',
     marginBlockEnd: '24px',
     textAlign: 'center',
     color: colors.black,
-}
+} as const;
 
 const priceOld = {
     fontSize: '18px',
@@ -110,19 +133,19 @@ const priceOld = {
     opacity: 0.4,
     fontStyle:'bold',
     fontWeight: '900',
-}
+} as const;
 const priceNew = {
     fontSize: '24px',
     fontWeight: '700',
     color: colors.black,
     marginBottom: '4px',
-}
+} as const;
 const priceSub = {
     fontSize: '14px',
     color: colors.darkGrey,
     display: 'block',
     marginBottom: '24px',
-}
+} as const;
 const discountBadge = {
     display: 'flex',
     alignItems: 'center',
@@ -132,18 +155,18 @@ const discountBadge = {
     borderRadius: '12px',
     marginBlockEnd: '16px',
     border:`1px solid ${colors.lightPurple}`,
-}
+} as const;
 const discountText = {
     fontSize: '16px',
     fontWeight: '700',
     color: colors.black,
-}
+} as const;
 const discountPercent = {
     fontSize: '18px',
     fontWeight: '700',
     color: colors.darkPurple,
     fontStyle:'bold'
-}
+} as const;
 const appliedBadge = {
     fontSize: '12px',
     fontWeight: '600',
@@ -151,12 +174,12 @@ const appliedBadge = {
     backgroundColor: colors.lightGreen,
     padding: '4px 12px',
     borderRadius: '6px',
-}
+} as const;
 const featuresList = {
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
-}
+} as const;
 const checkmark = {
     width: '24px',
     height: '24px',
@@ -166,7 +189,7 @@ const checkmark = {
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
-}
+} as const;
 const teamsCard = {
     backgroundColor: colors.Main_white,
     border: `2px solid ${colors.grey}`,
@@ -181,7 +204,7 @@ const teamsCard = {
         gap: '24px',
         padding: '24px'
     }
-}
+} as const;
 const teamsTitle = {
     display:'flex',
     alignItems:'flex-start',
@@ -189,7 +212,7 @@ const teamsTitle = {
     fontSize: '24px',
     fontWeight: '700',
     color: colors.black,
-}
+} as const;
 const PaymentLogos = {
     width:'70%',
     borderRadius: '12px',
@@ -205,67 +228,161 @@ const PaymentLogos = {
         gap: '12px',
         padding: '20px 16px'
     }
-}
+} as const;
 
-const SubscriptionCards = () => {
-    const [activeTab, setActiveTab] = useState('individuals');
+const sectionContent = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+} as const;
 
-    const paymentLogos = [
-        { src: visaLogo, alt: 'VISA' },
-        { src: mastercardLogo, alt: 'Mastercard' },
-        { src: amexLogo, alt: 'American Express' },
-        { src: maestroLogo, alt: 'Maestro' },
-        { src: paypalLogo, alt: 'PayPal' },
-        { src: gpayLogo, alt: 'Google Pay' },
-    ];
+const fullWidthCtaWrap = {
+    paddingBlockEnd: '10px',
+    width: '100%',
+    marginBlockEnd: '16px',
+} as const;
 
-    const monthlyFeatures = [
-        'Free challenges',
-        { text: 'AI-powered solution feedback', bold: true },
-        { text: '5 Figma design files/month', bold: true },
-        { text: '2 premium challenges/month', bold: true },
-        'Unlimited solution screenshots',
-        'Private solutions',
-        'Custom solution domains',
-        'View challenges solutions early',
-    ];
+const ctaStyle = {
+    height: '48px',
+    width: '100%',
+    fontSize: '16px',
+} as const;
 
-    const yearlyFeatures = [
-        'Free challenges',
-        { text: 'AI-powered solution feedback', bold: true },
-        { text: 'Unlimited Figma design files', bold: true },
-        { text: 'Unlimited premium challenges', bold: true },
-        'Unlimited solution screenshots',
-        'Private solutions',
-        'Custom solution domains',
-        'View challenges solutions early',
-    ];
+const planPriceWrap = {
+    textAlign: 'center',
+} as const;
 
-    const teamFeatures = [
-        'Unlimited Pro access for team members',
-        'Unified billing',
-        'Team management',
-        'Team branding',
-        'Bulk discount',
-    ];
+const featureItemWrap = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+} as const;
 
-    const renderFeature = (feature: string | { text: string; bold: boolean }, index: number) => {
-        const text = typeof feature === 'string' ? feature : feature.text;
-        const isBold = typeof feature === 'object' && feature.bold;
+const featureText = (isBold: boolean) => ({
+    lineHeight: '27px',
+    fontSize: '18px',
+    color: colors.black,
+    fontWeight: isBold ? '700' : '400',
+} as const);
 
-        return (
-        <div key={index} css={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-            <div css={checkmark}>
-            <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            </div>
-            <span css={{ lineHeight: '27px', fontSize: '18px', color: colors.black, fontWeight: isBold ? '700' : '400' }}>{text}</span>
-        </div>
-        );
-    };
+const teamsWrap = {
+    maxWidth: '800px',
+    marginBlockEnd: '40px',
+    '@media (max-width: 768px)': { maxWidth: '100%', width: '100%' },
+} as const;
 
-    const renderDiscountBadge = () => (
+const teamsLeftCol = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: '500px',
+    marginBlockStart: '-30px',
+    '@media (max-width: 768px)': { height: 'auto', marginBlockStart: '0' },
+} as const;
+
+const teamsDescription = {
+    fontSize: '18px',
+    color: colors.darkGrey,
+    lineHeight: '1.6',
+    marginBottom: '48px',
+    textAlign: 'start',
+    '@media (max-width: 768px)': { fontSize: '16px', marginBottom: '24px' },
+} as const;
+
+const teamsRightCol = {
+    minWidth: '340px',
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'start',
+    marginBlockStart: '-30px',
+    '@media (max-width: 768px)': { minWidth: 'auto', width: '100%', marginBlockStart: '0' },
+} as const;
+
+const teamsPriceTitle = {
+    fontSize: '18px',
+    fontWeight: '700',
+    marginBottom: '16px',
+    color: colors.black,
+} as const;
+
+const logoImg = {
+    height: '32px',
+    objectFit: 'contain',
+} as const;
+
+const emptyCssObject: CSSObject = {};
+
+const tabOptions: BillingTab[] = ['individuals', 'teams'];
+
+const paymentLogos: PaymentLogo[] = [
+    { src: visaLogo, alt: 'VISA' },
+    { src: mastercardLogo, alt: 'Mastercard' },
+    { src: amexLogo, alt: 'American Express' },
+    { src: maestroLogo, alt: 'Maestro' },
+    { src: paypalLogo, alt: 'PayPal' },
+    { src: gpayLogo, alt: 'Google Pay' },
+];
+
+const monthlyFeatures: Feature[] = [
+    'Free challenges',
+    { text: 'AI-powered solution feedback', bold: true },
+    { text: '5 Figma design files/month', bold: true },
+    { text: '2 premium challenges/month', bold: true },
+    'Unlimited solution screenshots',
+    'Private solutions',
+    'Custom solution domains',
+    'View challenges solutions early',
+];
+
+const yearlyFeatures: Feature[] = [
+    'Free challenges',
+    { text: 'AI-powered solution feedback', bold: true },
+    { text: 'Unlimited Figma design files', bold: true },
+    { text: 'Unlimited premium challenges', bold: true },
+    'Unlimited solution screenshots',
+    'Private solutions',
+    'Custom solution domains',
+    'View challenges solutions early',
+];
+
+const teamFeatures: Feature[] = [
+    'Unlimited Pro access for team members',
+    'Unified billing',
+    'Team management',
+    'Team branding',
+    'Bulk discount',
+];
+
+const individualPlans: IndividualPlan[] = [
+    {
+        id: 'monthly',
+        title: 'Monthly',
+        oldPrice: '۱۲ US$/month',
+        newPrice: '۴,۸ US$/mo',
+        priceSub: 'Billed monthly',
+        features: monthlyFeatures,
+    },
+    {
+        id: 'yearly',
+        title: 'Yearly',
+        oldPrice: '۸ US$ /month',
+        newPrice: '۳,۲ US$/mo',
+        priceSub: '۳۸,۴ US$ billed yearly (save 33% vs monthly)',
+        features: yearlyFeatures,
+        isBestValue: true,
+        cardStyle: {
+            border: `3px solid ${colors.purple}`,
+            marginBlockStart: '-40px',
+            marginInlineStart: '0px',
+            '@media (max-width: 768px)': { marginBlockStart: '0' },
+        },
+        contentStyle: { marginTop: '24px' },
+        titleStyle: { marginBlockStart: '36px' },
+    },
+];
+
+function DiscountBadge() {
+    return (
         <div css={discountBadge}>
             <span css={{ fontSize: '18px' }}>🇪🇬</span>
             <span css={discountText}>Country Discount</span>
@@ -273,96 +390,144 @@ const SubscriptionCards = () => {
             <span css={appliedBadge}>Applied</span>
         </div>
     );
+}
+
+function FeatureList({ features }: { features: Feature[] }) {
+    return (
+        <div css={featuresList}>
+            {features.map((feature, index) => {
+                const text = typeof feature === 'string' ? feature : feature.text;
+                const isBold = typeof feature === 'object' && feature.bold;
+
+                return (
+                    <div key={`${text}-${index}`} css={featureItemWrap}>
+                        <div css={checkmark}>
+                            <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+                                <path d={checkMark} stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                        <span css={featureText(isBold)}>{text}</span>
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
+
+function PlanCard({ plan }: { plan: IndividualPlan }) {
+    const mergedCardStyle: CSSObject = { ...card, ...(plan.cardStyle ?? emptyCssObject) };
+    const mergedTitleStyle: CSSObject = { ...cardTitle, ...(plan.titleStyle ?? emptyCssObject) };
+    const contentStyle: CSSObject = plan.contentStyle ?? emptyCssObject;
 
     return (
-        <div css={container}>
-            <div css={{display:'flex', flexDirection: 'column', alignItems: 'center',}}>
-                <div css={ContainerContext}>
-                    {(['individuals', 'teams']).map((tab) => (
-                    <button
-                        key={tab}
-                        onClick={() => setActiveTab(tab)}
-                        css={{
+        <div css={mergedCardStyle}>
+            {plan.isBestValue && <div css={bestValueBadge}>Best Value</div>}
+            <div css={contentStyle}>
+                <h3 css={mergedTitleStyle}>{plan.title}</h3>
+                <div css={planPriceWrap}>
+                    <span css={priceOld}>{plan.oldPrice}</span>
+                    <div css={priceNew}>{plan.newPrice}</div>
+                    <span css={priceSub}>{plan.priceSub}</span>
+                </div>
+                <DiscountBadge />
+                <div css={fullWidthCtaWrap}>
+                    <Button variant="redButton" style={ctaStyle}>
+                        Learn More
+                    </Button>
+                </div>
+                <FeatureList features={plan.features} />
+            </div>
+        </div>
+    );
+}
+
+function IndividualPlansSection() {
+    return (
+        <div css={individualCards}>
+            {individualPlans.map((plan) => (
+                <PlanCard key={plan.id} plan={plan} />
+            ))}
+        </div>
+    );
+}
+
+function TeamPlanSection() {
+    return (
+        <div css={teamsWrap}>
+            <div css={teamsCard}>
+                <div css={teamsLeftCol}>
+                    <div>
+                        <h2 css={teamsTitle}>Frontend Mentor for Teams</h2>
+                        <p css={teamsDescription}>
+                            Onboard new hires faster and train team members more effectively through hands-on practice.
+                            All team members gain unlimited Pro access, and admins can easily oversee and manage the team.
+                        </p>
+                    </div>
+                    <Button variant="redButton" style={ctaStyle}>
+                        Learn More
+                    </Button>
+                </div>
+
+                <div css={teamsRightCol}>
+                    <h3 css={teamsPriceTitle}>Teams</h3>
+                    <span css={priceOld}>١٢٫٥٠ US$/seat/mo</span>
+                    <div css={priceNew}>٥ US$/seat/mo</div>
+                    <span css={priceSub}>٦٠ US$ per seat, billed yearly</span>
+                    <DiscountBadge />
+                    <FeatureList features={teamFeatures} />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function BillingTabs({
+    activeTab,
+    onChange,
+}: {
+    activeTab: BillingTab;
+    onChange: (tab: BillingTab) => void;
+}) {
+    return (
+        <div css={ContainerContext}>
+            {tabOptions.map((tab) => (
+                <button
+                    key={tab}
+                    onClick={() => onChange(tab)}
+                    css={{
                         ...context,
                         backgroundColor: activeTab === tab ? colors.purple : colors.Main_white,
                         color: activeTab === tab ? colors.Main_white : colors.black,
-                        }}
-                    >
-                        For {tab === 'individuals' ? 'Individuals' : 'Teams'}
-                    </button>
-                    ))}
-                </div>
+                    }}
+                >
+                    For {tab === 'individuals' ? 'Individuals' : 'Teams'}
+                </button>
+            ))}
+        </div>
+    );
+}
 
+function PaymentLogoStrip() {
+    return (
+        <div css={PaymentLogos}>
+            {paymentLogos.map((logo) => (
+                <img key={logo.alt} src={logo.src} alt={logo.alt} css={logoImg} />
+            ))}
+        </div>
+    );
+}
 
-                {activeTab === 'individuals' ? (
-                    <div css={individualCards}>
-                        <div css={{ ...card }}>
-                            <h3 css={cardTitle}>Monthly</h3>
-                            <div css={{ textAlign: 'center' }}>
-                                <span css={priceOld}>۱۲ US$/month</span>
-                                <div css={priceNew}>۴,۸ US$/mo</div>
-                                <span css={priceSub}>Billed monthly</span>
-                            </div>
-                            {renderDiscountBadge()}
-                            <div css={{paddingBlockEnd:'10px', width:'100%', marginBlockEnd:'16px'}}>
-                                <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px'}}>
-                                    Learn More
-                                </Button>
-                            </div>
-                            <div css={featuresList}>{monthlyFeatures.map(renderFeature)}</div>
-                        </div>
+const SubscriptionCards = () => {
+    const [activeTab, setActiveTab] = useState<BillingTab>('individuals');
 
-                        <div css={{ ...card, border: `3px solid ${colors.purple}`, marginBlockStart: '-40px', marginInlineStart:'0px', '@media (max-width: 768px)': { marginBlockStart: '0' } }}>
-                            <div css={bestValueBadge}>Best Value</div>
-                            <div css={{ marginTop: '24px' }}>
-                                <h3 css={{...cardTitle,marginBlockStart: '36px',}}>Yearly</h3>
-                                <div css={{ textAlign: 'center' }}>
-                                    <span css={priceOld}>۸ US$ /month</span>
-                                    <div css={priceNew}>۳,۲ US$/mo</div>
-                                    <span css={priceSub}>۳۸,۴ US$ billed yearly (save 33% vs monthly)</span>
-                                </div>
-                                {renderDiscountBadge()}
-                                <div css={{paddingBlockEnd:'10px', width:'100%', marginBlockEnd:'16px'}}>
-                                    <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px'}}>
-                                        Learn More
-                                    </Button>
-                                </div>
-                                <div css={featuresList}>{yearlyFeatures.map(renderFeature)}</div>
-                            </div>
-                        </div>
-                    </div>
-                ) : (
-                    <div css={{maxWidth: '800px', marginBlockEnd: '40px', '@media (max-width: 768px)': { maxWidth: '100%', width: '100%' }}}>
-                        <div css={teamsCard}>
-                            <div css={{display: 'flex',flexDirection: 'column', justifyContent: 'space-between', height: '500px', marginBlockStart:'-30px', '@media (max-width: 768px)': { height: 'auto', marginBlockStart: '0' }}}>
-                                <div>
-                                    <h2 css={teamsTitle}>Frontend Mentor for Teams</h2>
-                                    <p css={{fontSize: '18px', color: colors.darkGrey, lineHeight: '1.6', marginBottom: '48px',textAlign: 'start', '@media (max-width: 768px)': { fontSize: '16px', marginBottom: '24px' }}}>
-                                    Onboard new hires faster and train team members more effectively through hands-on practice.
-                                    All team members gain unlimited Pro access, and admins can easily oversee and manage the team.
-                                    </p>
-                                </div>
-                                <Button variant="redButton" style={{height:'48px', width:'100%', fontSize:'16px',}}>
-                                    Learn More
-                                </Button>
-                            </div>
+    return (
+        <div css={container}>
+            <div css={sectionContent}>
+                <BillingTabs activeTab={activeTab} onChange={setActiveTab} />
 
-                            <div css={{minWidth: '340px',display:'flex', flexDirection:'column', textAlign: 'start', marginBlockStart:'-30px', '@media (max-width: 768px)': { minWidth: 'auto', width: '100%', marginBlockStart: '0' }}}>
-                                <h3 css={{fontSize: '18px', fontWeight: '700', marginBottom: '16px', color: colors.black}}>Teams</h3>
-                                <span css={priceOld}>١٢٫٥٠ US$/seat/mo</span>
-                                <div css={priceNew}>٥ US$/seat/mo</div>
-                                <span css={priceSub}>٦٠ US$ per seat, billed yearly</span>
-                                {renderDiscountBadge()}
-                                <div css={featuresList}>{teamFeatures.map(renderFeature)}</div>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                <div css={PaymentLogos}>
-                    {paymentLogos.map((logo, index) => (
-                    <img key={index} src={logo.src} alt={logo.alt} css={{height: '32px', objectFit: 'contain'}} />
-                    ))}
-                </div>
+                {activeTab === 'individuals' ? <IndividualPlansSection /> : <TeamPlanSection />}
+
+                <PaymentLogoStrip />
             </div>
         </div>
     );

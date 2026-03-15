@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { colors } from "@shared/colors"
 import { type ReactNode } from 'react'
 import choice1 from '@assets/images/home-why-1.webp'
@@ -14,6 +13,17 @@ interface FeatureRowProps {
     heading: string;
     body: string;
     children?: ReactNode;
+}
+
+interface DeveloperFeatureItem {
+    id: string;
+    reversed?: boolean;
+    contentMaxWidth?: string;
+    contentMarginEnd?: string;
+    imageSrc: string;
+    imageAlt: string;
+    heading: string;
+    body: string;
 }
 
 const general = {
@@ -130,46 +140,62 @@ function FeatureRow({
     );
 }
 
+const developerFeatures: DeveloperFeatureItem[] = [
+    {
+        id: 'passive-learning',
+        imageSrc: choice1,
+        imageAlt: '',
+        heading: 'Move beyond passive learning',
+        body: 'Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice.',
+        contentMaxWidth: '480px',
+        contentMarginEnd: '50px',
+    },
+    {
+        id: 'portfolio',
+        reversed: true,
+        imageSrc: choice2,
+        imageAlt: '',
+        heading: 'Create a portfolio that gets you hired',
+        body: 'Build impressive projects with professional designs. Recruiters tell us these portfolio pieces consistently "wow" them in interviews by demonstrating real-world capabilities.',
+        contentMaxWidth: '420px',
+    },
+    {
+        id: 'ai-workflows',
+        imageSrc: choice3,
+        imageAlt: '',
+        heading: 'Master AI-powered development workflows',
+        body: 'Practice with AI tools that 76% of developers use daily. Learn to work effectively with Cursor, GitHub Copilot, ChatGPT, and other assistants while maintaining code quality and problem-solving skills.',
+        contentMaxWidth: '420px',
+        contentMarginEnd: '110px',
+    },
+    {
+        id: 'community',
+        reversed: true,
+        imageSrc: choice4,
+        imageAlt: '',
+        heading: 'Join a supportive developer community',
+        body: "Connect with peers for code reviews, career advice, and friendship. Beat imposter syndrome alongside developers who understand your journey, guided by mentors who've walked this path.",
+        contentMaxWidth: '420px',
+    },
+];
+
 export default function DevFeatures() {
     return (
         <section css={general}>
                 <h2 css={title}>Why developers choose Frontend Mentor</h2>
 
-                <FeatureRow
-                    imageSrc={choice1}
-                    imageAlt=""
-                    heading="Move beyond passive learning"
-                    body="Stop watching and start creating. Build professional-quality projects that develop genuine coding skills through hands-on practice."
-                    contentMaxWidth="480px"
-                    contentMarginEnd="50px"
-                />
-
-                <FeatureRow
-                    reversed
-                    imageSrc={choice2}
-                    imageAlt=''
-                    heading="Create a portfolio that gets you hired"
-                    body='Build impressive projects with professional designs. Recruiters tell us these portfolio pieces consistently "wow" them in interviews by demonstrating real-world capabilities.'
-                    contentMaxWidth="420px"
-                />
-
-                <FeatureRow
-                    imageSrc={choice3}
-                    imageAlt=""
-                    heading="Master AI-powered development workflows"
-                    body="Practice with AI tools that 76% of developers use daily. Learn to work effectively with Cursor, GitHub Copilot, ChatGPT, and other assistants while maintaining code quality and problem-solving skills."
-                    contentMaxWidth="420px"
-                    contentMarginEnd="110px"
-                />
-
-                <FeatureRow
-                    reversed
-                    imageSrc={choice4}
-                    imageAlt=""
-                    heading="Join a supportive developer community"
-                    body="Connect with peers for code reviews, career advice, and friendship. Beat imposter syndrome alongside developers who understand your journey, guided by mentors who've walked this path."
-                    contentMaxWidth="420px"
-                />
+                {developerFeatures.map((feature) => (
+                    <FeatureRow
+                        key={feature.id}
+                        reversed={feature.reversed}
+                        imageSrc={feature.imageSrc}
+                        imageAlt={feature.imageAlt}
+                        heading={feature.heading}
+                        body={feature.body}
+                        contentMaxWidth={feature.contentMaxWidth}
+                        contentMarginEnd={feature.contentMarginEnd}
+                    />
+                ))}
         </section>
     )
 }

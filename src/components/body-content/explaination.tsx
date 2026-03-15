@@ -1,10 +1,16 @@
-/** @jsxImportSource @emotion/react */
 import { colors } from '@shared/colors';
 import { useState } from 'react';
 import choice1 from '@assets/images/home-how-it-works-1.webp';
 import choice2 from '@assets/images/home-how-it-works-2.webp';
 import choice3 from '@assets/images/home-how-it-works-3.webp';
 import choice4 from '@assets/images/home-how-it-works-4.webp';
+
+interface StepItem {
+    id: number;
+    title: string;
+    description: string;
+    imageSrc: string;
+}
 
 const wrapper = {
     display: "grid",
@@ -34,6 +40,7 @@ const imageWrap = {
         width: "100%"
     }
 }
+const imageStyle = {  display: "flex", alignItems: "center", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }
 
 const numberPill = (active) => ({
     width: "30px",
@@ -59,31 +66,79 @@ const stepCard = (active) => ({
     transition: "all 0.2s ease",
 })
 
-const steps = [
+const steps: StepItem[] = [
     {
         id: 1,
         title: 'choose your challenge',
-        description: ' Pick from 100+ professionally designed projects across five skill levels—from HTML/CSS basics to full-stack applications.'
+        description: ' Pick from 100+ professionally designed projects across five skill levels-from HTML/CSS basics to full-stack applications.',
+        imageSrc: choice1,
 
     },
     {
         id: 2,
         title: 'Code the design',
-        description: 'Build responsive websites and web apps using the provided designs as your guide. Practice with any tools, frameworks, or AI assistants you want to master.'
+        description: 'Build responsive websites and web apps using the provided designs as your guide. Practice with any tools, frameworks, or AI assistants you want to master.',
+        imageSrc: choice2,
     },
     {
         id: 3,
         title: 'Submit and improve',
-            description: 'Get automated feedback, community code reviews, and compare your solution to the design. Refine your approach and level up with each project.'
+        description: 'Get automated feedback, community code reviews, and compare your solution to the design. Refine your approach and level up with each project.',
+        imageSrc: choice3,
     },
     {
         id: 4,
         title: 'Help others grow',
-        description: ' Review other developers’ code to sharpen your skills and build connections in our supportive community.'
+        description: ' Review other developers code to sharpen your skills and build connections in our supportive community.',
+        imageSrc: choice4,
     }
-]
+];
+
+function StepCard({
+    step,
+    isActive,
+    onClick,
+}: {
+    step: StepItem;
+    isActive: boolean;
+    onClick: () => void;
+}) {
+    return (
+        <div css={stepCard(isActive)} onClick={onClick}>
+            <div css={{ display: 'flex', alignItems: 'center' }}>
+                <span css={numberPill(isActive)}>{step.id}</span>
+                <span
+                    css={{
+                        fontSize: '20px',
+                        fontWeight: '700',
+                        padding: '8px',
+                        textTransform: 'capitalize'
+                    }}
+                >
+                    {step.title}
+                </span>
+            </div>
+
+            {isActive && (
+                <p
+                    css={{
+                        marginTop: '12px',
+                        marginLeft: '46px',
+                        fontSize: '14px',
+                        lineHeight: '1.7',
+                        opacity: 0.95
+                    }}
+                >
+                    {step.description}
+                </p>
+            )}
+        </div>
+    );
+}
+
 export default function Explaination () {
-    const [active, setActive] = useState(1)
+    const [active, setActive] = useState(1);
+    const activeStep = steps.find((step) => step.id === active) ?? steps[0];
 
 return (
     <div css={wrapper}>
@@ -102,88 +157,23 @@ return (
                 How it works
             </h2>
 
-            {steps.map((step) => {
-                const isActive = step.id === active;
-                return (
-                    <div
-                        key={step.id}
-                        css={stepCard(isActive)}
-                        onClick={() => setActive(step.id)}
-                    >
-                        <div css={{ display: "flex", alignItems: "center" }}>
-                            <span css={numberPill(isActive)}>{step.id}</span>
-                            <span css={{
-                                fontSize: "20px",
-                                fontWeight: "700",
-                                padding: "8px",
-                                textTransform: "capitalize"
-                            }}>
-                                {step.title}
-                            </span>
-                        </div>
-
-                        {isActive && (
-                            <p css={{
-                                marginTop: "12px",
-                                marginLeft: "46px",
-                                fontSize: "14px",
-                                lineHeight: "1.7",
-                                opacity: 0.95
-                            }}>
-                                {step.description}
-                            </p>
-                        )}
-                    </div>
-                );
-            })}
+            {steps.map((step) => (
+                <StepCard
+                    key={step.id}
+                    step={step}
+                    isActive={step.id === active}
+                    onClick={() => setActive(step.id)}
+                />
+            ))}
         </div>
 
-        {
-            active === 1 && (
-                <div css={imageWrap}>
-                    <img
-                        src={choice1}
-                        alt="How it works preview"
-                        css={{  display: "flex", alignItems: "center", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
-                    />
-                </div>
-            )
-        }
-        {
-            active === 2 && (
-                <div css={imageWrap}>
-                    <img
-                        src={choice2}
-                        alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
-                    />
-                </div>
-            )
-        }
-
-        {
-            active === 3 && (
-                <div css={imageWrap}>
-                    <img
-                        src={choice3}
-                        alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
-                    />
-                </div>
-            )
-        }
-
-        {
-            active === 4 && (
-                <div css={imageWrap}>
-                    <img
-                        src={choice4}
-                        alt="How it works preview"
-                        css={{  display: "flex", alignItems: "left", borderRadius: "14px", maxWidth: "560px", maxHeight: "450px", '@media (max-width: 768px)': { maxWidth: '100%', width: '100%', height: 'auto' } }}
-                    />
-                </div>
-            )
-        }
+        <div css={imageWrap}>
+            <img
+                src={activeStep.imageSrc}
+                alt="How it works preview"
+                css={imageStyle}
+            />
+        </div>
     </div>
 );
 }

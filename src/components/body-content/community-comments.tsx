@@ -1,6 +1,6 @@
-/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { colors } from '@shared/colors';
+import { carouselArrowLeft, carouselArrowRight } from '@shared/icons';
 
 interface CommunityMembersProps {
     id: number;
@@ -8,6 +8,12 @@ interface CommunityMembersProps {
     handle: string;
     avatar: string;
     comment: string;
+}
+
+interface NavArrowButtonProps {
+    onClick: () => void;
+    disabled: boolean;
+    path: string;
 }
 
 const communityCommentsStyle = {
@@ -115,6 +121,61 @@ const userNameStyle = {
     marginBottom: '2px'
 };
 
+const headerActionsStyle = {
+    display: 'flex',
+    gap: '12px',
+    '@media (max-width: 768px)': { marginInlineEnd: '0' }
+};
+
+const sectionContainerStyle = {
+    maxWidth: '1400px',
+    margin: '0 auto',
+    paddingInline: 'clamp(20px, 5%, 80px)'
+};
+
+const carouselViewportStyle = {
+    overflow: 'hidden',
+    '@media (max-width: 768px)': { paddingInline: '0' }
+};
+
+const cardFooterStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px'
+};
+
+const memberHandleStyle = {
+    margin: 0,
+    fontSize: '14px',
+    color: colors.darkGrey,
+    fontWeight: '400'
+};
+
+function NavArrowButton({ onClick, disabled, path }: NavArrowButtonProps) {
+    return (
+        <button onClick={onClick} disabled={disabled} css={getNavButtonStyle(disabled)}>
+            <svg width="40" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d={path} stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+        </button>
+    );
+}
+
+function CommunityMemberCard({ member }: { member: CommunityMembersProps }) {
+    return (
+        <div css={cardCommentStyle}>
+            <p css={commentTextStyle}>{member.comment}</p>
+            <div css={cardFooterStyle}>
+                <img src={member.avatar} alt={`${member.name}'s avatar`} css={imgStyle} />
+                <div>
+                    <h3 css={userNameStyle}>{member.name}</h3>
+                    <p css={memberHandleStyle}>{member.handle}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 const members: CommunityMembersProps[] = [
     {
         id: 1,
@@ -191,55 +252,19 @@ export default function CommunityComments() {
 
     return (
         <section css={communityCommentsStyle}>
-            <div css={{maxWidth: '1400px', margin: '0 auto', paddingInline: 'clamp(20px, 5%, 80px)'}}>
+            <div css={sectionContainerStyle}>
                 <div css={headerStyle}>
                     <h2 css={titleStyle}>A little <span css={{fontSize: '40px', '@media (max-width: 768px)': { fontSize: '20px' }}}>❤️</span> from our community</h2>
-                    <div css={{display: 'flex', gap: '12px', '@media (max-width: 768px)': { marginInlineEnd: '0' }}}>
-                        <button
-                            onClick={handlePrev}
-                            disabled={isAtStart}
-                            css={getNavButtonStyle(isAtStart)}
-                        >
-                            <svg width="40" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 10H5M5 10L10 15M5 10L10 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </button>
-
-                        <button
-                            onClick={handleNext}
-                            disabled={isAtEnd}
-                            css={getNavButtonStyle(isAtEnd)}
-                        >
-                            <svg width="40" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 10H15M15 10L10 5M15 10L10 15" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </button>
+                    <div css={headerActionsStyle}>
+                        <NavArrowButton onClick={handlePrev} disabled={isAtStart} path={carouselArrowLeft} />
+                        <NavArrowButton onClick={handleNext} disabled={isAtEnd} path={carouselArrowRight} />
                     </div>
                 </div>
 
-                <div css={{overflow: 'hidden', '@media (max-width: 768px)': { paddingInline: '0' }}}>
+                <div css={carouselViewportStyle}>
                     <div css={getCarouselTrackStyle(currentIndex)}>
                         {members.map((member) => (
-                            <div key={member.id} css={cardCommentStyle}>
-                                <p css={commentTextStyle}>
-                                    {member.comment}
-                                </p>
-                                <div css={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-                                    <img
-                                        src={member.avatar}
-                                        alt={`${member.name}'s avatar`}
-                                        css={imgStyle}
-                                    />
-                                    <div>
-                                        <h3 css={userNameStyle}>
-                                            {member.name}
-                                        </h3>
-                                        <p css={{margin: 0, fontSize: '14px', color: colors.darkGrey,  fontWeight: '400'}}>
-                                            {member.handle}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <CommunityMemberCard key={member.id} member={member} />
                         ))}
                     </div>
                 </div>
