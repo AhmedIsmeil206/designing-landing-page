@@ -47,8 +47,7 @@ const general = {
         paddingInline: '20px',
         width: '100%'
     }
-} as const;
-
+}
 const title = {
     display: "flex",
     alignItems: 'center',
@@ -63,7 +62,7 @@ const title = {
         height: 'auto',
         marginBlock: '16px'
     }
-} as const;
+}
 
 const row = {
     display: "flex",
@@ -76,16 +75,16 @@ const row = {
         flexDirection: 'column',
         gap: '20px'
     }
-} as const;
+}
 
 const rowDirectionStyles = (reversed: boolean) => ({
     ...row,
-    flexDirection: reversed ? ('row-reverse' as const) : ('row' as const),
+    flexDirection: reversed ? ('row-reverse' ) : ('row' ),
     '@media (max-width: 768px)': {
         flexDirection: 'column',
         gap: '20px'
     }
-} as const);
+})
 
 const imageWrap = {
     borderRadius: "20px",
@@ -95,7 +94,7 @@ const imageWrap = {
     '@media (max-width: 768px)': {
         padding: '12px'
     }
-} as const;
+}
 
 const kickerStyle = {
     color: colors.purple,
@@ -103,12 +102,12 @@ const kickerStyle = {
     fontWeight:'700',
     fontSize:'28px',
     '@media (max-width: 768px)': { fontSize: '16px' }
-} as const;
+}
 
 const subHeadingStyle = {
     fontSize:'32px',
     '@media (max-width: 768px)': { fontSize: '22px' }
-} as const;
+}
 
 const bodyStyle = {
     color: colors.darkGrey,
@@ -116,7 +115,7 @@ const bodyStyle = {
     fontWeight: '500',
     paddingBlockEnd: '24px',
     '@media (max-width: 768px)': { fontSize: '15px', paddingBlockEnd: '16px' }
-} as const;
+}
 
 const btnStyle = {
     width: '45%',
@@ -124,13 +123,13 @@ const btnStyle = {
     fontSize: '16px',
     padding: '16px 28px',
     '@media (max-width: 768px)': { width: '100%' }
-} as const;
+}
 
 const contentWrap = {
     maxWidth: '620px',
     marginInlineStart: '20px',
     '@media (max-width: 768px)': { maxWidth: '100%' }
-} as const;
+}
 
 const imgStyle = {
     width: "100%",
@@ -139,7 +138,7 @@ const imgStyle = {
     maxWidth: '600px',
     maxHeight: '450px',
     '@media (max-width: 768px)': { maxWidth: '100%', height: 'auto' }
-} as const;
+} 
 
 const companyFeatures: CompanyFeatureItem[] = [
     {

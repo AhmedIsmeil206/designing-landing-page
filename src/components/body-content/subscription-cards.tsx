@@ -43,7 +43,7 @@ const container = {
         padding: '24px 20px',
         marginBlockStart: '24px'
     }
-} as const;
+} ;
 const ContainerContext = {
     width:'45%',
     display: 'flex',
@@ -58,7 +58,7 @@ const ContainerContext = {
         width: '100%',
         justifyContent: 'center'
     }
-} as const;
+} ;
 const context = {
     padding: '16px 24px',
     borderRadius: '50px',
@@ -73,7 +73,7 @@ const context = {
         padding: '12px 16px',
         fontSize: '14px'
     }
-} as const;
+} ;
 const individualCards = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
@@ -86,7 +86,7 @@ const individualCards = {
         marginBlockEnd: '24px',
         gap: '20px'
     }
-} as const;
+} ;
 const card = {
     backgroundColor: colors.Main_white,
     border: `2px solid ${colors.grey}`,
@@ -100,7 +100,7 @@ const card = {
     '@media (max-width: 768px)': {
         paddingInline: '24px'
     }
-} as const;
+} ;
 const bestValueBadge = {
     position: 'absolute',
     top: '0',
@@ -115,14 +115,14 @@ const bestValueBadge = {
     fontSize: '14px',
     fontStyle: 'italic',
     textTransform: 'uppercase',
-} as const;
+} ;
 const cardTitle = {
     fontSize: '22px',
     fontWeight: '700',
     marginBlockEnd: '24px',
     textAlign: 'center',
     color: colors.black,
-} as const;
+} ;
 
 const priceOld = {
     fontSize: '18px',
@@ -133,19 +133,19 @@ const priceOld = {
     opacity: 0.4,
     fontStyle:'bold',
     fontWeight: '900',
-} as const;
+} ;
 const priceNew = {
     fontSize: '24px',
     fontWeight: '700',
     color: colors.black,
     marginBottom: '4px',
-} as const;
+} ;
 const priceSub = {
     fontSize: '14px',
     color: colors.darkGrey,
     display: 'block',
     marginBottom: '24px',
-} as const;
+} ;
 const discountBadge = {
     display: 'flex',
     alignItems: 'center',
@@ -155,18 +155,18 @@ const discountBadge = {
     borderRadius: '12px',
     marginBlockEnd: '16px',
     border:`1px solid ${colors.lightPurple}`,
-} as const;
+} ;
 const discountText = {
     fontSize: '16px',
     fontWeight: '700',
     color: colors.black,
-} as const;
+} ;
 const discountPercent = {
     fontSize: '18px',
     fontWeight: '700',
     color: colors.darkPurple,
     fontStyle:'bold'
-} as const;
+} ;
 const appliedBadge = {
     fontSize: '12px',
     fontWeight: '600',
@@ -174,12 +174,12 @@ const appliedBadge = {
     backgroundColor: colors.lightGreen,
     padding: '4px 12px',
     borderRadius: '6px',
-} as const;
+} ;
 const featuresList = {
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
-} as const;
+} ;
 const checkmark = {
     width: '24px',
     height: '24px',
@@ -189,7 +189,7 @@ const checkmark = {
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
-} as const;
+} ;
 const teamsCard = {
     backgroundColor: colors.Main_white,
     border: `2px solid ${colors.grey}`,
@@ -204,7 +204,7 @@ const teamsCard = {
         gap: '24px',
         padding: '24px'
     }
-} as const;
+} ;
 const teamsTitle = {
     display:'flex',
     alignItems:'flex-start',
@@ -212,7 +212,7 @@ const teamsTitle = {
     fontSize: '24px',
     fontWeight: '700',
     color: colors.black,
-} as const;
+} ;
 const PaymentLogos = {
     width:'70%',
     borderRadius: '12px',
@@ -228,48 +228,48 @@ const PaymentLogos = {
         gap: '12px',
         padding: '20px 16px'
     }
-} as const;
+} ;
 
 const sectionContent = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-} as const;
+} ;
 
 const fullWidthCtaWrap = {
     paddingBlockEnd: '10px',
     width: '100%',
     marginBlockEnd: '16px',
-} as const;
+} ;
 
 const ctaStyle = {
     height: '48px',
     width: '100%',
     fontSize: '16px',
-} as const;
+} ;
 
 const planPriceWrap = {
     textAlign: 'center',
-} as const;
+} ;
 
 const featureItemWrap = {
     display: 'flex',
     alignItems: 'center',
     gap: '12px',
-} as const;
+} ;
 
 const featureText = (isBold: boolean) => ({
     lineHeight: '27px',
     fontSize: '18px',
     color: colors.black,
     fontWeight: isBold ? '700' : '400',
-} as const);
+} );
 
 const teamsWrap = {
     maxWidth: '800px',
     marginBlockEnd: '40px',
     '@media (max-width: 768px)': { maxWidth: '100%', width: '100%' },
-} as const;
+} ;
 
 const teamsLeftCol = {
     display: 'flex',
@@ -278,7 +278,7 @@ const teamsLeftCol = {
     height: '500px',
     marginBlockStart: '-30px',
     '@media (max-width: 768px)': { height: 'auto', marginBlockStart: '0' },
-} as const;
+} ;
 
 const teamsDescription = {
     fontSize: '18px',
@@ -287,7 +287,7 @@ const teamsDescription = {
     marginBottom: '48px',
     textAlign: 'start',
     '@media (max-width: 768px)': { fontSize: '16px', marginBottom: '24px' },
-} as const;
+} ;
 
 const teamsRightCol = {
     minWidth: '340px',
@@ -296,19 +296,19 @@ const teamsRightCol = {
     textAlign: 'start',
     marginBlockStart: '-30px',
     '@media (max-width: 768px)': { minWidth: 'auto', width: '100%', marginBlockStart: '0' },
-} as const;
+} ;
 
 const teamsPriceTitle = {
     fontSize: '18px',
     fontWeight: '700',
     marginBottom: '16px',
     color: colors.black,
-} as const;
+} ;
 
 const logoImg = {
     height: '32px',
     objectFit: 'contain',
-} as const;
+} ;
 
 const emptyCssObject: CSSObject = {};
 

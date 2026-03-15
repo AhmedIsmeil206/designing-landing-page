@@ -31,7 +31,7 @@ const githubIconStyles = {
     marginLeft: "10px",
 };
 
-const div = {
+const container = {
     padding: "48px clamp(20px, 6%, 120px)",
     display: "flex",
     alignItems: "center",
@@ -289,7 +289,7 @@ export default function Introduction() {
 
 return (
     <>
-        <div css={div}>
+        <div css={container}>
             <div css={{maxWidth: "600px" , padding:'80px 30px', '@media (max-width: 768px)': { padding: '24px 0', maxWidth: '100%' }}}>
                 <div css={header}>For learners</div>
                 <h1 css={title}>
