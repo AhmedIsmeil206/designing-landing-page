@@ -1,4 +1,3 @@
-
 import { colors } from '@shared/colors';
 
 interface LegalLink {
@@ -57,8 +56,6 @@ export default function Rights()  {
 
     return (
         <div>
-
-
             <div css={divider}>
                 <div css={{paddingInlineStart: "230px", '@media (max-width: 768px)': { marginInlineStart: '0' }}}> © Frontend Mentor 2019 - 2026</div>
                 <div css={legalLinks}>

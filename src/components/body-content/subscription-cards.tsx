@@ -14,11 +14,6 @@ import gpayLogo from '@assets/logos/purchase/gpay.webp';
 type BillingTab = 'individuals' | 'teams';
 type Feature = string | { text: string; bold: boolean };
 
-interface PaymentLogo {
-    src: string;
-    alt: string;
-}
-
 interface IndividualPlan {
     id: string;
     title: string;
@@ -314,13 +309,13 @@ const emptyCssObject: CSSObject = {};
 
 const tabOptions: BillingTab[] = ['individuals', 'teams'];
 
-const paymentLogos: PaymentLogo[] = [
-    { src: visaLogo, alt: 'VISA' },
-    { src: mastercardLogo, alt: 'Mastercard' },
-    { src: amexLogo, alt: 'American Express' },
-    { src: maestroLogo, alt: 'Maestro' },
-    { src: paypalLogo, alt: 'PayPal' },
-    { src: gpayLogo, alt: 'Google Pay' },
+const paymentLogos = [
+    { src: visaLogo },
+    { src: mastercardLogo },
+    { src: amexLogo},
+    { src: maestroLogo},
+    { src: paypalLogo},
+    { src: gpayLogo},
 ];
 
 const monthlyFeatures: Feature[] = [
@@ -415,9 +410,9 @@ function FeatureList({ features }: { features: Feature[] }) {
 }
 
 function PlanCard({ plan }: { plan: IndividualPlan }) {
-    const mergedCardStyle: CSSObject = { ...card, ...(plan.cardStyle ?? emptyCssObject) };
-    const mergedTitleStyle: CSSObject = { ...cardTitle, ...(plan.titleStyle ?? emptyCssObject) };
-    const contentStyle: CSSObject = plan.contentStyle ?? emptyCssObject;
+    const mergedCardStyle = { ...card, ...(plan.cardStyle ?? emptyCssObject) };
+    const mergedTitleStyle = { ...cardTitle, ...(plan.titleStyle ?? emptyCssObject) };
+    const contentStyle = plan.contentStyle ?? emptyCssObject;
 
     return (
         <div css={mergedCardStyle}>

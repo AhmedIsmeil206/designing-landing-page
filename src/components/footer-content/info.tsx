@@ -10,11 +10,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import Button from '@shared/button';
 
-interface FooterLinkItem {
-    label: string;
-    href: string;
-}
-
 interface FooterColumn {
     id: string;
     title: string;
@@ -234,7 +229,6 @@ export default function Info()  {
                         />
                     </a>
                 </div>
-
                 <SocialLinksRow />
             </div>
 
