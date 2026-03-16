@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { colors } from '@shared/colors';
 import Button from '@shared/button';
 import { githubMark } from '@shared/icons';
@@ -11,9 +12,10 @@ import {
     faNewspaper,
     faBook,
     faUser,
-    faChalkboardTeacher
+    faChalkboardTeacher,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import path from 'path-browserify';
 
 interface NavItem {
     label: string;
@@ -33,12 +35,12 @@ const exploreItems: NavItem[] = [
     { label: 'Challenges', href: '#challenges', icon: faDesktop },
     { label: 'Solutions', href: '#solutions', icon: faCode },
     { label: 'Articles', href: '#articles', icon: faNewspaper },
-    { label: 'Guides', href: '#guides', icon: faBook }
-]
+    { label: 'Guides', href: '#guides', icon: faBook },
+];
 const forCompaniesItems: NavItem[] = [
     { label: 'Hire Developers', href: '#hiring', icon: faUser },
-    { label: 'Train Developers', href: '#team-plans', icon: faChalkboardTeacher }
-]
+    { label: 'Train Developers', href: '#team-plans', icon: faChalkboardTeacher },
+];
 const navStyles = {
     display: 'flex',
     justifyContent: 'space-between',
@@ -54,12 +56,12 @@ const navStyles = {
     '@media (max-width: 768px)': {
         padding: '8px 20px',
     },
-}
+};
 const leftSectionStyles = {
     display: 'flex',
     alignItems: 'center',
     gap: '16px',
-}
+};
 const hamburgerButtonStyles = {
     display: 'none',
     flexDirection: 'column',
@@ -70,23 +72,23 @@ const hamburgerButtonStyles = {
     padding: '8px',
     '@media (max-width: 1024px)': {
         display: 'flex',
-    }
-}
+    },
+};
 const hamburgerLineStyles = {
     width: '24px',
     height: '3px',
     backgroundColor: colors.black,
     borderRadius: '2px',
-}
+};
 const logoLinkStyles = {
     display: 'flex',
     alignItems: 'center',
-    textDecoration: 'none'
-}
+    textDecoration: 'none',
+};
 const logoImageStyles = {
     height: '32px',
-    width: 'auto'
-}
+    width: 'auto',
+};
 const rightSectionStyles = {
     display: 'flex',
     gap: '8px',
@@ -94,11 +96,11 @@ const rightSectionStyles = {
     fontStyle: 'italic',
     '@media (max-width: 1024px)': {
         '& > *:not(:last-child)': {
-            display: 'none'
+            display: 'none',
         },
-        gap: '0'
+        gap: '0',
     },
-}
+};
 const unlockProStyles = {
     textDecoration: 'none',
     color: colors.black,
@@ -109,28 +111,28 @@ const unlockProStyles = {
     alignItems: 'center',
     gap: '6px',
     textTransform: 'uppercase',
-}
+};
 const proBadgeStyles = {
     backgroundColor: colors.purple,
     color: colors.Main_white,
     padding: '1px 6px',
     borderRadius: '4px',
     fontSize: '14px',
-    fontWeight: '700'
-}
+    fontWeight: '700',
+};
 const dropdownTriggerStyles = {
     textDecoration: 'italic',
     fontSize: '14px',
     fontWeight: '900',
     color: colors.black,
     textTransform: 'uppercase',
-}
+};
 const githubIconStyles = {
     width: '22px',
     height: '22px',
     fill: colors.Main_white,
-    marginLeft: '6px'
-}
+    marginLeft: '6px',
+};
 const mobileMenuOverlayStyles = (isOpen: boolean) => ({
     display: 'none',
     '@media (max-width: 1024px)': {
@@ -144,15 +146,15 @@ const mobileMenuOverlayStyles = (isOpen: boolean) => ({
         zIndex: 1000,
         transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
         overflowY: 'auto',
-    }
-})
+    },
+});
 const mobileMenuHeaderStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '12px 16px',
     borderBottom: `1px solid ${colors.grey}`,
-}
+};
 const closeButtonStyles = {
     background: 'transparent',
     border: 'none',
@@ -161,17 +163,17 @@ const closeButtonStyles = {
     padding: '8px',
     color: colors.black,
     fontWeight: '300',
-}
+};
 const mobileMenuContentStyles = {
     padding: '0',
     display: 'flex',
     flexDirection: 'column',
     gap: '0',
-}
+};
 const mobileMenuSectionStyles = {
     borderBottom: `1px solid ${colors.grey}`,
     paddingBottom: '0',
-}
+};
 const mobileMenuTitleStyles = {
     fontSize: '15px',
     fontWeight: '700',
@@ -184,7 +186,7 @@ const mobileMenuTitleStyles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.Main_white,
-}
+};
 const mobileMenuItemStyles = {
     display: 'flex',
     alignItems: 'center',
@@ -197,8 +199,8 @@ const mobileMenuItemStyles = {
     fontWeight: '500',
     '&:hover': {
         backgroundColor: colors.Main_whiteHover,
-    }
-}
+    },
+};
 const mobileUnlockProStyles = {
     display: 'flex',
     alignItems: 'center',
@@ -211,7 +213,7 @@ const mobileUnlockProStyles = {
     color: colors.black,
     textDecoration: 'none',
     borderBottom: `1px solid ${colors.grey}`,
-}
+};
 
 const desktopLoginTextStyles = {
     padding: '4px 8px',
@@ -219,22 +221,26 @@ const desktopLoginTextStyles = {
     fontWeight: '900',
     fontStyle: 'italic',
     '@media (max-width: 768px)': {
-        fontSize: '11px'
-    }
+        fontSize: '11px',
+    },
 };
 
 const desktopLoginWrapStyles = {
     '@media (max-width: 1024px)': {
-        marginLeft: '0'
-    }
+        marginLeft: '0',
+    },
 };
 
 function GithubLoginButton({ withStyledText = false }: { withStyledText?: boolean }) {
     return (
         <Button variant="BlackButton">
-            {withStyledText ? <span css={desktopLoginTextStyles}>LOG IN WITH GITHUB</span> : 'LOG IN WITH GITHUB'}
+            {withStyledText ? (
+                <span css={desktopLoginTextStyles}>LOG IN WITH GITHUB</span>
+            ) : (
+                'LOG IN WITH GITHUB'
+            )}
             <svg css={githubIconStyles} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d={githubMark}/>
+                <path d={githubMark} />
             </svg>
         </Button>
     );
@@ -251,7 +257,10 @@ function MobileMenuSection({ title, isOpen, onToggle, items }: MobileMenuSection
                 <div>
                     {items.map((item) => (
                         <a key={item.label} href={item.href} css={mobileMenuItemStyles}>
-                            <FontAwesomeIcon icon={item.icon} css={{ width: '16px', color: colors.black }} />
+                            <FontAwesomeIcon
+                                icon={item.icon}
+                                css={{ width: '16px', color: colors.black }}
+                            />
                             <span>{item.label}</span>
                         </a>
                     ))}
@@ -280,11 +289,7 @@ export default function NavBar() {
                         <span css={hamburgerLineStyles}></span>
                     </button>
                     <a href="#" css={logoLinkStyles}>
-                        <img
-                            src={frontendMasterLogo}
-                            alt="Frontend Mentor"
-                            css={logoImageStyles}
-                        />
+                        <img src={frontendMasterLogo} alt="Frontend Mentor" css={logoImageStyles} />
                     </a>
                 </div>
 
@@ -298,12 +303,13 @@ export default function NavBar() {
                         trigger={<span css={dropdownTriggerStyles}>FOR COMPANIES</span>}
                         items={forCompaniesItems}
                     />
-                    <a
-                        href="#unlock-pro"
-                        css={unlockProStyles}
-                    >
+                    <a href="#unlock-pro" css={unlockProStyles}>
                         UNLOCK <span css={proBadgeStyles}>PRO</span>
                     </a>
+
+                    <Link to="/register" css={unlockProStyles}>
+                        REGISTER
+                    </Link>
 
                     <div css={desktopLoginWrapStyles}>
                         <GithubLoginButton withStyledText />
@@ -325,7 +331,7 @@ export default function NavBar() {
                         <img
                             src={frontendMasterLogo}
                             alt="Frontend Mentor"
-                            css={{...logoImageStyles, height: '28px'}}
+                            css={{ ...logoImageStyles, height: '28px' }}
                         />
                     </a>
 
@@ -350,6 +356,11 @@ export default function NavBar() {
                         <span>UNLOCK</span>
                         <span css={proBadgeStyles}>PRO</span>
                     </a>
+
+                    <Link to="/register" css={mobileUnlockProStyles}>
+                        <span css={{ fontSize: '16px' }}></span>
+                        <span>REGISTER</span>
+                    </Link>
                 </div>
             </div>
         </>
