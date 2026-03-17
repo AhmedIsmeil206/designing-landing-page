@@ -51,7 +51,7 @@ const footerStyles = {
     width: "100%",
     maxWidth: "1400px",
     margin: "0 auto",
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     '@media (max-width: 1024px)': {
         paddingInline: '32px'
     },

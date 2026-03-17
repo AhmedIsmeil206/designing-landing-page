@@ -7,12 +7,12 @@ import MarketingHeader from '@components/shared/marketing-nav-bar';
 
 const pageStyles = {
     minHeight: '100vh',
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
 };
 
 const tabBarStyles = {
     borderBlockEnd: `1px solid ${colors.grey}`,
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
 };
 
 const tabInnerStyles = {
@@ -53,7 +53,7 @@ const formCardStyles = {
     padding: '30px 28px 26px',
     borderRadius: '20px',
     border: `1px solid ${colors.grey}`,
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     boxShadow: `0 26px 70px ${colors.white}`,
 };
 

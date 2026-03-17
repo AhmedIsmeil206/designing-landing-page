@@ -27,7 +27,7 @@ interface FeaturedBrand {
 const githubIconStyles = {
     width: "18px",
     height: "18px",
-    fill: colors.Main_white,
+    fill: colors.Mainwhite,
     marginLeft: "10px",
 };
 
@@ -135,7 +135,7 @@ const testimonialsGrid = {
 };
 
 const testimonialCard = {
-    background: colors.Main_white,
+    background: colors.Mainwhite,
     padding: "0px 16px",
     borderRadius: "12px",
     width: "100%",
@@ -163,7 +163,7 @@ const featuredGrid = {
     }
 };
 const featuredCard = {
-    background: colors.Main_white,
+    background: colors.Mainwhite,
     borderRadius: "12px",
     border:`1px solid ${colors.grey}`,
     display: "flex",
@@ -253,7 +253,7 @@ function HeroActions() {
                 </svg>
             </Button>
 
-            <Button variant="Main_whiteButton" style={secondaryButtonStyle}>
+            <Button variant="MainwhiteButton" style={secondaryButtonStyle}>
                 BROWSE CHALLENGES
             </Button>
         </div>
@@ -309,19 +309,19 @@ return (
 
         <div css={proBannerdiv}>
             <div css={{display: "flex", textAlign: "left", flexDirection: "column"}}>
-                <h2 css={{fontSize: "24px", fontWeight: "700", color: colors.Main_white, marginBottom: "12px"}}>
+                <h2 css={{fontSize: "24px", fontWeight: "700", color: colors.Mainwhite, marginBottom: "12px"}}>
                     Get AI-powered feedback on every solution submission
                 </h2>
-                <p css={{fontSize: "16px", color: colors.Main_white, marginBlockStart:'-8px'}}>
+                <p css={{fontSize: "16px", color: colors.Mainwhite, marginBlockStart:'-8px'}}>
                     Join thousands of developers getting personalized insights to elevate your front-end and full-stack skills.
                 </p>
             </div>
-            <Button variant="Main_whiteButton">
+            <Button variant="MainwhiteButton">
                 <span css={{color: colors.purple, fontWeight: "700", fontSize: "14px", fontStyle:'italic', padding: "4px 8px"}}>LEARN ABOUT PRO</span>
             </Button>
         </div>
 
-        <div css={{padding: "34px 32px", background: colors.Main_whiteHover, '@media (max-width: 768px)': { padding: '24px 20px' }}}>
+        <div css={{padding: "34px 32px", background: colors.MainwhiteHover, '@media (max-width: 768px)': { padding: '24px 20px' }}}>
             <div css={testimonialsGrid}>
                 {testimonials.map((testimonial) => (
                     <TestimonialCard key={testimonial.id} item={testimonial} />
@@ -329,7 +329,7 @@ return (
             </div>
         </div>
 
-        <div css={{ background: colors.Main_whiteHover, marginBlockEnd: "112px", width: '100%', paddingBlock: '48px', paddingInline: '48px', '@media (max-width: 768px)': { marginBlockEnd: '32px', paddingInline: '20px', paddingBlock: '32px' }}}>
+        <div css={{ background: colors.MainwhiteHover, marginBlockEnd: "112px", width: '100%', paddingBlock: '48px', paddingInline: '48px', '@media (max-width: 768px)': { marginBlockEnd: '32px', paddingInline: '20px', paddingBlock: '32px' }}}>
             <h2 css={{fontSize: "18px", fontWeight: "900",  textTransform: "uppercase", color: colors.black, marginBottom: "48px", textStyle:'bold'}}>
                 As featured on ...
             </h2>

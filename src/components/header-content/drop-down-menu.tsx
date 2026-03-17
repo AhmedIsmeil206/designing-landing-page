@@ -98,7 +98,7 @@ export default function DropDownMenu({ trigger, items }: DropDownMenuProps) {
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '12px',
-                                backgroundColor: colors.Main_white,
+                                backgroundColor: colors.Mainwhite,
                                 borderRadius: `1px solid ${colors.grey}`,
                             }}
                         >

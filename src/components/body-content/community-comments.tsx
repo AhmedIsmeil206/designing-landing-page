@@ -59,7 +59,7 @@ const getNavButtonStyle = (isDisabled: boolean) => ({
     borderRadius: '50%',
     border: 'none',
     backgroundColor: isDisabled ? colors.darkGrey : colors.purple,
-    color: colors.Main_white,
+    color: colors.Mainwhite,
     cursor: isDisabled ? 'not-allowed' : 'pointer',
     display: 'flex',
     alignItems: 'center',
@@ -80,7 +80,7 @@ const getCarouselTrackStyle = (currentIndex: number) => ({
 
 const cardCommentStyle = {
     flex: '0 0 calc(33.333% - 16px)',
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     borderRadius: '12px',
     padding: '32px',
     display: 'flex',

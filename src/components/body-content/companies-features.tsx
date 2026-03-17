@@ -115,7 +115,7 @@ const bodyStyle = {
 
 const btnStyle = {
     width: '45%',
-    color: colors.Main_white,
+    color: colors.Mainwhite,
     fontSize: '16px',
     padding: '16px 28px',
     '@media (max-width: 768px)': { width: '100%' },

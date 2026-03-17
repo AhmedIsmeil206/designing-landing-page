@@ -3,7 +3,7 @@ import { colors } from '@shared/colors';
 interface ButtonProps {
     onClick?: () => void;
     children: React.ReactNode;
-    variant?: 'redButton' | 'Main_whiteButton' | 'BlackButton' | 'purpleButton' | 'darkgreyButton' | 'Main_Main_whiteButton';
+    variant?: 'redButton' | 'MainwhiteButton' | 'BlackButton' | 'purpleButton' | 'darkgreyButton' | 'Main_MainwhiteButton';
     style?: object;
 }
 export default function Button ({onClick, children, variant = 'redButton', style}: ButtonProps) {
@@ -33,31 +33,31 @@ const baseStyles = {
 const variants = {
     redButton:{
         backgroundColor: colors.red,
-        color: colors.Main_white,
+        color: colors.Mainwhite,
         ':hover': colors.redHover
     },
-    Main_whiteButton:{
-        backgroundColor: colors.Main_white,
+    MainwhiteButton:{
+        backgroundColor: colors.Mainwhite,
         color: colors.black,
     },
     BlackButton:{
         backgroundColor: colors.black,
-        color: colors.Main_white,
+        color: colors.Mainwhite,
         ':hover': colors.blackHover
     },
     purpleButton:{
         backgroundColor: colors.purple,
-        color: colors.Main_white,
+        color: colors.Mainwhite,
         ':hover': colors.purpleHover
     },
     darkgreyButton:{
         backgroundColor: colors.darkGrey,
-        color: colors.Main_white,
+        color: colors.Mainwhite,
     },
-    Main_Main_whiteButton: {
-        backgroundColor: colors.Main_white,
+    Main_MainwhiteButton: {
+        backgroundColor: colors.Mainwhite,
         color: colors.black,
-        ':hover': colors.Main_whiteHover
+        ':hover': colors.MainwhiteHover
     }
 }
 const variantsStyles = variants[variant]

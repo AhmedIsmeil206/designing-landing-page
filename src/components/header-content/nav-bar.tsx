@@ -114,7 +114,7 @@ const unlockProStyles = {
 };
 const proBadgeStyles = {
     backgroundColor: colors.purple,
-    color: colors.Main_white,
+    color: colors.Mainwhite,
     padding: '1px 6px',
     borderRadius: '4px',
     fontSize: '14px',
@@ -130,7 +130,7 @@ const dropdownTriggerStyles = {
 const githubIconStyles = {
     width: '22px',
     height: '22px',
-    fill: colors.Main_white,
+    fill: colors.Mainwhite,
     marginLeft: '6px',
 };
 const mobileMenuOverlayStyles = (isOpen: boolean) => ({
@@ -142,7 +142,7 @@ const mobileMenuOverlayStyles = (isOpen: boolean) => ({
         left: 0,
         width: '100%',
         height: '100vh',
-        backgroundColor: colors.Main_white,
+        backgroundColor: colors.Mainwhite,
         zIndex: 1000,
         transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
         overflowY: 'auto',
@@ -185,7 +185,7 @@ const mobileMenuTitleStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
 };
 const mobileMenuItemStyles = {
     display: 'flex',
@@ -198,7 +198,7 @@ const mobileMenuItemStyles = {
     fontSize: '15px',
     fontWeight: '500',
     '&:hover': {
-        backgroundColor: colors.Main_whiteHover,
+        backgroundColor: colors.MainwhiteHover,
     },
 };
 const mobileUnlockProStyles = {

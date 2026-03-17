@@ -48,7 +48,7 @@ const authorAvatarStyles = {
     height: '44px',
     borderRadius: '50%',
     objectFit: 'cover',
-    border: `2px solid ${colors.Main_white}`,
+    border: `2px solid ${colors.Mainwhite}`,
     boxShadow: `0 6px 18px ${colors.white}`,
 };
 
@@ -222,7 +222,7 @@ const articleCards: BlogArticle[] = [
 
 const pageStyles = {
     minHeight: '100vh',
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
 };
 
 const heroSectionStyles = {
@@ -235,7 +235,7 @@ const heroSectionStyles = {
 };
 
 const gridSectionStyles = {
-    backgroundColor: colors.Main_whiteHover,
+    backgroundColor: colors.MainwhiteHover,
     borderBlockStart: `1px solid ${colors.grey}`,
     borderBlockEnd: `1px solid ${colors.grey}`,
 };

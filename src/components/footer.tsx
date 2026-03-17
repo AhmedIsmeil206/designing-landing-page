@@ -4,7 +4,7 @@ import Rights from '@footer/rights';
 
 const Footer = () => {
 return (
-    <footer css={{width:'100%', backgroundColor: colors.Main_white,}}>
+    <footer css={{width:'100%', backgroundColor: colors.Mainwhite,}}>
         <Info />
         <Rights />
     </footer>

@@ -39,7 +39,7 @@ const legalLinks = ['Terms', 'Cookie policy', 'Privacy policy'];
 const socialIcons = [faXTwitter, faLinkedin, faFacebook];
 
 const footerStyles = {
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     borderTop: `1px solid ${colors.grey}`,
 };
 

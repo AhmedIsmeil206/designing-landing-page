@@ -24,7 +24,7 @@ const headerStyles = {
     top: 0,
     zIndex: 20,
     width: '100%',
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     backdropFilter: 'blur(16px)',
     borderBottom: `1px solid ${colors.grey}`,
 };
@@ -93,16 +93,14 @@ export default function MarketingHeader() {
                 </Link>
 
                 <nav css={navStyles}>
-                    <a  css={navLinkStyles}>
-                        WHY US
-                    </a>
+                    <a css={navLinkStyles}>WHY US</a>
                     <DropDownMenu
                         trigger={<span css={navLinkStyles}>USE CASES</span>}
                         items={useCasesItems}
                     />
-                    <a  css={navLinkStyles}>
+                    <Link to="/pricing" css={navLinkStyles}>
                         PRICING
-                    </a>
+                    </Link>
                     <Link to="/blog" css={navLinkStyles}>
                         BLOG
                     </Link>

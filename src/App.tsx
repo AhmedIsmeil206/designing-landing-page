@@ -5,6 +5,7 @@ import Body from '@components/body';
 import Footer from '@components/footer';
 import BlogPage from './pages/blog-page';
 import RegisterPage from './pages/register-page';
+import PricingPage from './pages/pricing-page';
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
             />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
         </Routes>
     );
 }

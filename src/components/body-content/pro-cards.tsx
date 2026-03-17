@@ -65,7 +65,7 @@ const cardsRow = {
 }
 
 const card = {
-    background: colors.Main_white,
+    background: colors.Mainwhite,
     border: `1px solid ${colors.grey} !important`,
     borderRadius: "20px",
     padding: "28px",
@@ -104,7 +104,7 @@ const cardContext = {
 }
 const proBadgeStyles = {
     backgroundColor: colors.purple,
-    color: colors.Main_white,
+    color: colors.Mainwhite,
     padding: '3px 8px',
     borderRadius: '4px',
     marginBlockStart: '10px',

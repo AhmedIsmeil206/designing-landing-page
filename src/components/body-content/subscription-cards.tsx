@@ -44,7 +44,7 @@ const ContainerContext = {
     display: 'flex',
     gap: '16px',
     marginBlockEnd: '72px',
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     borderRadius: '50px',
     padding: '8px',
     border:`1px solid ${colors.grey}`,
@@ -83,7 +83,7 @@ const individualCards = {
     }
 } ;
 const card = {
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     border: `2px solid ${colors.grey}`,
     borderRadius: '24px',
     paddingInline: '32px',
@@ -102,7 +102,7 @@ const bestValueBadge = {
     left: '0',
     right: '0',
     backgroundColor: colors.purple,
-    color: colors.Main_white,
+    color: colors.Mainwhite,
     padding: '8px',
     borderRadius: '20px 20px 0 0',
     textAlign: 'center',
@@ -186,7 +186,7 @@ const checkmark = {
     flexShrink: 0,
 } ;
 const teamsCard = {
-    backgroundColor: colors.Main_white,
+    backgroundColor: colors.Mainwhite,
     border: `2px solid ${colors.grey}`,
     borderRadius: '24px',
     padding: '36px',
@@ -491,8 +491,8 @@ function BillingTabs({
                     onClick={() => onChange(tab)}
                     css={{
                         ...context,
-                        backgroundColor: activeTab === tab ? colors.purple : colors.Main_white,
-                        color: activeTab === tab ? colors.Main_white : colors.black,
+                        backgroundColor: activeTab === tab ? colors.purple : colors.Mainwhite,
+                        color: activeTab === tab ? colors.Mainwhite : colors.black,
                     }}
                 >
                     For {tab === 'individuals' ? 'Individuals' : 'Teams'}

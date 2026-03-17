@@ -11,7 +11,7 @@ interface CtaBlockProps {
 const githubIconStyles = {
     width: '18px',
     height: '18px',
-    fill: colors.Main_white,
+    fill: colors.Mainwhite,
     marginLeft: '10px'
 };
 const containerStyle = {

@@ -49,15 +49,15 @@ const numberPill = (active) => ({
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    background: active ? colors.Main_white : colors.babyBlue,
-    color: active ? colors.purple : colors.Main_white,
+    background: active ? colors.Mainwhite : colors.babyBlue,
+    color: active ? colors.purple : colors.Mainwhite,
     fontWeight: "700",
     marginRight: "16px",
 })
 
 const stepCard = (active) => ({
-    background: active ? colors.purple : colors.Main_white,
-    color: active ? colors.Main_white : colors.black,
+    background: active ? colors.purple : colors.Mainwhite,
+    color: active ? colors.Mainwhite : colors.black,
     borderRadius: "12px",
     padding: active ? "30px 24px" : "16px 24px",
     border: active ? "1px solid transparent" : `1px solid ${colors.lightGray}`,
